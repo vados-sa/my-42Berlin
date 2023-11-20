@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 11:56:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/20 11:56:15 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/20 11:38:38 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/20 11:40:38 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* #include <stdio.h>
 #include <string.h> */
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned int	i;
+	unsigned char	*ptr;
 
+	ptr = (unsigned char *)s;
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	while (i < n)
 	{
-		if (s1[i] > s2[i] || s1[i] < s2[i])
-			return (s1[i] - s2[i]);
+		*ptr = (unsigned char)c;
+		ptr++;
 		i++;
 	}
-	return (0);
+	return (s);
 }
-/* 
-int	main(void)
+
+/* int main() 
 {
-	char s1[] = "hello";
-	char s2[] = "he";
-	unsigned int n = 4;
-	printf("funtion: %d\nimplement.: %d\n", strncmp(s1, s2, n), ft_strncmp(s1, s2, n));
-	return (0);
+	size_t	size = 2;
+	char 	c = 'V';
+	char 	str[20];
+	printf("Funtion: %s\n", (char*)memset(str, c, size));
+	str[10] = '\0';
+	printf("Implementation: %s\n", (char*)ft_memset(str, c, size));
+	return 0;
 } */

@@ -1,37 +1,39 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/20 12:08:35 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/20 13:11:10 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* #include <stdio.h> */
 
 char	*ft_strrchr(const char *s, int c);
-int	ft_strlen(const char *str);
 
-int	ft_strlen(const char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	char	*ptr;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);	
-}
-
-char *ft_strrchr(const char *s, int c)
-{
-	int	i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	ptr = (char *)s;
+	while (*ptr != '\0')
+		ptr++;
+	while (ptr >= s)
 	{
-		if (s[i] == c)
-			return (char*)(s + i);
-		else
-			i--;
+		if (*ptr == (unsigned char)c)
+			return (ptr);
+		ptr--;
 	}
 	return (0);
 }
-
+/* 
 int	main(void)
 {
 	char	str[] = "sabao cracra";
 	char	c = 'c';
 	printf("%s\n", ft_strrchr(str, c));
 	return (0);
-}
+} */

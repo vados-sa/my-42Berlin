@@ -1,42 +1,42 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/20 11:41:46 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/20 12:53:46 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* #include <stdio.h> */
 
 char	*ft_strchr(const char *s, int c);
-int	ft_strlen(const char *str);
 
-int	ft_strlen(const char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	char	*ptr;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);	
-}
-
-char *ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (c == '\0')
-		return (char*)(s + ft_strlen(s));
+	ptr = (char *)s;
+	if ((unsigned char)c == '\0')
+		return (ptr);
 	else
 	{
-		while (s[i] != '\0')
+		while (*ptr != '\0')
 		{
-			if (s[i] == c)
-				return (char*)(s + i);
-			else
-				i++;
+			if (*ptr == (unsigned char)c)
+				return (ptr);
+			ptr++;
 		}
 	}
 	return (0);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char	str[] = "sabao cracra";
 	char	c = 'c';
 	printf("%s\n", ft_strchr(str, c));
 	return (0);
-}
+} */
