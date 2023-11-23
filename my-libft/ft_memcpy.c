@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:39:41 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/21 10:44:18 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:57:25 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	if (dest == 0 && src == 0)
+	if (dest == (void *)0 && src == (void *)0)
 		return (dest);
-	d = dest;
-	s = src; 
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src; 
 	while ((n > 0))
 	{
 		*d++ = *s++;
