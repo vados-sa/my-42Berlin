@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 11:56:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 12:06:01 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/23 11:37:28 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/23 12:16:43 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <string.h> */
+#include <stdio.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	i;
-
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
+	
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	while (i < n)
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+		if (str1[i] != str2[i])
+			return(str1[i] - str2[i]);
 		i++;
 	}
-	return (0);
+	return (0);	
 }
 /* 
 int	main(void)
 {
-	char s1[] = "hello";
-	char s2[] = "he";
-	unsigned int n = 4;
-	printf("funtion: %d\nimplement.: %d\n", strncmp(s1, s2, n), ft_strncmp(s1, s2, n));
+	char str1[] = "a";
+	char str2[] = " ";
+	printf("%d\n", ft_memcmp(str1, str2, 4));
 	return (0);
 } */
