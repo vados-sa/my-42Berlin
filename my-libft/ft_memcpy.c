@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:39:41 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 14:57:25 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:31:23 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 }
 /* 
 int main(void) {
-	char source[] = "Copycat";
-	char destination[20];
-	char dest[20];
+	char source[] = "Copykitty";
+	char destination[10];
+	char dest[10];
 
-	destination[8] = '\0';
-	dest[8] = '\0';
-
-	printf("Destination: %s\n", (char *)memcpy(destination, source, 7));
-	printf("Dest.: %s\n", (char *)ft_memcpy(dest, source, 7));
-
+	printf("Destination: %s\n", (char *)memcpy(destination, source + 2, 7));
+	printf("Dest.:       %s\n", (char *)ft_memcpy(dest, source + 2, 7));
+	//null terminate in the main?
 	return 0;
 } */
