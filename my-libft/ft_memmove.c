@@ -5,38 +5,45 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned int		i;
+	size_t				i;
 	unsigned char		*d;
 	const unsigned char	*s;
-	unsigned char		tmp[n];
-
+	
 	i = 0;
-	d = dest;
-	s = src;
-	while (i < n)
+	if (dest == (void *)0 && src == (void *)0)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (dest > src)
 	{
-		tmp[i] = s[i];
-		i++;
+		d += n - 1;
+		s += n - 1;
+		while (n > 0)
+		{
+			d[n] = s[n];
+			n--;
+		}
+//still figuring out this part.		
 	}
-	i = 0;
-	while (i < n)
+	else
 	{
-		d[i] = tmp[i];
-		i++;
+		while ((n > 0))
+		{
+			*d++ = *s++;
+			n--;
+		}
 	}
+	
 	return (dest);
 }
 
 int	main(void)
 {
 	char source[] = "Copycat";
-	char destination[20];
-	char dest[20];
+	char destination[7];
+	char dest[7];
 
-	destination[5] = '\0';
-	dest[5] = '\0';
-
-	printf("Destination: %s\n", (char *)memmove(source + 2, source, 3));
-	printf("Dest.: %s\n", (char *)ft_memmove(source + 2, source, 3));
+	printf("Destination: %s\n", (char *)memmove(destination, source, 7));
+	printf("Dest.: %s\n", (char *)ft_memmove(dest, source, 7));
 	return 0;
 }
