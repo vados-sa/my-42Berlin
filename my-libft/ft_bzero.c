@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:03:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/20 15:33:27 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:12:23 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,16 @@ void	ft_bzero(void *s, size_t n);
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*ptr;
-	unsigned int	i;
+	char	*ptr;
 
-	i = 0;
-	ptr = (unsigned char *)s;
-	/* if (n == 0)
-		return (0); */
-	while (i < n)
+	ptr = (char *)s;
+	while (n > 0)
 	{
-		*ptr = '\0';
-		ptr++;
-		i++;
+		*ptr++ = '\0';
+		n--;
 	}
 }
-
+/* 
 int	main(void)
 {
 	char str1[] = "chocolate";
@@ -40,4 +35,4 @@ int	main(void)
 	char str[] = "chocolate";
 	ft_bzero(str, 0);
 	printf ("%s\n", str);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:38 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/20 15:30:46 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:58:11 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@ void	*ft_memset(void *s, int c, size_t n);
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned int	i;
 	unsigned char	*ptr;
 
 	ptr = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	while (n > 0)
 	{
-		*ptr = (unsigned char)c;
-		ptr++;
-		i++;
+		*ptr++ = (unsigned char)c;
+		n--;
 	}
 	return (s);
 }
