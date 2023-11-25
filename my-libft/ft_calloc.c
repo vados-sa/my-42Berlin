@@ -3,22 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:51:57 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/24 18:53:22 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 11:27:26 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_calloc(size_t count, size_t size);
+#include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nitems, size_t size);
+
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	
-}
+	size_t	i;
+	unsigned char	*ptr;
 
+	ptr = malloc(nitems * size);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < nitems * size)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
+}
+/* 
 int	main(void)
 {
-	
+	size_t nitems = 5;
+    size_t size = sizeof(int);
+	ft_calloc(nitems, size);
+	free (ft_calloc(nitems, size));
 	return (0);
-}
+} */
