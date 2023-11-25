@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:39:41 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 16:36:59 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:09:26 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:56:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 12:06:01 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:14:20 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <string.h> */
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

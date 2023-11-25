@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:31:27 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/24 18:45:23 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:20:35 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <string.h> */
-
-#include <stdlib.h>
-
-char	*ft_strdup(const char *src);
-int		ft_strlen(char *str);
-
-static int	ft_strlen(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {

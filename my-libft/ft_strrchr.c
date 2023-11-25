@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:08:35 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/20 13:11:10 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:13:35 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
-
-char	*ft_strrchr(const char *s, int c);
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

@@ -6,13 +6,11 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:51:57 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 11:27:26 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/25 15:17:48 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	*ft_calloc(size_t nitems, size_t size);
+#include "libft.h"
 
 void	*ft_calloc(size_t nitems, size_t size)
 {

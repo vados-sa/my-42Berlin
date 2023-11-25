@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:33:20 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/14 14:26:39 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:12:21 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <ctype.h>
-#include <stdio.h> */
-
-int	ft_toupper(int c);
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

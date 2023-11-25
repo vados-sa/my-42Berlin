@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:03:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 10:12:23 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:08:19 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
-#include <stdio.h>
-
-void	ft_bzero(void *s, size_t n);
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

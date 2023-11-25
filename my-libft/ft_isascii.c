@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:10:07 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/14 12:22:49 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:03:10 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <ctype.h>
-#include <stdio.h> */
+#include "libft.h"
 
 int	ft_isascii(int c)
 {

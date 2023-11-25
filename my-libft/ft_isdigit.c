@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:22:19 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/14 14:27:04 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:04:40 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <ctype.h>
-#include <stdio.h> */
-
-int	ft_isdigit(int c);
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

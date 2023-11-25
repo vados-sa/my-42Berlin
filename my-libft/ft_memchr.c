@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:33:21 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/23 11:14:10 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:15:32 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memchr(const void *s, int c, size_t n);
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

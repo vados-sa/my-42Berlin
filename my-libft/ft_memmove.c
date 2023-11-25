@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:16:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/24 17:31:54 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:10:04 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memmove(void *dest, const void *src, size_t n);
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

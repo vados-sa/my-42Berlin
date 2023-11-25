@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:56:07 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/14 12:12:29 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:06:21 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <ctype.h>
-#include <stdio.h> */
-
-int	ft_isprint(int c);
+#include "libft.h"
 
 int	ft_isprint(int c)
 {

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:37:24 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/14 12:13:14 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:06:47 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <ctype.h>
-#include <stdio.h> */
-
-int	ft_isalpha(int c);
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
