@@ -29,5 +29,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int	ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nitems, size_t size);
 char	*ft_strdup(const char *s1);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
