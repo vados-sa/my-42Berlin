@@ -28,7 +28,11 @@ int	main(void)
 	const char	str[] = "abcdefghijklmnopqrstuvwxyz";
 	unsigned int	start = 5;
 	size_t	len = 26;
-	printf ("%s\n", ft_substr(str, start, len));
-	free (ft_substr(str, start, len));
+	char *result = ft_substr(str, start, len);
+    if (result)
+    {
+        printf("%s\n", result);
+        free(result);
+    }
 	return (0);
 }
