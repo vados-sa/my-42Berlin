@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:53:46 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:10:11 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ char	**ft_split(char const *s, char c)
 		{
 			words = (char **)malloc(sizeof(char *));
 			if (!words)
-				return(NULL);
+				return (NULL);
 			words = ft_strchr(s[i + 1], c);
 		}
 		i++;
 	}
-	
-	
 }
 
 int	main(void)
