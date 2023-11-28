@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 13:56:03 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/28 13:57:05 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char    *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
@@ -19,14 +31,14 @@ char    *ft_strtrim(char const *s1, char const *set)
 		len--;
 	str = malloc((len - i + 1) * sizeof(char));
 	if (!str)
-		return (NULL);	
+		return (NULL);
 	j = 0;
 	while (i < len)
 		str[j++] = s1[i++];
 	str[j] = '\0';
-	return (str);		
+	return (str);
 }
-
+/* 
 int main(void)
 {
 	char s1[] = "\t\t This\nis\ta\ntest \t\t\n\n";
@@ -38,4 +50,4 @@ int main(void)
 		free(result);
 	}
 	return (0);
-}
+} */

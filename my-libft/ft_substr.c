@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 13:57:19 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/28 13:57:41 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -8,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
-        return (ft_strdup(""));
+		return (ft_strdup(""));
 	if (len > (ft_strlen(s) - start))
 		len = (ft_strlen(s) - start);
 	substr = malloc((len + 1) * sizeof(char));
@@ -22,17 +34,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (substr);
 }
-
+/* 
 int	main(void)
 {
 	const char	str[] = "abcdefghijklmnopqrstuvwxyz";
 	unsigned int	start = 5;
 	size_t	len = 26;
 	char *result = ft_substr(str, start, len);
-    if (result)
-    {
-        printf("%s\n", result);
-        free(result);
-    }
+	if (result)
+	{
+		printf("%s\n", result);
+		free(result);
+	}
 	return (0);
-}
+} */

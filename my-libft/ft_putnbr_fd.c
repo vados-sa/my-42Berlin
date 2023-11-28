@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 13:52:30 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/28 13:52:35 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
@@ -18,7 +30,7 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(nbr + '0', fd);
 }
-int main(void)
+/* int main(void)
 {
     int number1 = 123;
     int number2 = -456;
@@ -37,4 +49,4 @@ int main(void)
     ft_putchar_fd('\n', 1);
 
     return 0;
-}
+} */
