@@ -6,14 +6,14 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:35:25 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 12:27:04 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:47:02 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	ft_intlen(long n);
-/* static char	*alloc_mem(int len); */
+static char	*alloc_mem(int len);
 
 static int	ft_intlen(long n)
 {
@@ -22,7 +22,7 @@ static int	ft_intlen(long n)
 	count = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
+	if (n <= 0)
 	{
 		n = -n;
 		count++;
@@ -35,7 +35,7 @@ static int	ft_intlen(long n)
 	return (count);
 }
 
-/* static char	*alloc_mem(int len)
+static char	*alloc_mem(int len)
 {
 	char	*tmp;
 	
@@ -44,7 +44,7 @@ static int	ft_intlen(long n)
 		return (NULL);
 	tmp[0] = '0';
 	return (tmp);	
-} */
+}
 
 char	*ft_itoa(int n)
 {
@@ -55,7 +55,7 @@ char	*ft_itoa(int n)
 	
 	nbr = n;
 	len = ft_intlen(nbr);
-	s = malloc((len + 1) * sizeof(char));
+	s = alloc_mem(len);
 	if (!s)
 		return (NULL);
 	if (nbr < 0)
@@ -73,15 +73,15 @@ char	*ft_itoa(int n)
 	s[len] = '\0';
 	return (s);	
 }
-
+/* 
 int	main(void)
 {
 	int	n;
 	
-	n = 0;
+	n = 2147483647;
 	char *result;
 	result = ft_itoa(n);
 	printf ("%s\n", result);
 	free (result);
 	return (0);
-}
+} */
