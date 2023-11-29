@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/29 14:49:00 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/29 21:55:04 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	count_char(char const *s, char c);
 static char	**copy_words(char const *s, char c);
 static void	free_array(char **array);
 
-/*This functio counts the amount of words/ subtrings.*/
+/*This function counts the amount of words/ subtrings.*/
 static int	count_words(char const *s, char c)
 {
 	int	i;
@@ -71,6 +71,9 @@ static char	**copy_words(char const *s, char c)
 	int			len;
 
 	i = 0;
+	array = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!array)
+        return (NULL);
 	while(*s)
 	{
 		start = s;
@@ -106,7 +109,7 @@ char	**ft_split(char const *s, char c)
 	int		words;
 	int		characters;
 	char 	**array;
-	char	*str_iter;
+	const char	*str_iter;
 
 	words = count_words(s, c);
 	characters = count_char(s, c);
@@ -135,9 +138,11 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	size_t	i;
+	int	i;
+	char	str[] = "Hello, World";
+	char 	c = ',';
 	
-	char **result = ft_split("Hello,World,How,Are,You", ',');
+	char **result = ft_split(str, c);
 	i = 0;
 	while (result[i] != NULL)
 	{
