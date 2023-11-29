@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/29 12:24:53 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:49:00 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	count_words(char const *s, char c);
 static int	count_char(char const *s, char c);
 static char	**copy_words(char const *s, char c);
+static void	free_array(char **array);
 
 /*This functio counts the amount of words/ subtrings.*/
 static int	count_words(char const *s, char c)
@@ -88,23 +89,46 @@ static char	**copy_words(char const *s, char c)
 	return (array);
 }
 
+/* Function to free the memory allocated for the array of substrings */
+static void	free_array(char **array)
+{
+	int i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+    free(array);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		words;
 	int		characters;
 	char 	**array;
+	char	*str_iter;
 
 	words = count_words(s, c);
 	characters = count_char(s, c);
 	array = (char **)malloc((characters + words + 1) * sizeof(char *));
+	str_iter = s;
 	if (!array)
 		return (NULL);
-	while (*s)
+	while (*str_iter)
 	{
-		if (*s != c)
-			array = copy_words(s, c);
-		else
-			s++;
+		if (*str_iter != c)
+		{
+			array = copy_words(str_iter, c);
+			if (!array) 
+			{
+				free_array(array);
+				return (NULL);
+			}
+		}
+		while (*str_iter && *str_iter != c)
+        	str_iter++;
+    	if (*str_iter)
+        	str_iter++;
 	}
 	return (array);
 }
