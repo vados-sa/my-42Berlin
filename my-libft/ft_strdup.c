@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 18:31:27 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:20:35 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:47:20 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,3 @@ char	*ft_strdup(const char *s1)
 	dest[i] = '\0';
 	return (dest);
 }
-/* 
-int	main(void)
-{
-	char src[] = "hi there potato";
-	printf("%s | %s\n", src, strdup(src));
-	printf("%s", ft_strdup(src));
-	free(ft_strdup(src));	
-	return (0);		
-} */

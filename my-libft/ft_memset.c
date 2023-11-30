@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:38:38 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:07:53 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:41:12 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-
-/* int main() 
-{
-	size_t	size = 2;
-	char 	c = 'V';
-	char 	str[20];
-	printf("Funtion: %s\n", (char*)memset(str, c, size));
-	str[10] = '\0';
-	printf("Implementation: %s\n", (char*)ft_memset(str, c, size));
-	return 0;
-} */

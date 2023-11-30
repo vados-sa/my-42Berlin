@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:03:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:08:19 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:41:53 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,3 @@ void	ft_bzero(void *s, size_t n)
 		n--;
 	}
 }
-/* 
-int	main(void)
-{
-	char str1[] = "chocolate";
-	ft_bzero(str1, 0);
-	printf ("%s\n", str1);
-	char str[] = "chocolate";
-	ft_bzero(str, 0);
-	printf ("%s\n", str);
-} */

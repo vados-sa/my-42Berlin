@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:56:07 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:06:21 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:40:20 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,3 @@ int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }
-
-/* int	main(void)
-{
-	char	c;
-
-	c = ' ';
-	printf("function: %d.\nimplementation: %d.\n", isprint(c), ft_isprint(c));
-	return (0);
-} */

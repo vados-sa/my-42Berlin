@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:30:50 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:05:35 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:40:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-/* 
-int	main(void)
-{
-	char str[] = "Vanessa";
-	printf("funtion: %lu.\nimplem.: %d.\n", strlen(str), ft_strlen(str));
-	return (0);
-} */

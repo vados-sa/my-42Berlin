@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:57:19 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:57:41 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:47:36 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (substr);
 }
-/* 
-int	main(void)
-{
-	const char	str[] = "abcdefghijklmnopqrstuvwxyz";
-	unsigned int	start = 5;
-	size_t	len = 26;
-	char *result = ft_substr(str, start, len);
-	if (result)
-	{
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-} */

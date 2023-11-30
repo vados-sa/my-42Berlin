@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:39:24 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:05:20 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:39:07 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,3 @@ int	ft_isalnum(int c)
 		|| (c >= 65 && c <= 90)
 		|| (c >= 48 && c <= 57));
 }
-
-/* int	main(void)
-{
-	char	c;
-
-	c = '5';
-	printf("%d\n", isalnum(c));
-	printf("%d\n", ft_isalnum(c));
-	return (0); 
-} */

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:52:30 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:52:35 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:51:28 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,3 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(nbr + '0', fd);
 }
-/* int main(void)
-{
-    int number1 = 123;
-    int number2 = -456;
-    int number3 = 0;
-
-    // Test with positive number
-    ft_putnbr_fd(number1, 1); // Assuming 1 is the file descriptor for standard output
-    ft_putchar_fd('\n', 1);
-
-    // Test with negative number
-    ft_putnbr_fd(number2, 1);
-    ft_putchar_fd('\n', 1);
-
-    // Test with zero
-    ft_putnbr_fd(number3, 1);
-    ft_putchar_fd('\n', 1);
-
-    return 0;
-} */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:16:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:10:04 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:42:30 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/* 
-int	main(void)
-{
-	char source[] = "Copycat";
-	char	destination[7];
-	char	dest[7];
-
-	printf("Original Source: %s\n", source);
-
-	memmove(destination, source + 2, 4);
-	printf("Destination (memmove): %s\n", destination);
-
-	ft_memmove(dest, source + 2, 4);
-	printf("Dest. (ft_memmove): %s\n", dest);
-
-	return (0);
-} */

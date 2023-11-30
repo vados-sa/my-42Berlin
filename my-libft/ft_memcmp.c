@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:37:28 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:15:59 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:46:13 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-/* 
-int	main(void)
-{
-	char str1[] = "a";
-	char str2[] = " ";
-	printf("%d\n", ft_memcmp(str1, str2, 4));
-	return (0);
-} */

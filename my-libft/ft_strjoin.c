@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:54:19 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:55:04 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:48:08 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join[j] = '\0';
 	return (join);
 }
-
-/* int main(void)
-{
-	char str1[] = "Vanessa ";
-	char str2[] = "Santos";
-	char *result = ft_strjoin(str1, str2);
-	if (result)
-	{
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-} */

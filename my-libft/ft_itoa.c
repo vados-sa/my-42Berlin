@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:35:25 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:47:02 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:49:54 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static int	ft_intlen(long n)
 static char	*alloc_mem(int len)
 {
 	char	*tmp;
-	
+
 	tmp = malloc((len + 1) * sizeof(char));
 	if (!tmp)
 		return (NULL);
 	tmp[0] = '0';
-	return (tmp);	
+	return (tmp);
 }
 
 char	*ft_itoa(int n)
@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 	int			len;
 	int			i;
 	char		*s;
-	
+
 	nbr = n;
 	len = ft_intlen(nbr);
 	s = alloc_mem(len);
@@ -71,17 +71,5 @@ char	*ft_itoa(int n)
 		i--;
 	}
 	s[len] = '\0';
-	return (s);	
+	return (s);
 }
-/* 
-int	main(void)
-{
-	int	n;
-	
-	n = 2147483647;
-	char *result;
-	result = ft_itoa(n);
-	printf ("%s\n", result);
-	free (result);
-	return (0);
-} */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:24:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:17:09 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:46:48 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * res);
 }
-/* 
-int	main(void)
-{
-	char str[] = "      +1254845538";
-	printf("atoi: %d\nft_atoi: %d\n", atoi(str), ft_atoi(str));
-	return (0);
-} */

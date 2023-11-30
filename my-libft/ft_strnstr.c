@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:56:25 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:16:25 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:46:31 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-/* 
-int	main(void)
-{
-	char haystack[] = "Testing with an empty needle";
-	char needle[] = "";
-	size_t len = 28;
-
-	printf ("%s.\n", ft_strnstr(haystack, needle, len));
-	return (0);
-} */

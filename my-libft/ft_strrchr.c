@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:08:35 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/25 15:13:35 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/11/30 10:45:15 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (0);
 }
-/* 
-int	main(void)
-{
-	char	str[] = "sabao cracra";
-	char	c = 'c';
-	printf("%s\n", ft_strrchr(str, c));
-	return (0);
-} */

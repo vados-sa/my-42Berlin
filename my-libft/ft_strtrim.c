@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:56:03 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:57:05 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:48:51 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[j] = '\0';
 	return (str);
 }
-/* 
-int main(void)
-{
-	char s1[] = "\t\t This\nis\ta\ntest \t\t\n\n";
-	char set[] = "\t\n";
-	char *result = ft_strtrim(s1, set);
-	if (result)
-	{
-		printf("%s", result);
-		free(result);
-	}
-	return (0);
-} */
