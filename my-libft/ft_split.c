@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/30 11:54:19 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:01:41 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	count_char(char const *s, char c)
 while dinamically allocating memory for them.*/
 static char	**copy_words(char const *s, char c)
 {
-	const char 	*start;
+	const char	*start;
 	char		**array;
 	int			i;
 	int			j;
