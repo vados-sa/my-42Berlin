@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:55:40 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/28 13:55:41 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:22:55 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	new_str = malloc((1 + ft_strlen(s)) * sizeof(char));
-	if (!s)
+	if (!new_str)
 		return (NULL);
 	i = 0;
 	while (s[i])
