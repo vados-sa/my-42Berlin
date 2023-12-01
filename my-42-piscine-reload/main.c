@@ -305,6 +305,28 @@ int main(void)
 } */
 
 //ft_split
+/* int	main(void)
+{
+	int	i;
+	char	str[] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+	char 	c = ' ';
+	
+	char **result = ft_split(str, c);
+	i = 0;
+	while (result[i])
+	{
+		printf("Substring %d: %s\n", i, result[i]);
+		i++;
+	}
+	i = 0;
+	while (result[i] != NULL)
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (0);
+} */
 
 //ft_itoa
 /* 
