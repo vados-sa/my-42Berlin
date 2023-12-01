@@ -6,15 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/01 16:24:21 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/01 18:55:59 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	count_words(char const *s, char c);
-static size_t	fill_words(char **array, char const *s, char c);
-static size_t	safe_alloc_mem(char **array, size_t pos, size_t size);
 
 static size_t	count_words(char const *s, char c)
 {
