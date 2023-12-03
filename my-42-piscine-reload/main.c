@@ -131,12 +131,13 @@ int	main(void)
 /* 
 int	main(void)
 {
-	char	src[] = " S";
-	char	dest[15] = "Vanessa";
-	printf ("Size of concatenated str: %zu.\n", ft_strlcat(dest, src, sizeof(dest)));
-	printf ("Concatenated string: %s.\n", ft_strlcat(dest, src, sizeof(dest)));
+	char	src[] = "World";
+	char	dest[11] = "Hello, ";
+	char	dst[11] = "Hello, ";
+	printf ("%zu.\n", ft_strlcat(dest, src, 11));
+	printf ("%zu.\n", strlcat(dst, src, 11));
 	return (0);
-} */
+}*/
 
 //ft_toupper
 /* 
