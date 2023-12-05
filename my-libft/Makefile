@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 10:38:16 by vados-sa          #+#    #+#              #
-#    Updated: 2023/11/30 10:38:17 by vados-sa         ###   ########.fr        #
+#    Updated: 2023/12/05 14:39:16 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,3 +33,5 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+.PHONY: clean fclean re
