@@ -1,35 +1,59 @@
 #include "ft_printf.h"
 
-static int	print_format(const char *format);
+/* static int	print_format(int len, const char *format); */
+static int	print_c(int len, int c);
 
-static int	print_format(const char *format)
+static int	print_c(int len, int c)
 {
-	int	len;
+	write (1, &c, 1);
+	len++;
+	return(len);
+}
 
-	len = 0;
-	while (format[len])
+/* static int	print_format(int len, const char *format)
+{
+	while (format[len] && format[len] != '%')
 	{
 		write(1, &format[len], 1);
 		len++;
 	}
 	return (len);
-}
+} */
 
 int	ft_printf(const char *format, ...)
 {
-	int	len;
+	va_list	args;
+	va_start(args, format);
+	int	count;
 
-	len = print_format(format);
-	return (len);
+	count = 0;
+	while(*format)
+	{
+		if (*format == '%' && *(format + 1) == 'c')
+		{
+			count += print_c(0, va_arg(args, int));
+			format += 2;
+		}
+		else
+		{
+			write(1, format++, 1);
+            count++;
+		}
+	}
+	va_end(args);
+	return (count);
 }
 
 int	main(void)
 {
-	char	*s = "Vanessa";
-	printf ("This is a %string\n", s);
-	int	charsPrinted = ft_printf ("A string.\n");
+	int functionCharsPrinted = printf ("Width and Right Justification: |%5c|\n", 'Z');
+	if (functionCharsPrinted < 0)
+    	printf("ft_printf failed");
+	else
+		printf("Number of characters printed: %d\n", functionCharsPrinted);
+	int	charsPrinted = ft_printf ("Width and Right Justification: |%5c|\n", 'Z');
 	if (charsPrinted < 0)
-    	printf("printf failed");
+    	printf("ft_printf failed");
 	else
 		printf("Number of characters printed: %d\n", charsPrinted);
 	return (0);
