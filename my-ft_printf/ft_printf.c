@@ -15,6 +15,8 @@ int	ft_printf(const char *format, ...)
 				count += print_char((char) va_arg(args, int));
 			if (*(format + 1) == 's')
 				count += print_str((char *) va_arg(args, char *));
+			if (*(format + 1) == '%')
+				count += print_char('%');
 			format += 2;
 		}	
 		else
@@ -30,13 +32,13 @@ int	ft_printf(const char *format, ...)
 int	main(void)
 {
 	//function
-	int functionCharsPrinted = printf ("Characters: %c %c, Strings: %s %s\n", 'X', 'Y', "Good", "Bad");
+	int functionCharsPrinted = printf ("Characters: %c %c, %%Strings: %s %s\n", 'X', 'Y', "Good", "Bad");
 	if (functionCharsPrinted < 0)
 		printf("ft_printf failed");
 	else
 		printf("Number of characters printed: %d\n", functionCharsPrinted);
 	//implementation
-	int	charsPrinted = ft_printf ("Characters: %c %c, Strings: %s %s\n", 'X', 'Y', "Good", "Bad");
+	int	charsPrinted = ft_printf ("Characters: %c %c, %%Strings: %s %s\n", 'X', 'Y', "Good", "Bad");
 	if (charsPrinted < 0)
 		printf("ft_printf failed");
 	else
