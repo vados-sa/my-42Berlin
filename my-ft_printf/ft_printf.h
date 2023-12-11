@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 int	ft_printf(const char *format, ...);
-int	print_char(int len, int c);
+int	print_char(char c);
+int	print_str(char *s);
 
 #endif
