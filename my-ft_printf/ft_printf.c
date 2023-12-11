@@ -1,5 +1,12 @@
 #include "ft_printf.h"
-
+//TO DO:
+//- need to create a static funtion to check the what format specifier it is, otherwise ft_printf will be too long.
+//- %p
+//- %d
+//- %i
+//- %u
+//- %x
+//- %X
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
