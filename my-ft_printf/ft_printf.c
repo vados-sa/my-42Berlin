@@ -1,25 +1,5 @@
 #include "ft_printf.h"
 
-/* static int	print_format(int len, const char *format); */
-static int	print_c(int len, int c);
-
-static int	print_c(int len, int c)
-{
-	write (1, &c, 1);
-	len++;
-	return(len);
-}
-
-/* static int	print_format(int len, const char *format)
-{
-	while (format[len] && format[len] != '%')
-	{
-		write(1, &format[len], 1);
-		len++;
-	}
-	return (len);
-} */
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
@@ -31,7 +11,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && *(format + 1) == 'c')
 		{
-			count += print_c(0, va_arg(args, int));
+			count += print_char(0, va_arg(args, int));
 			format += 2;
 		}
 		else
@@ -46,12 +26,14 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int functionCharsPrinted = printf ("Width and Right Justification: |%5c|\n", 'Z');
+	//function
+	int functionCharsPrinted = printf ("Integer Argument: %c\n", 65);
 	if (functionCharsPrinted < 0)
     	printf("ft_printf failed");
 	else
 		printf("Number of characters printed: %d\n", functionCharsPrinted);
-	int	charsPrinted = ft_printf ("Width and Right Justification: |%5c|\n", 'Z');
+	//implementation
+	int	charsPrinted = ft_printf ("Integer Argument: %c\n", 65);
 	if (charsPrinted < 0)
     	printf("ft_printf failed");
 	else
