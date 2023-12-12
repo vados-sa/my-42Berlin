@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:14:22 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/12 12:43:59 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:46:22 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
 /* int	main(void)
 {
 	//function
