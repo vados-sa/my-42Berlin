@@ -1,31 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/12 11:14:22 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/12 12:43:59 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 //TO DO:
-//- need to create a static funtion to check the what format specifier it is, otherwise ft_printf will be too long.
 //- %p
 //- %d
 //- %i
 //- %u
 //- %x
 //- %X
+static int	form_specif(const char *format, va_list args, int count);
+
+static int	form_specif(const char *format, va_list args, int count)
+{
+	if (*(format + 1) == 'c')
+		count += print_char((char) va_arg(args, int));
+	if (*(format + 1) == 's')
+		count += print_str((char *) va_arg(args, char *));
+	if (*(format + 1) == '%')
+		count += print_char('%');
+	return (count);
+}
+
 int	ft_printf(const char *format, ...)
 {
+	int		count;
 	va_list	args;
-	va_start(args, format);
-	int	count;
 
+	va_start(args, format);
 	count = 0;
-	while(*format)
+	while (*format)
 	{
 		if (*format == '%')
 		{
-			if (*(format + 1) == 'c')
-				count += print_char((char) va_arg(args, int));
-			if (*(format + 1) == 's')
-				count += print_str((char *) va_arg(args, char *));
-			if (*(format + 1) == '%')
-				count += print_char('%');
+			count += form_specif(format, args, 0);
 			format += 2;
-		}	
+		}
 		else
 		{
 			write(1, format++, 1);
@@ -35,8 +54,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-int	main(void)
+/* int	main(void)
 {
 	//function
 	int functionCharsPrinted = printf ("Characters: %c %c, %%Strings: %s %s\n", 'X', 'Y', "Good", "Bad");
@@ -51,4 +69,4 @@ int	main(void)
 	else
 		printf("Number of characters printed: %d\n", charsPrinted);
 	return (0);
-}
+} */
