@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
+#    By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:36:44 by vados-sa          #+#    #+#              #
-#    Updated: 2023/12/12 10:45:10 by vados-sa         ###   ########.fr        #
+#    Updated: 2023/12/15 09:52:14 by vanessasant      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 NAME	= libftprintf.a
-SRCS	= ft_printf.c print_char.c print_str.c
+SRCS	= ft_printf.c print_char.c print_str.c print_sign_dec_int.c ft_strlen.c
 
 OBJS = $(SRCS:.c=.o)
 

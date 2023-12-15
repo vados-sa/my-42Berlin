@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 11:18:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/15 10:42:09 by vanessasant      ###   ########.fr       */
+/*   Created: 2023/11/14 14:30:50 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/15 09:51:48 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
+#include "ft_printf.h"
 
-# define FT_PRINTF_H
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-# include <stdio.h>
-# include <stdarg.h>
-# include <unistd.h>
-
-int	ft_printf(const char *format, ...);
-int	print_char(char c);
-int	print_str(char *s);
-int	print_sign_dec_int(int number);
-size_t	ft_strlen(const char *str);
-
-#endif
+	i = 0;
+	if (!str)
+		return (i);
+	while (str[i])
+		i++;
+	return (i);
+}
