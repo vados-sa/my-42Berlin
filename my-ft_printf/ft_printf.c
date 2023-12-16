@@ -6,16 +6,13 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:14:22 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/15 10:47:28 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/12/16 23:10:33 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 //TO DO:
 //- %p
-//- %d
-//- %i
-//- %u
 //- %x
 //- %X
 static int	form_specif(const char *format, va_list args, int count);
@@ -27,7 +24,9 @@ static int	form_specif(const char *format, va_list args, int count)
 	else if (*(format + 1) == 's')
 		count += print_str((char *) va_arg(args, char *));
 	else if (*(format + 1) == 'd' || *(format + 1) == 'i')
-		count += print_sign_dec_int(va_arg(args, int));	
+		count += print_sign_dec_int(va_arg(args, int));
+	else if (*(format + 1) == 'u')
+		count += print_unsign_int(va_arg(args, int));
 	else if (*(format + 1) == '%')
 		count += print_char('%');
 	return (count);
