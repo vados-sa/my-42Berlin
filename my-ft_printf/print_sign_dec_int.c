@@ -2,15 +2,10 @@
 
 int	print_sign_dec_int(int number)
 {
-	int			i;
 	long int	n;
 
 	n = number;
-	i = 0;
-	i += ft_putnbr_base(n, "0123456789");
-	if (i <= 0)
-		return (-1);
-	return (i);
+	return (ft_putnbr_base(n, "0123456789"));
 }
 
 /* int	main()

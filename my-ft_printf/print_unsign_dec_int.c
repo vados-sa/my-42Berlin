@@ -7,31 +7,33 @@ int	print_unsign_dec_int(unsigned int number)
 
 /* int	main()
 {
-
-	int num1 = 123456;
-	print_unsign_int(num1);
+	// Test case with a regular positive number
+	int num1 = 123;
+	print_unsign_dec_int(num1);
 	printf("\n");
 	printf("%u\n", num1);
 
-	int num2 = -42;
-	print_unsign_int(num2);
+	// Test case with zero
+	int num2 = 0;
+	print_unsign_dec_int(num2);
 	printf("\n");
 	printf("%u\n", num2);
 
-	int num3 = -987654321;
-	print_unsign_int(num3);
+	// Test case with a large positive number
+	int num3 = 987654321;
+	print_unsign_dec_int(num3);
 	printf("\n");
 	printf("%u\n", num3);
 
-	//octal
-	int num4 = 042;
-	print_unsign_int(num4);
+	// Test case with the maximum unsigned int value
+	unsigned int num4 = 4294967295;
+	print_unsign_dec_int(num4);
 	printf("\n");
 	printf("%u\n", num4);
 
-	//haxadecimal
-	int num5 = 0x1A3;
-	print_unsign_int(num5);
+	// Test case with a negative number
+	int num5 = -42;
+	print_unsign_dec_int(num5);
 	printf("\n");
 	printf("%u\n", num5);
 	
