@@ -6,7 +6,7 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:18:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/18 11:34:27 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/12/18 12:19:12 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int	ft_printf(const char *format, ...);
 int	print_char(char c);
