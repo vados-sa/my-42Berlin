@@ -6,7 +6,7 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:18:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/18 12:19:12 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/12/18 14:57:08 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 int	ft_printf(const char *format, ...);
 int	print_char(char c);
 int	print_str(char *s);
+int    print_pointer(void *ptr);
 int	print_sign_dec_int(int number);
 size_t	ft_strlen(const char *str);
 int ft_putnbr_base(int nbr, char *base);

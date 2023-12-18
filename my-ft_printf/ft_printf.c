@@ -6,7 +6,7 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:14:22 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/18 12:09:44 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/12/18 14:56:14 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	form_specif(const char *format, va_list args, int count);
 static int	form_specif(const char *format, va_list args, int count)
 {
 	if (*(format + 1) == 'c')
-		count += print_char((char) va_arg(args, int));
+		count += print_char(va_arg(args, int));
 	else if (*(format + 1) == 's')
-		count += print_str((char *) va_arg(args, char *));
-	/* else if (*(format + 1) == 'p')
-		count += print_pointer(); */
+		count += print_str(va_arg(args, char *));
+	else if (*(format + 1) == 'p')
+		count += print_pointer(va_arg(args, void *));
 	else if (*(format + 1) == 'd' || *(format + 1) == 'i')
 		count += print_sign_dec_int(va_arg(args, int));
 	else if (*(format + 1) == 'u')
