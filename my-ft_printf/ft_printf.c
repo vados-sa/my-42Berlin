@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:14:22 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/18 14:56:14 by vanessasant      ###   ########.fr       */
+/*   Updated: 2023/12/19 10:07:03 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//TO DO:
-//- %p
+
 static int	form_specif(const char *format, va_list args, int count);
 
 static int	form_specif(const char *format, va_list args, int count)
@@ -62,24 +61,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-/* int	main(void)
-{
-	char charValue = 'A';
-    const char *stringValue = "Hello, World!";
-    int intValue = -42;
-    unsigned int uintValue = 12345;
-	//function
-	int functionCharsPrinted = printf ("Character: %c, String: %s, Integer: %d, Integer: %i, Unsigned Integer: %u, Percent Sign: %%\n", charValue, stringValue, intValue, intValue, uintValue);
-	if (functionCharsPrinted < 0)
-		printf("ft_printf failed");
-	else
-		printf("Number of characters printed: %d\n", functionCharsPrinted);
-	//implementation
-	int	charsPrinted = ft_printf ("Character: %c, String: %s, Integer: %d, Integer: %i, Unsigned Integer: %u, Percent Sign: %%\n", charValue, stringValue, intValue, intValue, uintValue);
-	if (charsPrinted < 0)
-		printf("ft_printf failed");
-	else
-		printf("Number of characters printed: %d\n", charsPrinted);
-	return (0);
-} */

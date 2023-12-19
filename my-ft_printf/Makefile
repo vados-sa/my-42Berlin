@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+         #
+#    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 14:36:44 by vados-sa          #+#    #+#              #
-#    Updated: 2023/12/18 14:56:40 by vanessasant      ###   ########.fr        #
+#    Updated: 2023/12/19 10:12:33 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

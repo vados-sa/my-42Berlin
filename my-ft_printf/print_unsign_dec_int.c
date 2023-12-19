@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_unsign_dec_int.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 10:19:15 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/19 10:19:32 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_unsign_dec_int(unsigned int number)
 {
-		return (ft_putnbr_base_unsign(number, "0123456789"));
+	return (ft_putnbr_base_unsign(number, "0123456789"));
 }
 
 /* int	main()
