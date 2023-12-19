@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:15:47 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 11:07:36 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:17:59 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@
 the value of a pointer, without loss of information. */
 int	print_pointer(void *ptr)
 {
-	int					i;
-	uintptr_t			ptr_value;
+	int							i;
+	unsigned long long			ptr_value;
 
 	i = 0;
 	if (ptr == 0)
 		i += print_str("(nil)");
 	else
 	{
-		ptr_value = (uintptr_t)ptr;
+		ptr_value = (unsigned long long)ptr;
 		i += print_str("0x");
 		if (i < 0)
 			return (-1);
 		i += ft_putnbr_hex_base(ptr_value, "0123456789abcdef");
 	}
+	if (i < 0)
+		return (-1);
 	return (i);
 }
 

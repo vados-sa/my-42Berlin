@@ -6,27 +6,23 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:11:36 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 11:06:53 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:28:39 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_hex_base(unsigned int nbr, char *base)
+int	ft_putnbr_hex_base(unsigned long long nbr, char *base)
 {
-	unsigned int	base_len;
 	int				i;
 
 	i = 0;
-	base_len = ft_strlen(base);
-	if (nbr < base_len)
+	if (nbr <= 15)
 		i += print_char(base[nbr]);
-	if (nbr >= base_len)
+	if (nbr > 15)
 	{
-		i += ft_putnbr_hex_base(nbr / base_len, base);
-		i += ft_putnbr_hex_base(nbr % base_len, base);
+		i += ft_putnbr_hex_base(nbr / 16, base);
+		i += ft_putnbr_hex_base(nbr % 16, base);
 	}
-	if (i < 0)
-		return (-1);
 	return (i);
 }
