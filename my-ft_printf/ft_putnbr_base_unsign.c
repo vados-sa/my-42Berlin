@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:10:22 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 10:10:50 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:04:12 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ int	ft_putnbr_base_unsign(unsigned int nbr, char *base)
 	i = 0;
 	if (base)
 	{
-		if (nbr < 0)
-		{
-			i += print_char('-');
-			nbr *= -1;
-		}
 		if (nbr < len)
 			i += print_char(base[nbr]);
 		if (nbr >= len)

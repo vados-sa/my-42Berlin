@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:14:25 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 10:14:26 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:08:06 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	print_hex_int_low(unsigned int nbr)
 {
-	return (ft_putnbr_hex_base(nbr, 16, "0123456789abcdef"));
+	return (ft_putnbr_hex_base(nbr, "0123456789abcdef"));
 }

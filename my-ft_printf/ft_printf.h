@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:18:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 10:09:55 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:05:04 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			print_unsign_dec_int(unsigned int number);
 int			ft_putnbr_base_unsign(unsigned int nbr, char *base);
 int			print_hex_int_low(unsigned int nbr);
 int			print_hex_int_upper(unsigned int nbr);
-int			ft_putnbr_hex_base(unsigned int nbr, unsigned int baseLen, char *base);	
+int			ft_putnbr_hex_base(unsigned int nbr, char *base);
 size_t		ft_strlen(const char *str);
 
 #endif
