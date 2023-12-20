@@ -6,11 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:18:58 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 10:18:59 by vados-sa         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:35:08 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int	print_sign_dec_int(int number)
 {

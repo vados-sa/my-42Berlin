@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 14:30:50 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/19 10:12:24 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/12/12 11:20:55 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/20 12:34:52 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+int	print_char(char c)
 {
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (i);
-	while (str[i])
-		i++;
-	return (i);
+	if (write (1, &c, 1) == -1)
+		return (-1);
+	return (1);
 }

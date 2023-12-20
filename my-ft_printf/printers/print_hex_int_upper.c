@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   print_hex_int_upper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 11:21:20 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/12 11:21:21 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/12/19 10:14:48 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/20 12:35:00 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	print_str(char *s)
+int	print_hex_int_upper(unsigned int nbr)
 {
-	int	count;
-
-	count = 0;
-	if (!s)
-	{
-		count += print_str("(null)");
-		return (count);
-	}
-	else
-	{
-		while (*s)
-		{
-			count += print_char(*s);
-			s++;
-		}
-	}
-	return (count);
+	return (ft_putnbr_hex_base(nbr, "0123456789ABCDEF"));
 }
