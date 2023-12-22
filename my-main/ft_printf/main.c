@@ -1,23 +1,40 @@
-/* int	main(void)
+/* int main(void)
 {
-	char charValue = 'A';
-    const char *stringValue = "Hello, World!";
-    int intValue = -42;
-    unsigned int uintValue = 12345;
-	//function
-	int functionCharsPrinted = printf ("Character: %c, String: %s, Integer: %d, Integer: %i, Unsigned Integer: %u, Percent Sign: %%\n", charValue, stringValue, intValue, intValue, uintValue);
-	if (functionCharsPrinted < 0)
-		printf("ft_printf failed");
-	else
-		printf("Number of characters printed: %d\n", functionCharsPrinted);
-	//implementation
-	int	charsPrinted = ft_printf ("Character: %c, String: %s, Integer: %d, Integer: %i, Unsigned Integer: %u, Percent Sign: %%\n", charValue, stringValue, intValue, intValue, uintValue);
-	if (charsPrinted < 0)
-		printf("ft_printf failed");
-	else
-		printf("Number of characters printed: %d\n", charsPrinted);
-	return (0);
-} */
+    char            character;
+    char            *string;
+    int             decimalnumber;
+    unsigned int    unsigneddecimal;
+    void            *pointer;
+    int j = 0;
+    int i = 0;
+    string = "";
+    character = '2';
+    decimalnumber = 0;
+    unsigneddecimal = -1;
+    pointer = &decimalnumber;
+    i = ft_printf("Character: %c & String: %s\n", character, string);
+    j = printf("Character: %c & String: %s\n", character, string);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Pointer in hexadecimal: %p\n", pointer);
+    j = printf("Pointer in hexadecimal: %p\n", pointer);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Decimal: %d & Integer: %i\n", decimalnumber, decimalnumber);
+    j = printf("Decimal: %d & Integer: %i\n", decimalnumber, decimalnumber);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Unsigned decimal number: %u\n", unsigneddecimal);
+    j = printf("Unsigned decimal number: %u\n", unsigneddecimal);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Number in hexadecimal (lowercase): %x\n", decimalnumber);
+    j = printf("Number in hexadecimal (lowercase): %x\n", decimalnumber);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Number in hexadecimal (uppercase): %X\n", decimalnumber);
+    j = printf("Number in hexadecimal (uppercase): %X\n", decimalnumber);
+    printf("%i, %i\n", i, j);
+    i = ft_printf("Literal percentage sign: %%\n");
+    j = printf("Literal percentage sign: %%\n");
+    printf("%i, %i\n", i, j);
+    return (0);
+}*/
 
 
 //print_hex_int_low
