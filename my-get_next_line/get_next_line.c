@@ -32,11 +32,11 @@ char	*ft_strdup(const char *s1)
 
 char *get_next_line(int fd)
 {
-	char	buffer[46];
+	char	buffer[BUFFER_SIZE];
 	int		bytes_read;
 	char	*line;
 
-	bytes_read = read(fd, buffer, 46);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read < 0) //Error while reading
 		return(NULL);
 	line = ft_strdup(buffer);
