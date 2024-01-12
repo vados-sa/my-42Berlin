@@ -1,47 +1,40 @@
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char *get_next_line(int fd);
+
+char *concatenate_lines(char *l1, char *l2);
+
+char *concatenate_lines(char *l1, char *l2)
 {
-	size_t	i;
+	char	*new_line;
 
-	i = 0;
-	if (!str)
-		return (i);
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	char	*dest;
-
-	dest = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	new_line = ft_strjoin(l1, l2);
+	if (!new_line)
+		return NULL;
+	return (new_line);
 }
 
 char *get_next_line(int fd)
 {
-	char	buffer[BUFFER_SIZE];
-	int		bytes_read;
-	char	*line;
+	char			buffer[BUFFER_SIZE];
+	int				bytes_read;
+	static char		*line;
+	char			*temp_line;
 
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read < 0) //Error while reading
-		return(NULL);
-	line = ft_strdup(buffer);
-	if (!line) //Error while duplicating the line
-        return NULL;
+	bytes_read = 0;
+	line = NULL;
+	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	{
+		if (bytes_read < 0) //Error while reading
+			return(NULL);
+		temp_line = ft_strdup(buffer);
+		if (!temp_line) //Error while duplicating the line
+    	    return NULL;
+		line = concatenate_lines(line, temp_line);
+		if (!line)
+			return NULL;
+		free (temp_line);
+	}
 	return (line);
 }
 
