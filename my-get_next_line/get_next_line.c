@@ -26,7 +26,7 @@ char *get_next_line(int fd)
 	if (!line)
     	return NULL;
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read <= 0) //Error while reading or end of reading
+	if (bytes_read <= 0) //Error while reading or there is nothing else to read
 		return(NULL);
 	buffer[bytes_read] = '\0';
 	temp_line = ft_strdup(buffer);
@@ -39,16 +39,19 @@ char *get_next_line(int fd)
 
 int main()
 {
-	int	fd;
-	char *line;
+	int		fd;
+	int		i;
+	char 	*line;
 
 	fd = open("test.txt", O_RDONLY);
 	 if (fd == -1) //Error opening file
 		return 1;
-	while ((line = get_next_line(fd)) != NULL)
+	i = 1;
+	while ((line = get_next_line(fd)) != NULL) //Repeated calls to read the text file, one line at a time
 	{
-		printf("%s", line);
+		printf("line %d: %s", i, line);
 		free(line); //Free each line obtained from get_next_line
+		i++;
 	}
 	close(fd);
 	return 0;
