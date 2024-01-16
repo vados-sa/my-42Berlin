@@ -4,6 +4,7 @@ char *get_next_line(int fd);
 
 char *concatenate_lines(char *l1, char *l2);
 
+//I think I have to concatanate what was read after the '\n' with the next bytes read.
 char *concatenate_lines(char *l1, char *l2)
 {
 	char	*new_line;
@@ -18,23 +19,21 @@ char *get_next_line(int fd)
 {
 	char			buffer[BUFFER_SIZE];
 	int				bytes_read;
-	static char		*line;
 	char			*temp_line;
+	static char		*line;
 
-	bytes_read = 0;
-	line = NULL;
-	while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		if (bytes_read < 0) //Error while reading
-			return(NULL);
-		temp_line = ft_strdup(buffer);
-		if (!temp_line) //Error while duplicating the line
-    	    return NULL;
-		line = concatenate_lines(line, temp_line);
-		if (!line)
-			return NULL;
-		free (temp_line);
-	}
+	line = ft_strdup("");
+	if (!line)
+    	return NULL;
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (bytes_read <= 0) //Error while reading or end of reading
+		return(NULL);
+	buffer[bytes_read] = '\0';
+	temp_line = ft_strdup(buffer);
+	if (!temp_line) //Error while duplicating the line
+		return NULL;
+	line = concatenate_lines(line, temp_line);
+	free (temp_line); //Free temp buffer to allow space for the next read
 	return (line);
 }
 
@@ -45,13 +44,12 @@ int main()
 
 	fd = open("test.txt", O_RDONLY);
 	 if (fd == -1) //Error opening file
-        return 1;
-	line = get_next_line(fd);
-	if (line != NULL)
-    {
-        printf("%s\n", line);
-        free(line);
-    }
-    close(fd);
+		return 1;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line); //Free each line obtained from get_next_line
+	}
+	close(fd);
 	return 0;
 }
