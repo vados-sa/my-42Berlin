@@ -13,6 +13,7 @@
 
 
 size_t	ft_strlen(const char *str);
+void	*ft_memset(void *s, int c, size_t n);
 char	*get_next_line(int fd);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);

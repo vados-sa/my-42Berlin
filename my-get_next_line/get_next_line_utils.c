@@ -1,6 +1,7 @@
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *str);
+void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -16,6 +17,19 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n > 0)
+	{
+		*ptr++ = (unsigned char)c;
+		n--;
+	}
+	return (s);
 }
 
 char	*ft_strdup(const char *s1)
