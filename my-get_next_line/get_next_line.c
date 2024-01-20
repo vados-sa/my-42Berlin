@@ -6,21 +6,31 @@ char *set_line(char *line);
 
 char *set_line(char *line)
 {
-	int		i;
 	char	*final_line;
+	char	*newline_ptr;
 
-	i = 0;
-	while (line[i] != '\n' && line[i] != '\0')
-		i++;
-	if (line[i] == '\n')
+	final_line = NULL;
+	newline_ptr = ft_strchr(line, '\n');
+	if (newline_ptr)
 	{
-		final_line = ft_substr(line, 0, i);
+		final_line = ft_substr(line, 0, newline_ptr - line + 1);
 		if (!final_line)
+		{
+			free (line);
 			return NULL;
-		free (line);
-		return (final_line);
+		}
 	}
-	return(line); //check if I have to return a duplicate
+	else
+	{
+		final_line = ft_strdup(line);
+		if (!final_line)
+		{
+			free (line);
+			return NULL;
+		}
+	}
+	free (line);
+	return (final_line);
 }
 
 //This funtion reads the line until it finds \n or \0, and concatenate the strings.
@@ -32,18 +42,21 @@ char *read_line(char *left_part, char *buffer, int fd)
 	while (ft_strchr(left_part, '\n') == 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0 && *left_part == '\0') //Error while reading or there is nothing else to read
-			return (NULL);
-		else if (bytes_read <= 0 && *left_part != '\0') //there is probably a better way of doing this
-			return (left_part); //check if it is null terminated. !!
-		buffer[bytes_read] = '\0'; //check for redundancy. !!
+		if (bytes_read <= 0)
+		{
+			if (!left_part || *left_part == '\0')
+				return (NULL);
+			else
+				return (left_part);
+		}
+		buffer[bytes_read] = '\0';
 		temp = left_part;
 		left_part = ft_strjoin(temp, buffer);
 		free(temp);
 		if (!left_part)
 			return(NULL);
-		if (ft_strchr(left_part, '\n') != 0) //If it finds '\n'
-			break; //break to return the whole line.
+		if (ft_strchr(left_part, '\n') != 0)
+			break;
 	}
 	return (left_part);
 }
@@ -53,16 +66,15 @@ char *get_next_line(int fd)
 	static char		*left_part;
 	char			*right_part;
 	char			buffer[BUFFER_SIZE + 1]; //+1 for the null-terminating.
-	char			*line;
+	char			*line;  //maybe create a final_line variable
 
-	if (fd < 0) //Error opening file
+	if (fd < 0)
 		return NULL;
 	ft_memset(buffer, 0, BUFFER_SIZE + 1);
 	line = read_line(left_part, buffer, fd);
 	if (!line)
 		return NULL;
 	right_part = ft_strchr(line, '\n');
-	printf("%s\n", right_part);
 	if (right_part != NULL)
 	{
 		right_part++;
