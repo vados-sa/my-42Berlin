@@ -1,23 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/21 14:44:30 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/01/21 16:37:30 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (i);
-	while (str[i])
-		i++;
-	return (i);
-}
 
 void	*ft_memset(void *s, int c, size_t n)
 {
@@ -54,6 +53,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	*ptr;
 
+	if (!s)
+		return (NULL);
 	ptr = (char *)s;
 	while (*ptr)
 	{
