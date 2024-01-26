@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/26 11:50:53 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/01/26 12:04:00 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 size_t			ft_strlen(const char *str);
-static char	 	*set_remaining(char *line);
+char			*set_remaining(char *line);
 char			*concat_strings(char *remain, char *buffer);
 char			*read_line(char *remain, char *buffer, int fd);
 char			*get_next_line(int fd);
@@ -22,7 +34,7 @@ size_t	ft_strlen(const char *str)
 and modifies the original string to end at the newline.
 If no additional text follows the newline, or if no newline is found,
 the function returns NULL.*/
-static char	 *set_remaining(char *line)
+char	*set_remaining(char *line)
 {
 	char	*remain;
 	ssize_t	i;
@@ -49,7 +61,7 @@ char	*read_line(char *remain, char *buffer, int fd)
 {
 	ssize_t		bytes_read;
 	char		*temp;
-	
+
 	bytes_read = 1;
 	while (bytes_read > 0)
 	{
@@ -60,7 +72,7 @@ char	*read_line(char *remain, char *buffer, int fd)
 			return (NULL);
 		}
 		else if (bytes_read == 0)
-			break;
+			break ;
 		buffer[bytes_read] = '\0';
 		if (remain == NULL)
 			remain = ft_strdup("");
@@ -68,7 +80,7 @@ char	*read_line(char *remain, char *buffer, int fd)
 		remain = ft_strjoin(temp, buffer);
 		free(temp);
 		if (ft_strchr (buffer, '\n'))
-			break;
+			break ;
 	}
 	return (remain);
 }
@@ -100,7 +112,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	int		fd3;
 	int		fd4;
@@ -122,4 +134,4 @@ int	main(void)
 	}
 	close(fd3);
 	close(fd4);
-}
+} */

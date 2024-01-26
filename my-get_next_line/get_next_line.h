@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:44:37 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/01/25 17:43:06 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/01/26 11:56:21 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-size_t	        ft_strlen(const char *str);
-void            *ft_memset(void *s, int c, size_t n);
-/* static char	 	*set_remaining(char *line); */
-char	        *read_line(char *remain, char *buffer, int fd);
-char	        *get_next_line(int fd);
-char	        *ft_strdup(const char *s1);
-char	        *ft_strchr(const char *s, int c);
-char	        *ft_substr(char const *s, unsigned int start, size_t len);
-char	        *ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlen(const char *str);
+void		*ft_memset(void *s, int c, size_t n);
+char		*read_line(char *remain, char *buffer, int fd);
+char		*get_next_line(int fd);
+char		*ft_strdup(const char *s1);
+char		*ft_strchr(const char *s, int c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
+/* static char 	*set_remaining(char *line); */
 
 #endif

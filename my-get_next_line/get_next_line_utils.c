@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:44:30 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/01/25 14:03:21 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/01/26 11:58:23 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join[j] = '\0';
 	return (join);
 }
-
 
 /*PREVIOUS VERSION
 #include "get_next_line.h"
