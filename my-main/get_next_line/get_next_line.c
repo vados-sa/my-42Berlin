@@ -1,4 +1,7 @@
-/* int	main(void)
+/* 
+# include <fcntl.h>
+# include <stdio.h>
+int	main(void)
 {
 	int		fd3;
 	int		fd4;

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:44:37 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/01/26 11:56:21 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:09:00 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
 
 size_t		ft_strlen(const char *str);
 void		*ft_memset(void *s, int c, size_t n);
