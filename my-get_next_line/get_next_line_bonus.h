@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:57:26 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/01/26 11:57:27 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:18:15 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # endif
 
 # ifndef MAX_FD
-#  define MAX_FD 2560
+#  define MAX_FD 1024
 # endif
 
 # include <stdlib.h>
