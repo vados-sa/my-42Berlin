@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:42:31 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/04 11:27:09 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:57:48 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,34 @@
 
 t_list	*ft_lstnew(void *content)
 {
-    t_list  *new_elem;
-    
-    new_elem = malloc(sizeof(t_list));
-    if (!new_elem)
-        return (NULL);
-    new_elem -> content = content;
-    new_elem -> next = NULL;
-    return (new_elem);
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node -> content = content;
+	new_node -> next = NULL;
+	return (new_node);
 }
 /* int    main(void)
 {
-    char    *str;
+   int	data_int = 42;
+   char	*data_str = "Linked lists";
 
-    t_list    *elem;
-    str = (char *)malloc(6*sizeof(char));
-    if (!str)
-        return (1);
-    str = "Hello";
-    elem = ft_lstnew((void *)str);
-    printf("%s\n", (char *)elem->content);
-    free(elem->content);
-    free(elem);
-    return (0);
+   t_list *node_int = ft_lstnew(&data_int);
+   if (!node_int)
+   {
+	printf("Error allocating memory for node_int\n");
+	return (1);
+   }
+   printf("Integer node content: %d\n", *(int*)node_int->content);
+   t_list *node_str = ft_lstnew(data_str);
+   if (node_str == NULL)
+   {
+	printf("Error allocating memory for node_str\n");
+	return (1);
+   }
+   printf("String node content: %s\n", (char*)node_str->content);
+   free(node_int);
+   free(node_str);
 } */
