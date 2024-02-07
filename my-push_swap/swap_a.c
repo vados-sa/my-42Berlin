@@ -1,13 +1,14 @@
 #include "push_swap.h"
-void    swap_a(t_list **head)
+void    swap(t_list **head)
 {
     t_list  *tmp_node;
 
     if (!*head || !(*head)->next)
-        return ; //maybe exit?
+        return ;
     tmp_node = (*head)->next;
     (*head)->next = tmp_node->next;
-    tmp_node->next = *head; 
+    tmp_node->next = *head;
+    *head = tmp_node;
 }
 
 /*In progress*/
