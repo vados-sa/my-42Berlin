@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/08 14:32:14 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/28 13:52:30 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:51:28 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_list
+void	ft_putnbr_fd(int n, int fd)
 {
-	int						value;
-	struct s_list			*next;
-}	t_list;
+	long int	nbr;
 
-typedef struct s_stack
-{
-	t_list					*top;
-}	t_stack;
-
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
-
-#endif
+	nbr = n;
+	if (nbr < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = -nbr;
+	}
+	if (nbr > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
+}

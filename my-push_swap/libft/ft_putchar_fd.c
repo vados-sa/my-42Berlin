@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/08 14:32:14 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/28 13:51:59 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:50:42 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_list
+void	ft_putchar_fd(char c, int fd)
 {
-	int						value;
-	struct s_list			*next;
-}	t_list;
-
-typedef struct s_stack
-{
-	t_list					*top;
-}	t_stack;
-
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
-
-#endif
+	write (fd, &c, 1);
+}

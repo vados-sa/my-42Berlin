@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/08 14:32:14 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/14 10:39:24 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:39:07 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_list
+int	ft_isalnum(int c)
 {
-	int						value;
-	struct s_list			*next;
-}	t_list;
-
-typedef struct s_stack
-{
-	t_list					*top;
-}	t_stack;
-
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
-
-#endif
+	return ((c >= 97 && c <= 122) 
+		|| (c >= 65 && c <= 90)
+		|| (c >= 48 && c <= 57));
+}

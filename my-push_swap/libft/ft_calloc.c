@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/08 14:32:14 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/24 18:51:57 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:53:36 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_list
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	int						value;
-	struct s_list			*next;
-}	t_list;
+	size_t			i;
+	unsigned char	*ptr;
 
-typedef struct s_stack
-{
-	t_list					*top;
-}	t_stack;
-
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
-
-#endif
+	ptr = malloc(nitems * size);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < nitems * size)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
+}

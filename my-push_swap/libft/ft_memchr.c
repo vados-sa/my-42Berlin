@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/08 14:32:14 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/23 10:33:21 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:45:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdlib.h>
-
-typedef struct s_list
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int						value;
-	struct s_list			*next;
-}	t_list;
+	unsigned char	*str;
+	unsigned char	uc;
+	size_t			i;
 
-typedef struct s_stack
-{
-	t_list					*top;
-}	t_stack;
-
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
-
-#endif
+	str = (unsigned char *)s;
+	uc = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		if (str[i] == uc)
+			return ((void *)&str[i]);
+		i++;
+	}
+	return (NULL);
+}
