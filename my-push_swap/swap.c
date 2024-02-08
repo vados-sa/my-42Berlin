@@ -14,6 +14,9 @@ void	swap(t_stack *stack)
 	stack->top = second; // updates 'top' pointer of t_stack points to second, making it the top element of the stack.
 }
 
+/* 'stack->top' access the top node of the stack.
+   'stack->top->next' access the second node. */
+
 void	sa(t_stack *stack_a)
 {
 	swap(stack_a);

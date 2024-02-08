@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:15:48 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/03 19:07:44 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:12:25 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ t_list		*ft_lstnew(void *content);
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst)
-		new -> next = NULL;
-	else
-		new -> next = *lst;
+	if (!lst || !new)
+		return ;
+	new -> next = *lst;
 	*lst = new;
 }
 /* int main(void)
