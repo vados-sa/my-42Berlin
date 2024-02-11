@@ -6,7 +6,7 @@
 /*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/11 17:36:50 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/02/11 19:00:28 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	push(t_stack *stack, t_list *element);
 void    ra(t_stack *stack_a);
 void	rb(t_stack *stack_b);
 void	rr(t_stack *stack_a, t_stack *stack_b);
+void    rra(t_stack *stack_a);
+void    rrb(t_stack *stack_b);
+void    rrr(t_stack *stack_a, t_stack *stack_b);
 
 t_list	*pop(t_stack *stack);
 
