@@ -5,7 +5,7 @@ void	swap(t_stack *stack)
 	t_list	*first;
 	t_list	*second;	
 
-	if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
+	if (!stack || !stack->top || !stack->top->next)
 		return ; // checks if there are at least two elements to swap.
 	first = stack->top; // first points to the top node.
 	second = first->next; // second points to the node immediately after the top.
