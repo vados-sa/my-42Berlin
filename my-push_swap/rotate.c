@@ -9,7 +9,7 @@ void    ra(t_stack *stack_a)
 		return ;
 	first = stack_a->top; // save the current top element; 
 	stack_a->top = first->next; // update the top of the stack to the second element;
-	last = stack_a->top; //start looking for the last element from the new top;
+	last = stack_a->top; // start looking for the last element from the new top;
 	while (last->next)
 		last = last->next; // traverse to find the last element;
 	last->next = first; // append the first element to the end of the list;
