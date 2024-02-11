@@ -1,9 +1,7 @@
 #include "push_swap.h"
 
-void    rra(t_stack *stack_a);
-void    rrb(t_stack *stack_b);
-void    rrr(t_stack *stack_a, t_stack *stack_b);
-
+/*Shift down all elements of stack a by 1.
+The last element becomes the first one.*/
 void    rra(t_stack *stack_a)
 {
 	t_list	*last;
@@ -26,6 +24,8 @@ void    rra(t_stack *stack_a)
 	}
 }
 
+/*Shift down all elements of stack b by 1.
+The last element becomes the first one.*/
 void    rrb(t_stack *stack_b)
 {
 	t_list	*last;
@@ -47,7 +47,7 @@ void    rrb(t_stack *stack_b)
 		stack_b->top = last; // update the top of the stack to the last element;
 	}
 }
-
+/*rra and rrb at the same time.*/
 void    rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);

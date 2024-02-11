@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+/*Shift up all elements of stack a by 1.
+The first element becomes the last one.*/
 void    ra(t_stack *stack_a)
 {
 	t_list	*first;
@@ -16,6 +18,8 @@ void    ra(t_stack *stack_a)
 	first->next = NULL; // now, detach the first element and make it the last.
 }
 
+/*Shift up all elements of stack b by 1.
+The first element becomes the last one.*/
 void    rb(t_stack *stack_b)
 {
 	t_list	*first;
@@ -32,6 +36,7 @@ void    rb(t_stack *stack_b)
 	first->next = NULL; // now, detach the first element and make it the last.
 }
 
+/*ra and rb at the same time.*/
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	ra(stack_a);
