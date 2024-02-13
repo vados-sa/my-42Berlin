@@ -1,27 +1,29 @@
 #include "push_swap.h"
 
-/*Take the first element at the top of b and put it at the top of a.
-Do nothing if b is empty*/
+/* Push A. */
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	t_list	*b_top;
-
-	if (!stack_b || !stack_b->top) // check if stack b is empty
-		return ;
-	b_top = pop(stack_b); // pop from stack_b
-	push(stack_a, b_top); //push onto stack_a
+	push_from_to(stack_b, stack_a, "pa\n");
 }
 
-/*Take the first element at the top of a and put it at the top of b.
-Do nothing if a is empty.*/
+/* Push B. */
 void	pb(t_stack *stack_b, t_stack *stack_a)
 {
-	t_list	*a_top;
+	push_from_to(stack_a, stack_b, "pb\n");
+}
 
-	if (!stack_a || !stack_a->top) // check if stack a is empty
+/*Take the first element at the top of source(b) stack and put it at the
+top of destination(a) stack. Do nothing if the src stack is empty*/
+void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
+{
+	t_list	*top_elem;
+
+	if (!src_stack || !src_stack->top) // Check if src_stack is empty
 		return ;
-	a_top = pop(stack_a); // pop from stack_b
-	push(stack_b, a_top); // push onto stack_a
+	top_elem = pop(src_stack); // Remove the top element from the source stack
+	push(dest_stack, top_elem); // Add it to the top of the destination stack
+	if (opr)
+		write(1, opr, ft_strlen(opr)); // Output the operation name
 }
 
 /* Removes the first element of the stack. */

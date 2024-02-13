@@ -39,4 +39,4 @@ int	main(int ac, char *av[])
 }
 
 /*error handling:
-write(1, "Error\n", 6);*/
+write(2, "Error\n", 6);*/
