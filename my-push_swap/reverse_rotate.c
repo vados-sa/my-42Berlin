@@ -11,14 +11,14 @@ void    reverse_rotate(t_stack *stack)
 		return ;
 	last = stack->top;
 	prev_to_last = NULL;
-	while (last->next) // traverse to find the last and the second to last elements;
+	while (last->next) // traverse to find the last and the second to last nodes;
 	{
 		prev_to_last = last; // keep track of the second to last;
 		last = last->next; // move to the next node;
 	}
 	if (prev_to_last)
 	{
-		prev_to_last->next = NULL; // disconnects the last element from the second to last;
+		prev_to_last->next = NULL; // disconnect the last element from the second to last;
 		last->next = stack->top; // point the last element to the current top;
 		stack->top = last; // update the top of the stack to the last element;
 	}
