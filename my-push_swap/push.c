@@ -16,7 +16,7 @@ void	pb(t_stack *stack_b, t_stack *stack_a)
 top of destination(a) stack. Do nothing if the src stack is empty*/
 void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
 {
-	t_list	*top_elem;
+	t_node	*top_elem;
 
 	if (!src_stack || !src_stack->top) // Check if src_stack is empty
 		return ;
@@ -27,9 +27,9 @@ void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
 }
 
 /* Removes the first element of the stack. */
-t_list	*pop(t_stack *stack)
+t_node	*pop(t_stack *stack)
 {
-	t_list	*first;
+	t_node	*first;
 
 	if (!stack || !stack->top)
 		return (NULL);
@@ -40,7 +40,7 @@ t_list	*pop(t_stack *stack)
 }
 
 /* Adds a new element to the top of the stack. */
-void	push(t_stack *stack, t_list *element)
+void	push(t_stack *stack, t_node *element)
 {
 	if(!stack || !element)
 		return ;

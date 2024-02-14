@@ -1,52 +1,74 @@
 #include "push_swap.h"
 
+int	valid_input(char **args);
+int	is_integer(char **args);
+int	has_duplicates(char **args);
+void	error_exit(void);
+/* int is_digit_or_sign(char c); */
+
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-int	valid_input(char **args) // put it on a check.c fie;
+/* int is_digit_or_sign(char c)
+{
+    return (ft_isdigit(c) || c == '-' || c == '+');
+} */
+
+int	is_integer(char **args)
+{
+	long long num;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (args[i])
+	{
+		if (!(ft_isdigit(args[i][0]) || args[i][0] == '-' || args[i][0] == '+')
+			&& args[i][1] != '\0')
+            return (1);
+        num = ft_atoll(args[i]);
+        if (num < -2147483648 || num > 2147483647)
+            return (1);
+		j = (args[i][0] == '-' || args[i][0] == '+') ? 1 : 0;
+        while (args[i][j])
+        {
+			if (!ft_isdigit(args[i][j]))
+        			return (1);
+    			j++;  
+		}	
+        i++;
+	}
+	return (0);
+}
+int	has_duplicates(char **args)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (args[i]) //check if they are intergers
-	{
-        j = 0;
-        while (args[i][j])
-        {
-			if (j == 0 && (args[i][j] == '-' || args[i][j] == '+')) // Allow a minus sign at the start
-        	{
-        		// Check the next character to ensure it's a digit
-        		if (!args[i][j + 1] || !ft_isdigit(args[i][j + 1]))
-            		error_exit(); // Not a valid number
-				j++;
-			}
-            else
-			{
-				if (!ft_isdigit(args[i][j]))
-        			error_exit();
-    			j++;  
-			}	
-        }
-        i++;
-	}
-	i = 0;
-	while (args[i]) //check if there are no duplicates
+	while (args[i])
 	{
 		j = i + 1;
 		while (args[j])
 		{
-			if (ft_strncmp(args[i], args[j], 11) == 0)
-				error_exit();
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
+				return (1);
 			else
 				j++;
 		}
 		i++;
 	}
-	return (i);
+	return (0);
+}
+
+int	valid_input(char **args)
+{
+	if (is_integer(args) || has_duplicates(args))
+		error_exit();
+	return (1);
 }
 
 int	main(int ac, char *av[])
