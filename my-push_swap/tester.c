@@ -4,18 +4,12 @@ int	valid_input(char **args);
 int	is_integer(char **args);
 int	has_duplicates(char **args);
 void	error_exit(void);
-/* int is_digit_or_sign(char c); */
 
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
 }
-
-/* int is_digit_or_sign(char c)
-{
-    return (ft_isdigit(c) || c == '-' || c == '+');
-} */
 
 int	is_integer(char **args)
 {
@@ -66,6 +60,7 @@ int	has_duplicates(char **args)
 
 int	valid_input(char **args)
 {
+
 	if (is_integer(args) || has_duplicates(args))
 		error_exit();
 	return (1);
@@ -73,15 +68,21 @@ int	valid_input(char **args)
 
 int	main(int ac, char *av[])
 {
-	/* char	**numbers;
+	char	**numbers;
+	int		i;
 
-	numbers = av; */
+	//numbers = av;
+	i = 0;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
-	/* else if (ac == 2)
-		numbers = ft_split(av[1], ' '); */
-	if(ac > 1 && valid_input(av + 1))
+	else if (ac == 2)
+	{
+		numbers = ft_split(av[1], ' ');
+		if (valid_input(numbers))
+            printf("Input is valid\n");
+		
+	}
+	if(ac > 1 && valid_input(av + 1)) // av + 1 to skip the program's name
         printf("Input is valid\n");
-    //free (numbers);
     return(0);
 }
