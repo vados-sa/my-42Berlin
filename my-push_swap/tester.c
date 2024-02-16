@@ -26,7 +26,7 @@ int	is_integer(char **args)
         num = ft_atoll(args[i]);
         if (num < -2147483648 || num > 2147483647)
             return (1);
-		j = (args[i][0] == '-' || args[i][0] == '+') ? 1 : 0;
+		j = (args[i][0] == '-' || args[i][0] == '+') ? 1 : 0; // ternary operators are forbiden!!!!
         while (args[i][j])
         {
 			if (!ft_isdigit(args[i][j]))
@@ -60,6 +60,8 @@ int	has_duplicates(char **args)
 
 int	valid_input(char **args)
 {
+	// atoll before checking
+	// go through each number, do the check and add them to the stack.
 
 	if (is_integer(args) || has_duplicates(args))
 		error_exit();

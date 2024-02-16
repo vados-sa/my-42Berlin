@@ -48,9 +48,9 @@ int	main(int ac, char *av[])
 	t_stack	*b;
 	char	**numbers;
 
-	a = init_stack();
-	b = init_stack();
-	numbers = av;
+	a = init_stack(); // or just st them to NULL --> check this
+	b = init_stack(); // same ^
+	numbers = av; // apperently I can pass av directly
 	if (ac == 1 || (ac == 2 && !av[1][0])) // initial check for empty or no input; 
 		return (1);
 	else if (ac == 2)
