@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/12/04 08:56:38 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:07:28 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ char	**ft_split(char const *s, char c)
 
 	words = 0;
 	words = count_words(s, c);
-	array = (char **)malloc((words + 1) * sizeof(char *));
-	if (!array || !s)
+	if (!words)
+		exit(1);
+	array = (char **)malloc((words + 2) * sizeof(char *)); //+ 2 to allocate space for the "\0" Placeholder and the final NULL
+	if (!array)
 		return (NULL);
 	if (fill_words(array, s, c))
 		return (NULL);
