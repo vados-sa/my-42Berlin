@@ -6,7 +6,7 @@ LIBFT		= libft.a
 LIBFTDIR	= ./libft
 
 # SRCS
-SRCS	= tester.c
+SRCS	= 
 
 OBJS = $(SRCS:.c=.o)
 

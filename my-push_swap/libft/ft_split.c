@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/18 16:07:28 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/02/19 11:43:51 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	count_words(char const *s, char c);
-static size_t	fill_words(char **array, char const *s, char c);
+static char		*fill_words(char const *s, char c);
 static size_t	safe_alloc_mem(char **array, size_t pos, size_t size);
 
 static size_t	count_words(char const *s, char c)
@@ -38,63 +38,52 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static size_t	fill_words(char **array, char const *s, char c)
+/*This function gets the next argument from av.*/
+static char	*fill_words(char const *s, char c)
 {
-	size_t	len;
-	size_t	i;
+	static int	cursor;	
+	char		*arg_str;
+	int			len;
+	int			i;
 
+	len = 0;
 	i = 0;
-	while (*s)
-	{
-		len = 0;
-		while (*s == c && *s)
-			s++;
-		while (*s != c && *s)
-		{
-			len++;
-			s++;
-		}
-		if (len)
-		{
-			if (safe_alloc_mem(array, i, len + 1))
-				return (1);
-			ft_strlcpy(array[i], s - len, len + 1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-static size_t	safe_alloc_mem(char **array, size_t pos, size_t size)
-{
-	size_t	i;
-
-	i = 0;
-	array[pos] = malloc(size);
-	if (!array[pos])
-	{
-		while (i < pos)
-			free (array[i++]);
-		free (array);
-		return (1);
-	}
-	return (0);
+	while (s[cursor] == c)
+		cursor++;
+	while (s[cursor + len] != c && s[cursor + len])
+		len++;
+	arg_str = malloc(len * sizeof(char) + 1);
+	if (!arg_str)
+		return (NULL);
+	while (s[cursor] != c && s[cursor])
+		arg_str[i++] = s[cursor++]; 
+	arg_str[i] = '\0';
+	return (arg_str);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t			words;
 	char			**array;
+	int				i;
 
-	words = 0;
+	i = 0;
 	words = count_words(s, c);
-	if (!words)
-		exit(1);
-	array = (char **)malloc((words + 2) * sizeof(char *)); //+ 2 to allocate space for the "\0" Placeholder and the final NULL
+	array = malloc((words + 2) * sizeof(char *)); //+ 2 to allocate space for the "\0" Placeholder and the final NULL
 	if (!array)
 		return (NULL);
-	if (fill_words(array, s, c))
-		return (NULL);
-	array[words] = NULL;
+	while (words-- >= 0)
+	{
+		if (i == 0)
+		{
+			array[i] = malloc(sizeof(char));
+			if (!array[i])
+				return (NULL);
+			array[i][0] = '\0';
+			i++;
+		}
+		array[i++] = fill_words(s, c);
+	}
+	array[i] = NULL;
 	return (array);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/14 14:05:09 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/02/19 16:03:59 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 #ifndef INT_MAX
 #define INT_MAX 2147483647
@@ -24,13 +25,15 @@
 #ifndef INT_MIN
 #define INT_MIN (-INT_MAX - 1)
 #endif
- 
+
+/*Define the node structure*/ 
 typedef struct s_node
 {
 	int						value;
 	struct s_node			*next;
 }	t_node;
 
+/*Define the stack structure*/
 typedef struct s_stack
 {
 	t_node					*top;
