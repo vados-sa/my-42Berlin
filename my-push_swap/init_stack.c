@@ -1,16 +1,48 @@
 #include "push_swap.h"
 
 void	init_stack(t_stack **a, char **av, bool flag_ac_2);
-void	error_exit(t_stack **a, char **av, bool flag_ac_2);
 void    add_to_stack(t_stack *a, int nbr);
 int	    check_syntax(char *av);
-int     check_duplicates(t_stack *a, int nbr);
+int     check_duplicates(t_stack **a, int nbr);
+void	error_exit(t_stack **a, char **av, bool flag_ac_2);
+void    free_stack(t_stack **a);
+void    free_split_av(char **av);
+
+void    free_stack(t_stack **a)
+{
+    t_node  *current;
+    t_node  *next;
+
+    if (!*a || !a)
+        return ;
+    current = (*a)->top;
+    while (current)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    free (*a);
+    *a = NULL;
+}
+
+void    free_split_av(char **av)
+{
+    int i;
+
+    if(!av)
+        return ;
+    i = 0;
+    while(av[i])
+        free(av[i++]);
+    free (av);
+}
 
 void	error_exit(t_stack **a, char **av, bool flag_ac_2)
 {
-    //free_stack(a);
-    //if (flag_ac_2)
-        //free_split_av(av);
+    free_stack(a);
+    if (flag_ac_2)
+        free_split_av(av);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -33,13 +65,13 @@ int	check_syntax(char *av)
 	return (0);
 }
 
-int check_duplicates(t_stack *a, int nbr)
+int check_duplicates(t_stack **a, int nbr)
 {
     t_node  *current;
 
-    if (!a || !a->top)
+    if (!(*a) || !(*a)->top)
         return (0);
-    current = a->top;
+    current = (*a)->top;
     while (current)
     {
         if (nbr == current->value)
@@ -105,8 +137,8 @@ int main(void)
 }
 
 
-/*FOR PYTHON TUTOR*/
-/*# include <stdlib.h>
+/* FOR PYTHON TUTOR
+# include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
 
@@ -126,18 +158,29 @@ void    init_stack(t_stack **a, char **av, bool flag_ac_2);
 void    error_exit(t_stack **a, char **av, bool flag_ac_2);
 void    add_to_stack(t_stack *a, int nbr);
 int        check_syntax(char *av);
-int     check_duplicates(t_stack *a, int nbr);
+int     check_duplicates(t_stack **a, int nbr);
 
-int    ft_isdigit(int c)
+void    free_stack(t_stack **a)
 {
-    return (c >= 48 && c <= 57);
+    t_node  *current;
+    t_node  *next;
+
+    if (!*a || !a)
+        return ;
+    current = (*a)->top;
+    while (current)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    free (*a);
+    *a = NULL;
 }
 
 void    error_exit(t_stack **a, char **av, bool flag_ac_2)
 {
-    //free_stack(a);
-    //if (flag_ac_2)
-        //free_split_av(av);
+    free_stack(a);
     write(2, "Error\n", 6);
     exit(1);
 }
@@ -153,20 +196,20 @@ int    check_syntax(char *av)
         i++;
     while (av[i])
     {
-        if (!ft_isdigit(av[i]))
+        if (!isdigit(av[i]))
                 return (1);
         i++;
     }    
     return (0);
 }
 
-int check_duplicates(t_stack *a, int nbr)
+int check_duplicates(t_stack **a, int nbr)
 {
     t_node  *current;
 
-    if (!a || !a->top)
+    if (!(*a) || !(*a)->top)
         return (0);
-    current = a->top;
+    current = (*a)->top;
     while (current)
     {
         if (nbr == current->value)
@@ -226,7 +269,7 @@ int main(void)
     t_stack *a;
 
     a = NULL;
-    char *av[5] = {av[0] = "\0", av[1] = "42", av[2] = "1999", av[3] = "-25", av[4] = NULL};
+    char *av[5] = {av[0] = "\0", av[1] = "A2", av[2] = "1999", av[3] = "-25", av[4] = NULL};
     init_stack(&a, av + 1, false);
     return (0);
 }*/
