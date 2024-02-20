@@ -6,19 +6,19 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/19 11:43:51 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:14:19 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c);
+char			**ft_split(char const *s, char c);
+static int	count_words(char const *s, char c);
 static char		*fill_words(char const *s, char c);
-static size_t	safe_alloc_mem(char **array, size_t pos, size_t size);
 
-static size_t	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	while (*s)
@@ -63,12 +63,14 @@ static char	*fill_words(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t			words;
-	char			**array;
-	int				i;
+	int			words;
+	char		**array;
+	int			i;
 
 	i = 0;
 	words = count_words(s, c);
+	if(!words)
+		exit(1);
 	array = malloc((words + 2) * sizeof(char *)); //+ 2 to allocate space for the "\0" Placeholder and the final NULL
 	if (!array)
 		return (NULL);
@@ -79,8 +81,8 @@ char	**ft_split(char const *s, char c)
 			array[i] = malloc(sizeof(char));
 			if (!array[i])
 				return (NULL);
-			array[i][0] = '\0';
-			i++;
+			array[i++][0] = '\0';
+			continue ;
 		}
 		array[i++] = fill_words(s, c);
 	}
