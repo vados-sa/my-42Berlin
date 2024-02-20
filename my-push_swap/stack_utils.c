@@ -24,39 +24,7 @@ void	init_stack(t_stack **a, char **av, bool flag_ac_2)
     }
 }
 
-int	check_syntax(char *av)
-{
-	int	i;
 
-	i = 0;
-	if ((av[i] == '-' || av[i] == '+') && !ft_isdigit(av[i + 1]))
-        return (1);
-    if (av[i] == '-' || av[i] == '+')
-        i++;
-    while (av[i])
-    {
-		if (!ft_isdigit(av[i]))
-    			return (1);
-        i++;
-	}	
-	return (0);
-}
-
-int check_duplicates(t_stack **a, int nbr)
-{
-    t_node  *current;
-
-    if (!(*a) || !(*a)->top)
-        return (0);
-    current = (*a)->top;
-    while (current)
-    {
-        if (nbr == current->value)
-            return (1);
-        current = current->next;
-    }
-    return (0);
-}
 
 void    add_to_stack(t_stack *a, int nbr)
 {
@@ -77,6 +45,22 @@ void    add_to_stack(t_stack *a, int nbr)
             last = last->next;
         last->next = new_node;
     }
+}
+
+int	is_sorted(t_stack *a)
+{
+	t_node	*current;
+
+	if (!a || !a->top || !a->top->next)
+		return (0);
+	current = a->top;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (1);
+		current = current->next;
+	}
+	return (0);
 }
 
 /* int main(void)

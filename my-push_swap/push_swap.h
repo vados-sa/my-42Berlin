@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/20 13:37:11 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:32:35 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,14 @@ typedef struct s_stack
 /*init_stack.c*/
 void	init_stack(t_stack **a, char **av, bool flag_ac_2);
 void    add_to_stack(t_stack *a, int nbr);
-int	    check_syntax(char *av);
-int     check_duplicates(t_stack **a, int nbr);
+int		is_sorted(t_stack *a);
 
 /*error_manage.c*/
 void	error_exit(t_stack **a, char **av, bool flag_ac_2);
 void    free_stack(t_stack **a);
 void    free_split_av(char **av);
+int	    check_syntax(char *av);
+int     check_duplicates(t_stack **a, int nbr);
 
 /* swap.c */
 void	sa(t_stack *stack_a);

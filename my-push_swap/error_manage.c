@@ -38,3 +38,37 @@ void    free_split_av(char **av)
         free(av[i++]);
     free (av - 1); //adjusts for the extra space allocated for the placeholder at the beginning
 }
+
+int	check_syntax(char *av)
+{
+	int	i;
+
+	i = 0;
+	if ((av[i] == '-' || av[i] == '+') && !ft_isdigit(av[i + 1]))
+        return (1);
+    if (av[i] == '-' || av[i] == '+')
+        i++;
+    while (av[i])
+    {
+		if (!ft_isdigit(av[i]))
+    			return (1);
+        i++;
+	}	
+	return (0);
+}
+
+int check_duplicates(t_stack **a, int nbr)
+{
+    t_node  *current;
+
+    if (!(*a) || !(*a)->top)
+        return (0);
+    current = (*a)->top;
+    while (current)
+    {
+        if (nbr == current->value)
+            return (1);
+        current = current->next;
+    }
+    return (0);
+}
