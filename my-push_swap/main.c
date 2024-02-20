@@ -13,13 +13,14 @@ int	main(int ac, char *av[])
 		av = ft_split(av[1], ' ');
 	init_stack(&a, av + 1, ac == 2);
 	printf("Stack was successfully initialized\n");
-	printf("Sorted stack is %s\n", is_sorted(a) ? "not sorted" : "sorted");
-	/*check if stack is sorted. if not, sort*/
+	printf("Sorted stack is %s\n", !stack_sorted(a) ? "not sorted" : "sorted");
+	/*if (!stack_sorted(a)) // if it's not sorted
+	{
+		if (stack_len(a) <= 5)
+			small_sort(a, b);
+		else
+			big_sort(a, b);
+	}*/
+	free_stack(&a);
 	return (0);
 }
-
-/*
-ATENTION
-
-so far I'm only freeing when there is an error.
-*/

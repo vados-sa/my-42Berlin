@@ -22,6 +22,8 @@ void	init_stack(t_stack **a, char **av, bool flag_ac_2)
         add_to_stack(*a, (int)nbr);
         i++;
     }
+    if (flag_ac_2)
+        free_split_av(av);
 }
 
 
@@ -47,20 +49,20 @@ void    add_to_stack(t_stack *a, int nbr)
     }
 }
 
-int	is_sorted(t_stack *a)
+int	stack_sorted(t_stack *a)
 {
 	t_node	*current;
 
 	if (!a || !a->top || !a->top->next)
-		return (0);
+		return (1);
 	current = a->top;
 	while (current->next)
 	{
 		if (current->value > current->next->value)
-			return (1);
+			return (0); //not sorted.
 		current = current->next;
 	}
-	return (0);
+	return (1);
 }
 
 /* int main(void)
