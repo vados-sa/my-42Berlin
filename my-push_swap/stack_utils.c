@@ -65,6 +65,21 @@ int	stack_sorted(t_stack *a)
 	return (1);
 }
 
+int	stack_len(t_stack *stack)
+{
+	int		i;
+	t_node	*current;
+
+	i = 0;
+	current = stack->top;
+	while (current)
+	{
+		current = current -> next;
+		i++;
+	}
+	return (i);
+}
+
 /* int main(void)
 {
     t_stack *a;

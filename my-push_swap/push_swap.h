@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/20 16:46:49 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:34:07 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ typedef struct s_stack
 	t_node					*top;
 }	t_stack;
 
-/*init_stack.c*/
+/*stack_utils.c*/
 void	init_stack(t_stack **a, char **av, bool flag_ac_2);
 void    add_to_stack(t_stack *a, int nbr);
 int		stack_sorted(t_stack *a);
+int		stack_len(t_stack *stack);
 
 /*error_manage.c*/
 void	error_exit(t_stack **a, char **av, bool flag_ac_2);
