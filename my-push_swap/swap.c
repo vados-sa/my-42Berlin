@@ -4,8 +4,8 @@
 Do nothing if there is only one or no elements. */
 void	swap(t_stack *stack)
 {
-	t_list	*first;
-	t_list	*second;	
+	t_node	*first;
+	t_node	*second;
 
 	if (!stack || !stack->top || !stack->top->next)
 		return ; // checks if there are at least two elements to swap.

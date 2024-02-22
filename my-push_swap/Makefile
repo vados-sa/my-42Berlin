@@ -6,7 +6,7 @@ LIBFT		= libft.a
 LIBFTDIR	= ./libft
 
 # SRCS
-SRCS	= main.c stack_utils.c error_manage.c
+SRCS	= main.c stack_utils.c error_manage.c swap.c
 
 OBJS = $(SRCS:.c=.o)
 

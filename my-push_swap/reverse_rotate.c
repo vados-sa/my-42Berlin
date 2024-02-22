@@ -4,8 +4,8 @@
 The last element becomes the first one.*/
 void    reverse_rotate(t_stack *stack)
 {
-	t_list	*last;
-	t_list	*prev_to_last;
+	t_node	*last;
+	t_node	*prev_to_last;
 
 	if (!stack || !stack->top || !stack->top->next) //check if there's at least 2 elements.
 		return ;

@@ -4,8 +4,8 @@
 The first element becomes the last one. */
 void    rotate(t_stack *stack)
 {
-	t_list	*first;
-	t_list	*last;
+	t_node	*first;
+	t_node	*last;
 
 	if (!stack || !stack->top || !stack->top->next) //check if there's at least 2 elements.
 		return ;
