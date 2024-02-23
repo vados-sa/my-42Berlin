@@ -16,10 +16,10 @@ void print_stack(t_stack *stack)
 int	main(int ac, char *av[])
 {
 	t_stack	*a;
-	//t_stack	*b;
+	t_stack	*b;
 
 	a = NULL;
-	//b = NULL;
+	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
 	else if (ac == 2)
