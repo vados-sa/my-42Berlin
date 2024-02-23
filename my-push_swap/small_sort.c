@@ -1,36 +1,31 @@
 #include "push_swap.h"
 
-/*
-middle->value as top->next->value
-bottom->value as top->next->next->value
-*/
 void	sort_3(t_stack *a)
 {
 	t_node	*top;
+	t_node	*middle;
+	t_node	*bottom;
 
 	top = a->top;
-	if (top->value > top->next->value)
+	middle = a->top->next;
+	bottom = middle->next;
+	if (top->value > middle->value && middle->value > bottom->value)
 	{
-		if (top->next->value > top->next->next->value)
-		{
-			ra(a);
-			sa(a);
-		}
-		else
-		{
-			if (top->value > top->next->next->value)
-				ra(a);
-			else
-				sa(a);
-		}
+		ra(a);
+		sa(a);
 	}
-	else if (top->value < top->next->value)
+	else if (top->value > middle->value && top->value > bottom->value)
+		ra(a);
+	else if (top->value > middle->value && top->value < bottom->value)
+		sa(a);
+	else if (top->value < middle->value && top->value > bottom->value)
+		rra(a);
+	else if (top->value < middle->value && top->value < bottom->value)
 	{
 		rra(a);
-		if (top->value < top->next->next->value)  //segfault on this line !
-			sa(a);
+		sa(a);
 	}
-} /*5 if statements will need less lines and might not give me segfaults*/
+}
 
 void	small_sort(t_stack *a)
 {
