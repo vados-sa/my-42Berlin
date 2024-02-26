@@ -14,20 +14,20 @@ void	pb(t_stack *stack_b, t_stack *stack_a)
 
 /*Take the first element at the top of source(b) stack and put it at the
 top of destination(a) stack. Do nothing if the src stack is empty*/
-void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
+static void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
 {
 	t_node	*top_elem;
 
 	if (!src_stack || !src_stack->top) // Check if src_stack is empty
 		return ;
-	top_elem = pop(src_stack); // Remove the top element from the source stack
-	push(dest_stack, top_elem); // Add it to the top of the destination stack
+	top_elem = pop_op(src_stack); // Remove the top element from the source stack
+	push_op(dest_stack, top_elem); // Add it to the top of the destination stack
 	if (opr)
 		write(1, opr, ft_strlen(opr)); // Output the operation name
 }
 
 /* Removes the first element of the stack. */
-t_node	*pop(t_stack *stack)
+static t_node	*pop_op(t_stack *stack)
 {
 	t_node	*first;
 
@@ -40,7 +40,7 @@ t_node	*pop(t_stack *stack)
 }
 
 /* Adds a new element to the top of the stack. */
-void	push(t_stack *stack, t_node *element)
+static void	push_op(t_stack *stack, t_node *element)
 {
 	if(!stack || !element)
 		return ;
