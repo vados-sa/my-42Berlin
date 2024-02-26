@@ -2,7 +2,7 @@
 
 /*Shift down all elements of the stack by 1.
 The last element becomes the first one.*/
-void    reverse_rotate(t_stack *stack)
+static void    reverse_rotate(t_stack *stack)
 {
 	t_node	*last;
 	t_node	*prev_to_last;
