@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void print_stack(t_stack *stack)
+print_stack(t_stack *stack) // remember to take this out
 {
     t_node *current;
 
@@ -25,19 +25,18 @@ int	main(int ac, char *av[])
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
 	init_stack(&a, av + 1, ac == 2);
-	printf("Stack was successfully initialized\n");
-	print_stack(a);
-	printf("Sorted stack is %s\n", !stack_sorted(a) ? "not sorted" : "sorted");
-	printf("stack length: %d\n", stack_len(a));
+	print_stack(a); // remember to take this out
+	printf("Sorted stack is %s\n", !stack_sorted(a) ? "not sorted" : "sorted"); // remember to take this out
+	printf("stack length: %d\n", stack_len(a)); // remember to take this out
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
 			sa(a);
-		else if (stack_len(a) > 2 && stack_len(a) <= 5)
-			small_sort(a); 
-		//else
-			//big_sort(a, b);
-		print_stack(a);
+		else if (stack_len(a) == 3)
+			sort_three(a);
+		else
+			big_sort(a, b);
+		print_stack(a); // remember to take this out
 	}
 	free_stack(&a);
 	return (0);

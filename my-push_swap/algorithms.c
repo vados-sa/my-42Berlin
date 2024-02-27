@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	sort_3(t_stack *a)
+void	sort_three(t_stack *a)
 {
 	t_node	*top;
 	t_node	*middle;
@@ -27,15 +27,28 @@ void	sort_3(t_stack *a)
 	}
 }
 
-void	small_sort(t_stack *a)
+void	big_sort(t_stack **a, t_stack **b)
 {
-	int	len;
 
-	len = stack_len(a);
-	if (len == 3)
-		sort_3(a);
-	/*if (len == 4)
-		sort_4(a);
-	if (len == 5)
-		sort_5(a);*/
+	int	a_len;
+
+	a_len = stack_len(*a);
+	if (a_len-- > 3)
+		pb(b, a);
+	if (a_len-- > 3 && !stack_sorted(*a))
+		pb(b, a);
+	while (a_len-- > 3 && !stack_sorted(*a))
+	{
+		init_nodes_a(*a, *b);
+		push_cheapest_a(a, b);
+	}
+	print_stack(b);
+	sort_three(a);
+	/*while(*b)
+	{
+		// initiate nodes from both stacks (focused on b)
+		// move all 'b' nodes back to sorted stack 'a'
+	}
+	//refresh current position of stack 'a'
+	// ensure smallest number is on top*/
 }

@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 09:57:55 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/22 10:32:30 by vanessasant      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -17,27 +6,44 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <limits.h>
 
-#ifndef INT_MAX
-#define INT_MAX 2147483647
-#endif
-
-#ifndef INT_MIN
-#define INT_MIN (-INT_MAX - 1)
-#endif
-
-/*Define the node structure*/ 
+/*Node structure*/ 
 typedef struct s_node
 {
 	int						value;
+	int						index;
+	int						push_price;
+	bool					above_median;
+	bool					cheapest;
+	struct s_node			*target_node;
 	struct s_node			*next;
 }	t_node;
 
-/*Define the stack structure*/
+/*Stack structure*/
 typedef struct s_stack
 {
 	t_node					*top;
 }	t_stack;
+
+/* swap.c */
+void	sa(t_stack *stack_a);
+void	sb(t_stack *stack_b);
+void	ss(t_stack *stack_a, t_stack *stack_b);
+
+/* push.c */
+void	pa(t_stack *stack_a, t_stack *stack_b);
+void	pb(t_stack *stack_b, t_stack *stack_a);
+
+/* rotate.c */
+void	ra(t_stack *stack_a);
+void	rb(t_stack *stack_b);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+
+/* reverse_rotate.c */
+void	rra(t_stack *stack_a);
+void	rrb(t_stack *stack_b);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 /*stack_utils.c*/
 void	init_stack(t_stack **a, char **av, bool flag_ac_2);
@@ -52,33 +58,28 @@ void    free_split_av(char **av);
 int	    check_syntax(char *av);
 int     check_duplicates(t_stack **a, int nbr);
 
-/*small_sort.c*/
-void	small_sort(t_stack *a);
-void	sort_3(t_stack *a);
+/*algorithms.c*/
+void	sort_three(t_stack *a);
+void	big_sort(t_stack **a, t_stack **b);
 
-/* swap.c */
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
-void	swap(t_stack *stack);
+/*algorithm_utils.c*/
+void	index(t_stack *stack);
+void	set_cheapest(t_stack *stack);
+t_node	*find_max(t_stack *stack);
+t_node	*get_cheapest(t_stack *stack);
 
-/* push.c */
-void	pa(t_stack *stack_a, t_stack *stack_b);
-void	pb(t_stack *stack_b, t_stack *stack_a);
-void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr);
-void	push(t_stack *stack, t_node *element);
-t_node	*pop(t_stack *stack);
+/*init_a_for_pb.c*/
+void	init_nodes_a(t_stack **a, t_stack **b);
+void	set_target_for_a(t_stack *a, t_stack *b); // might be set to static
+void	push_cost_analisys_a(t_stack *a, t_stack *b); // might be set to static
 
-/* rotate.c */
-void	rotate(t_stack *stack);
-void	ra(t_stack *stack_a);
-void	rb(t_stack *stack_b);
-void	rr(t_stack *stack_a, t_stack *stack_b);
+/*prep_push_utils.c*/
+void	push_cheapest_a(t_stack *a, t_stack *b);
+//void	push_cheapest_b(t_stack *b, t_stack *a);
+void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
+void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
+void	prep_push(t_stack **stack, t_node *cheapest, char stack_name);
 
-/* reverse_rotate.c */
-void	reverse_rotate(t_stack *stack);
-void	rra(t_stack *stack_a);
-void	rrb(t_stack *stack_b);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
+print_stack(t_stack *stack); // remember to take this out
 
 #endif

@@ -6,9 +6,9 @@ void	init_stack(t_stack **a, char **av, bool flag_ac_2)
     long long   nbr;
 
     *a = malloc(sizeof(t_stack));
-    if (!*a) // Check if the allocation was successful
+    if (!*a)
         error_exit(a, av, flag_ac_2);
-    (*a)->top = NULL; // Initialize top to NULL
+    (*a)->top = NULL;
     i = 0;
     while (av[i])
     {
