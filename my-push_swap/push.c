@@ -1,20 +1,26 @@
 #include "push_swap.h"
 
+static void	from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr);
+static t_node	*pop_op(t_stack *stack);
+static void	push_op(t_stack *stack, t_node *element);
+
 /* Push A. */
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	push_from_to(stack_b, stack_a, "pa\n");
+	from_to(stack_b, stack_a, "pa\n");
+	write(1, "pa\n", 3);
 }
 
 /* Push B. */
 void	pb(t_stack *stack_b, t_stack *stack_a)
 {
-	push_from_to(stack_a, stack_b, "pb\n");
+	from_to(stack_a, stack_b, "pb\n");
+	write(1, "pb\n", 3);
 }
 
 /*Take the first element at the top of source(b) stack and put it at the
 top of destination(a) stack. Do nothing if the src stack is empty*/
-static void	push_from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
+static void	from_to(t_stack *src_stack, t_stack *dest_stack, const char *opr)
 {
 	t_node	*top_elem;
 
