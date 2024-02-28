@@ -2,11 +2,11 @@
 
 void	init_nodes_a(t_stack **a, t_stack **b)
 {
-	index(a);
-	index(b);
-	set_target_for_a(a, b);
-	push_cost_analisys_a(a, b);
-	set_cheapest(a);
+	find_index(*a);
+	find_index(*b);
+	set_target_for_a(*a, *b);
+	push_cost_analisys_a(*a, *b);
+	set_cheapest(*a);
 }
 
 /*I might have to delete my t_stack stucture and only work with node structure

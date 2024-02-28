@@ -29,21 +29,26 @@ void	sort_three(t_stack *a)
 
 void	big_sort(t_stack **a, t_stack **b)
 {
-
 	int	a_len;
 
 	a_len = stack_len(*a);
-	if (a_len-- > 3)
-		pb(b, a);
+	*b = malloc(sizeof(t_stack));
+    if (!*b)
+        return ;
 	if (a_len-- > 3 && !stack_sorted(*a))
-		pb(b, a);
+		pb(*b, *a);
+	//print_stack(*b);
+	if (a_len-- > 3 && !stack_sorted(*a))
+		pb(*b, *a);
+	print_stack(*b, 'B');
 	while (a_len-- > 3 && !stack_sorted(*a))
 	{
-		init_nodes_a(*a, *b);
+		init_nodes_a(a, b);
 		push_cheapest_a(a, b);
 	}
-	print_stack(b);
-	sort_three(a);
+	print_stack(*b, 'B');
+	sort_three(*a);
+	//print_stack(*a, 'A');
 	/*while(*b)
 	{
 		// initiate nodes from both stacks (focused on b)

@@ -8,14 +8,12 @@ static void	push_op(t_stack *stack, t_node *element);
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
 	from_to(stack_b, stack_a, "pa\n");
-	write(1, "pa\n", 3);
 }
 
 /* Push B. */
 void	pb(t_stack *stack_b, t_stack *stack_a)
 {
 	from_to(stack_a, stack_b, "pb\n");
-	write(1, "pb\n", 3);
 }
 
 /*Take the first element at the top of source(b) stack and put it at the

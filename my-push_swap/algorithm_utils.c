@@ -2,7 +2,7 @@
 
 /*Set the node's current position in the stack, 
 and sets the median boolean data to true or false.*/
-void	index(t_stack *stack)
+void	find_index(t_stack *stack)
 {
 	int		i;
 	int		median;

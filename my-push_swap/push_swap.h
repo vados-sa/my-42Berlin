@@ -63,7 +63,7 @@ void	sort_three(t_stack *a);
 void	big_sort(t_stack **a, t_stack **b);
 
 /*algorithm_utils.c*/
-void	index(t_stack *stack);
+void	find_index(t_stack *stack);
 void	set_cheapest(t_stack *stack);
 t_node	*find_max(t_stack *stack);
 t_node	*get_cheapest(t_stack *stack);
@@ -74,12 +74,12 @@ void	set_target_for_a(t_stack *a, t_stack *b); // might be set to static
 void	push_cost_analisys_a(t_stack *a, t_stack *b); // might be set to static
 
 /*prep_push_utils.c*/
-void	push_cheapest_a(t_stack *a, t_stack *b);
+void	push_cheapest_a(t_stack **a, t_stack **b);
 //void	push_cheapest_b(t_stack *b, t_stack *a);
 void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
 void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
 void	prep_push(t_stack **stack, t_node *cheapest, char stack_name);
 
-print_stack(t_stack *stack); // remember to take this out
+void	print_stack(t_stack *stack, char stack_name); // remember to take this out
 
 #endif
