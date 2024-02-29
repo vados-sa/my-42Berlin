@@ -9,22 +9,22 @@ void	error_exit(t_stack **a, char **av, bool flag_ac_2)
     exit(1);
 }
 
-void    free_stack(t_stack **a)
+void    free_stack(t_stack **stack)
 {
     t_node  *current;
     t_node  *next;
 
-    if (!*a || !a)
+    if (!*stack || !stack)
         return ;
-    current = (*a)->top;
+    current = (*stack)->top;
     while (current)
     {
         next = current->next;
         free(current);
         current = next;
     }
-    free (*a);
-    *a = NULL;
+    free (*stack);
+    *stack = NULL;
 }
 
 void    free_split_av(char **av)
