@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-/* void printNode(t_node *node) {
-    printf("Value: %d\n", node->value);
-    printf("Index: %d\n", node->index);
-    printf("Push price: %d\n", node->push_price);
-    printf("Above median: %s\n", node->above_median ? "true" : "false");
-    printf("Cheapest: %s\n", node->cheapest ? "true" : "false");
-    // For target_node, you can print its value if it's not NULL
-    if (node->target_node != NULL) {
-        printf("Target node value: %d\n", node->target_node->value);
-    } else {
-        printf("Target node: NULL\n");
-    }
-} */
-
 void	init_nodes_a(t_stack **a, t_stack **b)
 {
 	find_index(*a);
@@ -23,28 +9,34 @@ void	init_nodes_a(t_stack **a, t_stack **b)
 	set_cheapest(*a);
 }
 
+/* For each node in A, this function interates through the nodes in B to find
+the 'target_node'. The 'target_node' should be the the biggest node in B that
+is still smaller than the node in A ("closest/biggest smaller").
+'match_value' keeps track of the closest number to the node in A, so that the
+next possible smaller nodes in B, with values < 'match_value' are not 
+targeted. */
 void set_target_for_a(t_stack *a, t_stack *b) // might be set to static
 {
 	t_node	*node_a;
 	t_node	*node_b;
 	t_node	*target_node;
-	long	match_index;
+	long	match_value;
 
 	node_a = a->top;
 	while (node_a)
 	{
 		node_b = b->top;
-		match_index = LONG_MIN;
+		match_value = LONG_MIN;
 		while (node_b)
 		{
-			if (node_a->value > node_b->value && node_b->value > match_index)
+			if (node_a->value > node_b->value && node_b->value > match_value)
 			{
-				match_index = node_b->value;
+				match_value = node_b->value;
 				target_node = node_b;
 			}
 			node_b = node_b->next;
 		}
-		if (match_index == LONG_MIN)
+		if (match_value == LONG_MIN)
 			node_a->target_node = find_max(b);
 		else
 			node_a->target_node = target_node;
