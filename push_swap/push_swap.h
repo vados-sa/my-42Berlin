@@ -66,12 +66,12 @@ void	big_sort(t_stack **a, t_stack **b);
 void	find_index(t_stack *stack);
 void	set_cheapest(t_stack *stack);
 t_node	*find_max(t_stack *stack);
+t_node	*find_min(t_stack *stack);
 t_node	*get_cheapest(t_stack *stack);
 
-/*init_a_for_pb.c*/
+/*init_node_struct.c*/
 void	init_nodes_a(t_stack **a, t_stack **b);
-void	set_target_for_a(t_stack *a, t_stack *b); // might be set to static
-void	push_cost_analisys_a(t_stack *a, t_stack *b); // might be set to static
+void	init_nodes_b(t_stack **b, t_stack **a);
 
 /*prep_push_utils.c*/
 void	push_cheapest_a(t_stack **a, t_stack **b);

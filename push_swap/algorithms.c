@@ -49,11 +49,15 @@ void	big_sort(t_stack **a, t_stack **b)
 	print_stack(*b, 'B');
 	print_stack(*a, 'A');
 	sort_three(*a);
-	/*while(*b)
+	print_stack(*a, 'A');
+	init_nodes_b(b, a);
+	/* while(*b)
 	{
-		// initiate nodes from both stacks (focused on b)
-		// move all 'b' nodes back to sorted stack 'a'
+		init_nodes_b(b, a);
+		push_cheapest_b(a, b);
 	}
-	//refresh current position of stack 'a'
-	// ensure smallest number is on top*/
+	print_stack(*b, 'B');
+	free_stack(b);
+	find_index(*a); // refresh current position of stack 'a'
+	smallest_on_top(*a); // ensure smallest number is on top */
 }

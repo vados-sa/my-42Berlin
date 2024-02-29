@@ -43,6 +43,24 @@ t_node	*find_max(t_stack *stack)
 	return (max);
 }
 
+t_node	*find_min(t_stack *stack)
+{
+	t_node	*min;
+	t_node	*current;
+
+	if (!stack || !stack->top)
+ 		return NULL;
+	min = stack->top;
+	current = stack->top->next;
+	while (current)
+	{
+		if (current->value < min->value)
+			min = current;
+		current = current->next;
+	}
+	return (min);
+}
+
 void	set_cheapest(t_stack *stack)
 {
 	t_node		*current;
@@ -69,7 +87,8 @@ void	set_cheapest(t_stack *stack)
 		current = current->next;
 	}
 	if (cheapest_node)
-		cheapest_node->cheapest = true; // Mark the cheapest node as true after resetting others
+		cheapest_node->cheapest = true;
+	printf("Cheapest: %d\n", cheapest_node->value); // Mark the cheapest node as true after resetting others
 }
 
 t_node	*get_cheapest(t_stack *stack)

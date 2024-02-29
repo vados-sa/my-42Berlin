@@ -7,7 +7,7 @@ LIBFTDIR	= ./libft
 
 # SRCS
 SRCS	= main.c stack_utils.c error_manage.c swap.c push.c reverse_rotate.c\
-			rotate.c algorithms.c algorithm_utils.c init_a_for_pb.c\
+			rotate.c algorithms.c algorithm_utils.c init_node_struct.c\
 			prep_push_utils.c
 
 OBJS = $(SRCS:.c=.o)
