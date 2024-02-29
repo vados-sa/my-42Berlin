@@ -23,34 +23,32 @@ void	init_nodes_a(t_stack **a, t_stack **b)
 	set_cheapest(*a);
 }
 
-/*I might have to delete my t_stack stucture and only work with node structure
-or current_b = c_b*/
 void set_target_for_a(t_stack *a, t_stack *b) // might be set to static
 {
-	t_node	*current_a;
-	t_node	*c_b;
+	t_node	*node_a;
+	t_node	*node_b;
 	t_node	*target_node;
 	long	match_index;
 
-	current_a = a->top;
-	while (current_a)
+	node_a = a->top;
+	while (node_a)
 	{
-		c_b = b->top;
+		node_b = b->top;
 		match_index = LONG_MIN;
-		while (c_b)
+		while (node_b)
 		{
-			if (current_a->value > c_b->value && c_b->value > match_index)
+			if (node_a->value > node_b->value && node_b->value > match_index)
 			{
-				match_index = c_b->value;
-				target_node = c_b;
+				match_index = node_b->value;
+				target_node = node_b;
 			}
-			c_b = c_b->next;
+			node_b = node_b->next;
 		}
 		if (match_index == LONG_MIN)
-			current_a->target_node = find_max(b);
+			node_a->target_node = find_max(b);
 		else
-			current_a->target_node = target_node;
-		current_a = current_a->next;
+			node_a->target_node = target_node;
+		node_a = node_a->next;
 	}
 }
 
