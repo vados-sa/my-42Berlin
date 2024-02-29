@@ -47,16 +47,16 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 
 /*stack_utils.c*/
 void	init_stack(t_stack **a, char **av, bool flag_ac_2);
-void    add_to_stack(t_stack *a, int nbr);
+void	add_to_stack(t_stack *a, int nbr);
 int		stack_sorted(t_stack *a);
 int		stack_len(t_stack *stack);
 
 /*error_manage.c*/
 void	error_exit(t_stack **a, char **av, bool flag_ac_2);
-void    free_stack(t_stack **a);
-void    free_split_av(char **av);
-int	    check_syntax(char *av);
-int     check_duplicates(t_stack **a, int nbr);
+void	free_stack(t_stack **a);
+void	free_split_av(char **av);
+int		check_syntax(char *av);
+int		check_duplicates(t_stack **a, int nbr);
 
 /*algorithms.c*/
 void	sort_three(t_stack *a);

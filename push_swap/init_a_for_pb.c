@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+/* void printNode(t_node *node) {
+    printf("Value: %d\n", node->value);
+    printf("Index: %d\n", node->index);
+    printf("Push price: %d\n", node->push_price);
+    printf("Above median: %s\n", node->above_median ? "true" : "false");
+    printf("Cheapest: %s\n", node->cheapest ? "true" : "false");
+    // For target_node, you can print its value if it's not NULL
+    if (node->target_node != NULL) {
+        printf("Target node value: %d\n", node->target_node->value);
+    } else {
+        printf("Target node: NULL\n");
+    }
+} */
+
 void	init_nodes_a(t_stack **a, t_stack **b)
 {
 	find_index(*a);
@@ -58,6 +72,6 @@ void	push_cost_analisys_a(t_stack *a, t_stack *b)  // might be set to static
 			current_a->push_price += current_a->target_node->index;
 		else
 			current_a->push_price += len_b - current_a->target_node->index;
-			current_a = current_a->next;
+		current_a = current_a->next;
 	}
 }

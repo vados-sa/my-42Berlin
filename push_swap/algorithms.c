@@ -33,8 +33,8 @@ void	big_sort(t_stack **a, t_stack **b)
 
 	a_len = stack_len(*a);
 	*b = malloc(sizeof(t_stack));
-    if (!*b)
-        return ;
+	if (!*b)
+		return ;
 	if (a_len-- > 3 && !stack_sorted(*a))
 		pb(*b, *a);
 	//print_stack(*b);
@@ -47,8 +47,8 @@ void	big_sort(t_stack **a, t_stack **b)
 		push_cheapest_a(a, b);
 	}
 	print_stack(*b, 'B');
+	print_stack(*a, 'A');
 	sort_three(*a);
-	//print_stack(*a, 'A');
 	/*while(*b)
 	{
 		// initiate nodes from both stacks (focused on b)

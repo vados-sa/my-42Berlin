@@ -10,7 +10,7 @@ void	push_cheapest_a(t_stack **a, t_stack **b)
 	else if (!cheap_a->above_median && !cheap_a->target_node->above_median)
 		rev_rotate_both(a, b, cheap_a);
 	prep_push(a, cheap_a, 'a');
-	prep_push(a, cheap_a->target_node, 'b');
+	prep_push(b, cheap_a->target_node, 'b');
 	pb(*b, *a);
 }
 
