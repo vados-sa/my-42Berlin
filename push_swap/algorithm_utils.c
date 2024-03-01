@@ -88,7 +88,6 @@ void	set_cheapest(t_stack *stack)
 	}
 	if (cheapest_node)
 		cheapest_node->cheapest = true;
-	printf("Cheapest: %d\n", cheapest_node->value); // Mark the cheapest node as true after resetting others
 }
 
 t_node	*get_cheapest(t_stack *stack)

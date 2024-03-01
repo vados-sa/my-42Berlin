@@ -4,20 +4,6 @@ static void set_target_for_a(t_stack *a, t_stack *b);
 static void	set_target_for_b(t_stack *b, t_stack *a);
 static void	push_cost_analisys(t_stack *stack, t_stack *target_stack);
 
-/* void printNode(t_node *node) {
-    printf("Value: %d\n", node->value);
-    printf("Index: %d\n", node->index);
-    printf("Push price: %d\n", node->push_price);
-    printf("Above median: %s\n", node->above_median ? "true" : "false");
-    printf("Cheapest: %s\n", node->cheapest ? "true" : "false");
-    // For target_node, you can print its value if it's not NULL
-    if (node->target_node != NULL) {
-        printf("Target node value: %d\n", node->target_node->value);
-    } else {
-        printf("Target node: NULL\n");
-    }
-} */
-
 void	init_nodes_a(t_stack **a, t_stack **b)
 {
 	find_index(*a);
@@ -32,8 +18,6 @@ void	init_nodes_b(t_stack **b, t_stack **a)
 	find_index(*b);
 	find_index(*a);
 	set_target_for_b(*b, *a);
-	push_cost_analisys(*b, *a);
-	set_cheapest(*b);
 }
 
 /* For each node in A, this function interates through the nodes in B to find
@@ -67,6 +51,11 @@ static void set_target_for_a(t_stack *a, t_stack *b) // might be set to static
 			node_a->target_node = find_max(b);
 		else
 			node_a->target_node = target_node;
+		/* printf("Node: %d\n", node_a->value);
+		if (node_a->target_node != NULL)
+        	printf("Target node: %d\n", node_a->target_node->value);
+		else
+        	printf("Target node: NULL\n"); */
 		node_a = node_a->next;
 	}
 }
@@ -79,32 +68,24 @@ static void	set_target_for_b(t_stack *b, t_stack *a)
 	long	match_value;
 
 	node_b = b->top;
-	while(node_b)
+	node_a = a->top;
+	match_value = LONG_MAX;
+	while (node_a)
 	{
-		node_a = a->top;
-		match_value = LONG_MAX;
-		while (node_a)
+		if(node_b->value < node_a->value && node_a->value < match_value)
 		{
-			if(node_b->value < node_a->value && node_a->value < match_value)
-			{
-				match_value = node_a->value;
-				target_node = node_a;
-			}
-			node_a = node_a->next;
+			match_value = node_a->value;
+			target_node = node_a;
 		}
-		if (match_value == LONG_MAX)
-			node_b->target_node = find_min(a);
-		else
-			node_b->target_node = target_node;
-		printf("Node B, Value %d\n", node_b->value);
-		if (node_b->target_node != NULL)
-        	printf("Target node in A, value: %d\n", node_b->target_node->value);
-	 	else
-        	printf("Target node: NULL\n");
-		node_b = node_b->next;
+		node_a = node_a->next;
 	}
+	if (match_value == LONG_MAX)
+		node_b->target_node = find_min(a);
+	else
+		node_b->target_node = target_node;
 }
-static void	push_cost_analisys(t_stack *stack, t_stack *target_stack)  // might be set to static
+
+static void	push_cost_analisys(t_stack *stack, t_stack *target_stack)
 {
 	t_node	*current;
 	int		len_a;
@@ -122,30 +103,6 @@ static void	push_cost_analisys(t_stack *stack, t_stack *target_stack)  // might 
 			current->push_price += current->target_node->index;
 		else
 			current->push_price += len_b - current->target_node->index;
-		printf("Node value %d\n", current->value);
-		printf("Push price: %d\n", current->push_price);
 		current = current->next;
 	}
 }
-
-/* void	push_cost_analisys_a(t_stack *a, t_stack *b)  // might be set to static
-{
-	t_node	*current_a;
-	int		len_a;
-	int		len_b;
-
-	current_a = a->top;
-	len_a = stack_len(a);
-	len_b = stack_len(b);
-	while (current_a)
-	{
-		current_a->push_price = current_a->index;
-		if (!current_a->above_median)
-			current_a->push_price = len_a - current_a->index;
-		if (current_a->target_node->above_median == true)
-			current_a->push_price += current_a->target_node->index;
-		else
-			current_a->push_price += len_b - current_a->target_node->index;
-		current_a = current_a->next;
-	}
-} */

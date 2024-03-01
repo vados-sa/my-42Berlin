@@ -75,7 +75,7 @@ void	init_nodes_b(t_stack **b, t_stack **a);
 
 /*prep_push_utils.c*/
 void	push_cheapest_a(t_stack **a, t_stack **b);
-//void	push_cheapest_b(t_stack *b, t_stack *a);
+void	push_back_to_a(t_stack **b, t_stack **a);
 void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
 void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
 void	prep_push(t_stack **stack, t_node *cheapest, char stack_name);
