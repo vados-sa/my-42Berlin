@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 13:48:22 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 14:02:35 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -11,13 +22,13 @@
 /*Node structure*/ 
 typedef struct s_node
 {
-	int						value;
-	int						index;
-	int						push_price;
-	bool					above_median;
-	bool					cheapest;
-	struct s_node			*target_node;
-	struct s_node			*next;
+	int				value;
+	int				index;
+	int				push_price;
+	bool			above_median;
+	bool			cheapest;
+	struct s_node	*target_node;
+	struct s_node	*next;
 }	t_node;
 
 /*Stack structure*/
@@ -76,10 +87,5 @@ void	init_nodes_b(t_stack **b, t_stack **a);
 /*prep_push_utils.c*/
 void	push_cheapest_a(t_stack **a, t_stack **b);
 void	push_back_to_a(t_stack **b, t_stack **a);
-void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
-void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
-void	prep_push(t_stack **stack, t_node *cheapest, char stack_name);
-
-void	print_stack(t_stack *stack, char stack_name); // remember to take this out
 
 #endif

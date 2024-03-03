@@ -1,31 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 13:43:01 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 13:44:56 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void	print_stack(t_stack *stack, char stack_name) // remember to take this out
-{
-    t_node *current;
-
-	current = stack->top;
-    printf("Stack contents %c:\n", stack_name);
-    while (current)
-	{
-        printf("%d\n", current->value);
-        current = current->next;
-    }
-}
-//print_stack(a, 'A');
-/* void printNode(t_node *node) {
-    printf("Value: %d\n", node->value);
-    printf("Index: %d\n", node->index);
-    printf("Push price: %d\n", node->push_price);
-    printf("Above median: %s\n", node->above_median ? "true" : "false");
-    printf("Cheapest: %s\n", node->cheapest ? "true" : "false");
-    // For target_node, you can print its value if it's not NULL
-    if (node->target_node != NULL) {
-        printf("Target node value: %d\n", node->target_node->value);
-    } else {
-        printf("Target node: NULL\n");
-    }
-} */
 
 int	main(int ac, char *av[])
 {

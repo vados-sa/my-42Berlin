@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 14:09:01 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 14:09:28 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /* Swap the first 2 elements at the top of stack.
@@ -8,12 +20,12 @@ static void	swap(t_stack *stack)
 	t_node	*second;
 
 	if (!stack || !stack->top || !stack->top->next)
-		return ; // checks if there are at least two elements to swap.
-	first = stack->top; // first points to the top node.
-	second = first->next; // second points to the node immediately after the top.
-	first->next = second->next; // first now points to the third node in the stack, or NULL if no third node exists. 
-	second->next = first; // sets second to point to node first, that is now second.
-	stack->top = second; // updates 'top' pointer of t_stack points to second, making it the top element of the stack.
+		return ;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
 }
 /* 'stack->top' access the top node of the stack.
    'stack->top->next' access the second node. */

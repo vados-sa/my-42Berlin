@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_node_struct.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 13:59:40 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 14:25:58 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void set_target_for_a(t_stack *a, t_stack *b);
+static void	set_target_for_a(t_stack *a, t_stack *b);
 static void	set_target_for_b(t_stack *b, t_stack *a);
-static void	push_cost_analisys(t_stack *stack, t_stack *target_stack);
+static void	push_cost_analysis(t_stack *stack, t_stack *target_stack);
 
 void	init_nodes_a(t_stack **a, t_stack **b)
 {
 	find_index(*a);
 	find_index(*b);
 	set_target_for_a(*a, *b);
-	push_cost_analisys(*a, *b);
+	push_cost_analysis(*a, *b);
 	set_cheapest(*a);
 }
 
@@ -26,7 +38,7 @@ is still smaller than the node in A ("closest/biggest smaller").
 'match_value' keeps track of the closest number to the node in A, so that the
 next possible smaller nodes in B, with values < 'match_value' are not 
 targeted. */
-static void set_target_for_a(t_stack *a, t_stack *b) // might be set to static
+static void	set_target_for_a(t_stack *a, t_stack *b)
 {
 	t_node	*node_a;
 	t_node	*node_b;
@@ -67,7 +79,7 @@ static void	set_target_for_b(t_stack *b, t_stack *a)
 	match_value = LONG_MAX;
 	while (node_a)
 	{
-		if(node_b->value < node_a->value && node_a->value < match_value)
+		if (node_b->value < node_a->value && node_a->value < match_value)
 		{
 			match_value = node_a->value;
 			target_node = node_a;
@@ -80,7 +92,7 @@ static void	set_target_for_b(t_stack *b, t_stack *a)
 		node_b->target_node = target_node;
 }
 
-static void	push_cost_analisys(t_stack *stack, t_stack *target_stack)
+static void	push_cost_analysis(t_stack *stack, t_stack *target_stack)
 {
 	t_node	*current;
 	int		len_a;

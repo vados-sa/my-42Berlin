@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithms.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 13:53:00 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 13:53:16 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	smallest_on_top(t_stack **a)
@@ -5,7 +17,7 @@ static void	smallest_on_top(t_stack **a)
 	t_node	*smallest;
 
 	if (!a || !(*a)->top)
- 		return ;
+		return ;
 	smallest = find_min(*a);
 	while ((*a)->top != smallest)
 	{
@@ -60,7 +72,7 @@ void	big_sort(t_stack **a, t_stack **b)
 	}
 	if (!stack_sorted(*a))
 		sort_three(*a);
-	while((*b)->top)
+	while ((*b)->top)
 	{
 		init_nodes_b(b, a);
 		push_back_to_a(b, a);

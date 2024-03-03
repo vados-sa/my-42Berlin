@@ -6,14 +6,14 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:45 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/20 15:14:19 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/03 13:46:57 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char			**ft_split(char const *s, char c);
-static int	count_words(char const *s, char c);
+static int		count_words(char const *s, char c);
 static char		*fill_words(char const *s, char c);
 
 static int	count_words(char const *s, char c)
@@ -61,6 +61,7 @@ static char	*fill_words(char const *s, char c)
 	return (arg_str);
 }
 
+/*+ 2 to allocate space for the "\0" Placeholder and the final NULL*/
 char	**ft_split(char const *s, char c)
 {
 	int			words;
@@ -69,9 +70,9 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	words = count_words(s, c);
-	if(!words)
+	if (!words)
 		exit(1);
-	array = malloc((words + 2) * sizeof(char *)); //+ 2 to allocate space for the "\0" Placeholder and the final NULL
+	array = malloc((words + 2) * sizeof(char *));
 	if (!array)
 		return (NULL);
 	while (words-- >= 0)

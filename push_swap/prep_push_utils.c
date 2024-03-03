@@ -1,4 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prep_push_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/03 14:00:27 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/03 14:10:33 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+static void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
+static void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest);
+static void	prep_push(t_stack **stack, t_node *cheapest, char stack_name);
 
 void	push_cheapest_a(t_stack **a, t_stack **b)
 {
@@ -21,7 +37,7 @@ void	push_back_to_a(t_stack **b, t_stack **a)
 	b_node = (*b)->top;
 	while ((*a)->top != b_node->target_node)
 	{
-		if(b_node->target_node->above_median)
+		if (b_node->target_node->above_median)
 			ra(*a);
 		else
 			rra(*a);
@@ -29,7 +45,7 @@ void	push_back_to_a(t_stack **b, t_stack **a)
 	pa(*a, *b);
 }
 
-void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest) // might be set to static
+static void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest)
 {
 	while ((*a)->top != cheapest && (*b)->top != cheapest->target_node)
 		rr(*a, *b);
@@ -37,7 +53,7 @@ void	rotate_both(t_stack **a, t_stack **b, t_node *cheapest) // might be set to 
 	find_index(*b);
 }
 
-void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest) // might be set to static
+static void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest)
 {
 	while ((*a)->top != cheapest && (*b)->top != cheapest->target_node)
 		rrr(*a, *b);
@@ -45,7 +61,7 @@ void	rev_rotate_both(t_stack **a, t_stack **b, t_node *cheapest) // might be set
 	find_index(*b);
 }
 
-void	prep_push(t_stack **stack, t_node *cheapest, char stack_name) // might be set to static
+static void	prep_push(t_stack **stack, t_node *cheapest, char stack_name)
 {
 	while ((*stack)->top != cheapest)
 	{
