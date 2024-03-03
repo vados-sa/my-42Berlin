@@ -51,11 +51,6 @@ static void set_target_for_a(t_stack *a, t_stack *b) // might be set to static
 			node_a->target_node = find_max(b);
 		else
 			node_a->target_node = target_node;
-		/* printf("Node: %d\n", node_a->value);
-		if (node_a->target_node != NULL)
-        	printf("Target node: %d\n", node_a->target_node->value);
-		else
-        	printf("Target node: NULL\n"); */
 		node_a = node_a->next;
 	}
 }
