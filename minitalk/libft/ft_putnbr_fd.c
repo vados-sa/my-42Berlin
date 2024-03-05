@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/28 13:52:30 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:51:28 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
-	i = 0;
-	while (av[1][i])
+	long int	nbr;
+
+	nbr = n;
+	if (nbr < 0)
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
+		ft_putchar_fd('-', fd);
+		nbr = -nbr;
 	}
-	// process the message to be sent to server.
-	return (0);
+	if (nbr > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
 }

@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/23 11:37:28 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:46:13 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
+
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
-	while (av[1][i])
+	while (i < n)
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
-	// process the message to be sent to server.
 	return (0);
 }

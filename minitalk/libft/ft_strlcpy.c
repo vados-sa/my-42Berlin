@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/12/04 09:15:05 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/04 09:15:07 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	size_t	i;
+	size_t	src_len;
+
+	src_len = ft_strlen(src);
 	i = 0;
-	while (av[1][i])
+	if (dstsize > src_len + 1)
+		ft_memcpy(dst, src, src_len + 1);
+	else if (dstsize != 0)
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = 0;
 	}
-	// process the message to be sent to server.
-	return (0);
+	return (src_len);
 }

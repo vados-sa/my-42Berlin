@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/20 12:08:35 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:45:15 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
-	i = 0;
-	while (av[1][i])
+	char	*ptr;
+
+	ptr = (char *)s;
+	while (*ptr != '\0')
+		ptr++;
+	while (ptr >= s)
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
+		if (*ptr == (unsigned char)c)
+			return (ptr);
+		ptr--;
 	}
-	// process the message to be sent to server.
 	return (0);
 }

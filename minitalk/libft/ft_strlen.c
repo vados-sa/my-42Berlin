@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/14 14:30:50 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/02/04 17:57:02 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+size_t	ft_strlen(const char *str)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	size_t	i;
+
 	i = 0;
-	while (av[1][i])
-	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
+	while (str[i])
 		i++;
-	}
-	// process the message to be sent to server.
-	return (0);
+	return (i);
 }
+/*
+Should my funtion segfault when a null parameter is passed?
+	if (!str)
+		return (i); */

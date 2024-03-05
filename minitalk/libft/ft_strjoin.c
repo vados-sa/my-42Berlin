@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/28 13:54:19 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:48:08 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	size_t	i;
+	size_t	j;
+	char	*join;
+
+	join = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!join)
+		return (NULL);
 	i = 0;
-	while (av[1][i])
-	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
-	}
-	// process the message to be sent to server.
-	return (0);
+	j = 0;
+	while (s1[i])
+		join[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		join[j++] = s2[i++];
+	join[j] = '\0';
+	return (join);
 }

@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/20 11:56:25 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/01/05 17:08:04 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
-	while (av[1][i])
+	if (needle[0] == '\0')
+		return ((char *)haystack + 0);
+	while (haystack[i] != '\0')
 	{
-		if(!ft_isdigit(av[1][i]))
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j < len))
 		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
+			if (needle[j + 1] == '\0')
+				return ((char *)haystack + i);
+			j++;
 		}
 		i++;
 	}
-	// process the message to be sent to server.
 	return (0);
 }

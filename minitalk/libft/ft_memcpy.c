@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/21 10:39:41 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:42:15 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
-	i = 0;
-	while (av[1][i])
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	if (dest == (void *)0 && src == (void *)0)
+		return (dest);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src; 
+	while ((n > 0))
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
+		*d++ = *s++;
+		n--;
 	}
-	// process the message to be sent to server.
-	return (0);
+	return (dest);
 }

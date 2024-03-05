@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 15:36:07 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/11/24 18:31:27 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/11/30 10:47:20 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+char	*ft_strdup(const char *s1)
 {
-	int	i;
-	
-	if (ac != 3)
-		printf("Wrong format!\n");
+	int		i;
+	char	*dest;
+
+	dest = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
 	i = 0;
-	while (av[1][i])
+	while (s1[i] != '\0')
 	{
-		if(!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
+		dest[i] = s1[i];
 		i++;
 	}
-	// process the message to be sent to server.
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }

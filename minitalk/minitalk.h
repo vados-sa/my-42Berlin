@@ -6,7 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:34 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/04 19:01:35 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:58:12 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include <unistd.h>
+# include <stdlib.h>
+# include <signal.h>
+# include <stdio.h> // take out
