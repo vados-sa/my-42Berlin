@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   print_hex_int_upper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 17:09:11 by vados-sa         ###   ########.fr       */
+/*   Created: 2023/12/19 10:14:48 by vados-sa          #+#    #+#             */
+/*   Updated: 2023/12/20 12:35:00 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../ft_printf.h"
 
-/*
-* av[1]: server's PID.
-* av[2]: message to be sent
-*/
-int	main(int ac, char *av[])
+int	print_hex_int_upper(unsigned int nbr)
 {
-	int	i;
-
-	if (ac != 3)
-		printf("Wrong format!\n");
-	i = 0;
-	while (av[1][i])
-	{
-		if (!ft_isdigit(av[1][i]))
-		{
-			ft_printf("Incorrect PID.\nPID should only have digits.\n");
-			exit ;
-		}
-		i++;
-	}
-	// process the message to be sent to server.
-	return (0);
+	return (ft_putnbr_hex_base(nbr, "0123456789ABCDEF"));
 }
