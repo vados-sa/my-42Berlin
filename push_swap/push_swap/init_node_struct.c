@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 13:59:40 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/03 14:25:58 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:19:06 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,28 @@ static void	push_cost_analysis(t_stack *stack, t_stack *target_stack)
 		current->push_price = current->index;
 		if (!current->above_median)
 			current->push_price = len_a - current->index;
+		if (current->above_median && current->target_node->above_median
+			&& current->index < current->target_node->index)
+			current->push_price = current->target_node->index;
+		else if (!current->above_median && !current->target_node->above_median
+			&& len_b - current->target_node->index > len_a - current->index)
+			current->push_price = (len_b - current->target_node->index);
+		else if (current->above_median && !current->target_node->above_median)
+			current->push_price += len_b - current->target_node->index;
+		else if (!current->above_median && current->target_node->above_median)
+			current->push_price += current->target_node->index;
+		current = current->next;
+	}
+}
+	/* old version to calculate push_cost 
+	while (current)
+	{
+		current->push_price = current->index;
+		if (!current->above_median)
+			current->push_price = len_a - current->index;
 		if (current->target_node->above_median == true)
 			current->push_price += current->target_node->index;
 		else
 			current->push_price += len_b - current->target_node->index;
 		current = current->next;
-	}
-}
+	} */
