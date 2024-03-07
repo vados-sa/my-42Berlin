@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/07 15:45:00 by vados-sa          #+#    #+#              #
+#    Updated: 2024/03/07 16:16:10 by vados-sa         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME	= checker
 
@@ -12,7 +23,7 @@ PUSH_SWAP_DIR = ../push_swap
 # Library Paths
 LIBS = -L$(LIBFT_DIR) -lft -L$(PUSH_SWAP_DIR) -lpush_swap
 
-SRCS	= checker.c get_next_line.c 
+SRCS	= checker_main.c utils.c get_next_line.c 
 OBJS = $(SRCS:.c=.o)
 
 all:	$(NAME)

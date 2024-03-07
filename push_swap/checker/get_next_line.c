@@ -1,21 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/07 15:45:07 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/03/07 15:45:10 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "checker.h"
 
 static char		*set_remaining(char *line);
 static char		*read_line(char *remain, char *buffer, int fd);
-
-/* SAME AS LIBFT 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	if (!str)
-		return (i);
-	while (str[i])
-		i++;
-	return (i);
-} */
 
 /* This function extracts the part of the string following the newline
 and modifies the original string to end at the newline.
@@ -98,30 +96,3 @@ char	*get_next_line(int fd)
 	remain = set_remaining(line); 
 	return (line);
 }
-
-/*
-# include <fcntl.h>
-# include <stdio.h>
-int	main(void)
-{
-	int		fd;
-	int		i;
-	char	*line;
-
-	fd = open("get_next_line.h", O_RDONLY);
-	if (fd == -1)
-    	return 1;
-	i = 1;
-	while (i < 100)
-	{
-		line = get_next_line(fd);
-		if (line != NULL)
-			printf("line %d: %s", i, line);
-		if (line == NULL)
-			break;
-		i++;
-		free(line);
-	}
-	close(fd);
-	return (0);
-} */
