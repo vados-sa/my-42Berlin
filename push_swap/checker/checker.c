@@ -1,7 +1,8 @@
+
 #include "checker.h"
 
-static void	apply_instructions(const char *instruct, t_stack *a, t_stack *b); //should maybe take the stacks.
-static void init_b(t_stack **b, t_stack **a);
+static void	apply_instructions(char *instruct, t_stack *a, t_stack *b);
+static void	init_b(t_stack **b, t_stack **a);
 static int	ft_strcmp(char *str_1, char *str_2);
 static void	error(t_stack **a, t_stack **b);
 
@@ -14,7 +15,7 @@ static void	error(t_stack **a, t_stack **b)
 
 }
 
-static void init_b(t_stack **b, t_stack **a)
+static void	init_b(t_stack **b, t_stack **a)
 {
 	*b = malloc(sizeof(t_stack));
 	if (!*b)
@@ -33,7 +34,7 @@ static int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
-static void	apply_instructions(const char *instruct, t_stack *a, t_stack *b)
+static void	apply_instructions(char *instruct, t_stack *a, t_stack *b)
 {
 	if (ft_strcmp(instruct, "sa\n") == 0)
 		sa(a);
@@ -75,16 +76,16 @@ int	main(int ac, char *av[])
 		av = ft_split(av[1], ' ');
 	init_stack(&a, av + 1, ac == 2);
 	init_b(&b, &a);
-	while ((instruction = get_next_line(0))) // 0 is the file descriptor for stdin
-    {
-		apply_instructions(instruction, a ,b);
+	while ((instruction = get_next_line(0)))
+	{
+		apply_instructions(instruction, a, b);
 		free (instruction);
 	}
 	if (stack_sorted(a) && b->top == NULL)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(a);
-	free_stack(b);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

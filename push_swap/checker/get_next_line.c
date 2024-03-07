@@ -2,7 +2,7 @@
 #include "checker.h"
 
 static char		*set_remaining(char *line);
-static char	*read_line(char *remain, char *buffer, int fd);
+static char		*read_line(char *remain, char *buffer, int fd);
 
 /* SAME AS LIBFT 
 size_t	ft_strlen(const char *str)
