@@ -6,11 +6,15 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/09 17:14:31 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:00:21 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
+#include "./ft_printf/ft_printf.h"
+#include "./libft/libft.h"
 
 void	error_exit(void)
 {
@@ -42,16 +46,10 @@ void	send_bit(char c, int pid)
 	}
 }
 
-void	check_input(int ac, char *pid)
+void	check_pid(char *pid)
 {
 	int	i;
 
-	if (ac != 3)
-	{
-		ft_printf("Wrong format!\n");
-		ft_printf("Please insert this way: ./client <PID> message\n");
-		exit(1);
-	}
 	i = 0;
 	while (pid[i])
 	{
@@ -70,6 +68,12 @@ int	main(int ac, char *av[])
 	int	i;
 	int	pid;
 
+	if (ac != 3 /* || !av[2][0] */) // check if empty string is allowed or not
+	{
+		ft_printf("Wrong format!\n");
+		ft_printf("Usage: %s <PID> \"Message\"\n", av[0]);
+		return(1);
+    }
 	i = 0;
 	pid = ft_atoi(av[1]);
 	if (pid <= 0)
@@ -77,12 +81,12 @@ int	main(int ac, char *av[])
 	    ft_printf("Invalid PID.\nIt should be a positive number!\n");
 	    exit(1);
 	}
-	check_input(ac, av[1]);
+	check_pid(av[1]);
 	while (av[2][i])
 	{
 		send_bit(av[2][i], pid);
 		i++;
 	}
-	send_bit((char)4, pid); //ASCII decimal = 4: EOT (End of Transmition) to indicate the end of messege.
+	send_bit((char)4, pid);
 	return (0);
 }

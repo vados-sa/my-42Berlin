@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 19:01:31 by vados-sa          #+#    #+#              #
-#    Updated: 2024/03/05 17:08:43 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/03/12 12:18:14 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,10 @@ FT_PRINTF_LIB = $(FT_PRINTF)/libftprintf.a
 # Soure files
 SERVER_SRC	= server.c
 CLIENT_SRC	= client.c
-SRC			= utils.c
 
 # Object files
 SERVER_OBJ	= $(SERVER_SRC:.c=.o)
 CLIENT_OBJ	= $(CLIENT_SRC:.c=.o)
-OBJS		= $(SRC:.c=.o)
 
 # Executables
 SERVER = server
@@ -41,10 +39,10 @@ all: libft ft_printf $(SERVER) $(CLIENT)
 
 # Compiling libft and ft_printf
 libft:
-    @$(MAKE) -C $(LIBFT)
+	@$(MAKE) -C $(LIBFT)
 
 ft_printf:
-    @$(MAKE) -C $(FT_PRINTF)
+	@$(MAKE) -C $(FT_PRINTF)
 
 # Building server and client executables
 $(SERVER): $(SERVER_OBJ) $(OBJS)
