@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/12 15:00:21 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:54:35 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "./ft_printf/ft_printf.h"
 #include "./libft/libft.h"
 
-void	error_exit(void)
+static void	error_exit(void)
 {
 	ft_printf("Error\n");
 	exit(1);
@@ -46,7 +46,7 @@ void	send_bit(char c, int pid)
 	}
 }
 
-void	check_pid(char *pid)
+static void	check_pid(char *pid)
 {
 	int	i;
 

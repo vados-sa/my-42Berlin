@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:00:35 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/12 15:29:29 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:05:22 by vanessasant      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
 
-void    handle_signal(int sig)
+static void    handle_signal(int sig)
 {
 	static unsigned char	byte;
 	static int				bit_count;
@@ -28,8 +28,9 @@ void    handle_signal(int sig)
 	{
 		if (byte == 4)
 		{
-			
-			exit(0);
+			byte = 0;
+			bit_count = 0;
+			return ;
 		}
 		ft_printf("%c", byte); //print each byte until the message it's over.
         byte = 0;
