@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vanessasantos <vanessasantos@student.42    +#+  +:+       +#+        */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/13 11:54:35 by vanessasant      ###   ########.fr       */
+/*   Updated: 2024/03/14 14:13:38 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	send_bit(char c, int pid)
 			if (kill(pid, SIGUSR2) == -1)
 				error_exit();
 		}
-		usleep(100); //verify if the delay is adequate
+		usleep(1000);
 		i--;
 	}
 }
@@ -68,18 +68,18 @@ int	main(int ac, char *av[])
 	int	i;
 	int	pid;
 
-	if (ac != 3 /* || !av[2][0] */) // check if empty string is allowed or not
+	if (ac != 3)
 	{
-		ft_printf("Wrong format!\n");
-		ft_printf("Usage: %s <PID> \"Message\"\n", av[0]);
-		return(1);
-    }
+		ft_printf("Ops! Wrong format!\n\n");
+		ft_printf("Proper usage: %s <PID> \"Message\"\n", av[0]);
+		return (1);
+	}
 	i = 0;
 	pid = ft_atoi(av[1]);
 	if (pid <= 0)
 	{
-	    ft_printf("Invalid PID.\nIt should be a positive number!\n");
-	    exit(1);
+		ft_printf("Invalid PID.\nIt should be a positive number!\n");
+		return (1);
 	}
 	check_pid(av[1]);
 	while (av[2][i])
