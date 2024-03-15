@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/15 11:49:12 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:44:36 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static void	error_exit(void)
 {
-	ft_printf("Error\n");
+	ft_printf("\nError\n\n");
 	exit(1);
 }
 
@@ -55,7 +55,7 @@ static void	check_pid(char *pid)
 	{
 		if (!ft_isdigit(pid[i]))
 		{
-			ft_printf("Invalid PID.\nIt should only contain digits!\n");
+			ft_printf("\nInvalid PID.\n\nIt should only contain digits!\n\n");
 			exit(1);
 		}
 		i++;
@@ -70,15 +70,15 @@ int	main(int ac, char *av[])
 
 	if (ac != 3)
 	{
-		ft_printf("Ops! Wrong format!\n\n");
-		ft_printf("Proper usage: %s <PID> \"Message\"\n", av[0]);
+		ft_printf("\nOpsie! Wrong format!\n\n");
+		ft_printf("Proper usage: %s <PID> \"Message\"\n\n", av[0]);
 		return (1);
 	}
 	i = 0;
 	pid = ft_atoi(av[1]);
 	if (pid <= 0)
 	{
-		ft_printf("Invalid PID.\nIt should be a positive number!\n");
+		ft_printf("\nInvalid PID.\n\nIt should be a positive number!\n\n");
 		return (1);
 	}
 	check_pid(av[1]);
