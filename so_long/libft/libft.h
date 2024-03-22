@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:33:20 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/02/05 12:12:27 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/22 10:32:52 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char		*get_next_line(int fd);
 
 typedef struct s_list
 {
