@@ -6,13 +6,13 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:16:29 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 16:27:06 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:40:21 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:18:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/05 16:26:12 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:40:42 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_printf(const char *format, ...);
 int			ft_putnbr_base(int nbr, char *base);
 int			ft_putnbr_base_unsign(unsigned int nbr, char *base);
 int			ft_putnbr_hex_base(unsigned long long nbr, char *base);
-size_t		ft_strlen(const char *str);
+//size_t		ft_strlen(const char *str);
 
 /*printers*/
 int			print_char(char c);
