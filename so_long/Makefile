@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 17:28:49 by vados-sa          #+#    #+#              #
-#    Updated: 2024/03/18 18:03:44 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/03/23 15:36:54 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ MLX_LIB = $(MINILIBX)
 MLX_FLAGS = -L$(MLX_LIB) -lmlx -lXext -lX11
 
 # Soure files
-SRC = main.c
+SRC = main.c parse_map.c
 
 # Object files
 OBJS = $(SRC:.c=.o)
