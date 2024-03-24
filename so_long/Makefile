@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 17:28:49 by vados-sa          #+#    #+#              #
-#    Updated: 2024/03/23 15:36:54 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/03/24 14:07:25 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ MLX_LIB = $(MINILIBX)
 MLX_FLAGS = -L$(MLX_LIB) -lmlx -lXext -lX11
 
 # Soure files
-SRC = main.c parse_map.c
+SRC = main.c initial_check.c parse_map.c
 
 # Object files
 OBJS = $(SRC:.c=.o)
@@ -39,13 +39,13 @@ all: libft ft_printf minilibx $(NAME)
 
 # Compiling libft and ft_printf
 libft:
-	@$(MAKE) -C $(LIBFT)
+	@$(MAKE) -s -C $(LIBFT)
 
 ft_printf:
-	@$(MAKE) -C $(FT_PRINTF)
+	@$(MAKE) -s -C $(FT_PRINTF)
 
 minilibx:
-	@$(MAKE) -C $(MINILIBX)
+	@$(MAKE) -s -C $(MINILIBX)
 
 # Building executables
 $(NAME): $(OBJS)
@@ -54,15 +54,15 @@ $(NAME): $(OBJS)
 # Cleanup
 clean:
 	$(RM) $(OBJS)
-	@$(MAKE) -C $(LIBFT) clean
-	@$(MAKE) -C $(FT_PRINTF) clean
-	@$(MAKE) -C $(MINILIBX) clean
+	@$(MAKE) -s -C $(LIBFT) clean
+	@$(MAKE) -s -C $(FT_PRINTF) clean
+	@$(MAKE) -s -C $(MINILIBX) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	@$(MAKE) -C $(LIBFT) fclean
-	@$(MAKE) -C $(FT_PRINTF) fclean
-	@$(MAKE) -C $(MINILIBX) clean 
+	@$(MAKE) -s -C $(LIBFT) fclean
+	@$(MAKE) -s -C $(FT_PRINTF) fclean
+	@$(MAKE) -s -C $(MINILIBX) clean 
                             # Usually MinilibX doesn't have an fclean rule, but calling clean as a safety
 
 re: fclean all

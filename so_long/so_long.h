@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/23 17:14:09 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/24 14:06:52 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ typedef struct s_data
 
 typedef struct s_map
 {
-	char	**tiles;
-	int		width;
-	int		height;
+	char			**tiles;
+	unsigned int	width;
+	int				height;
 }	t_map;
 
 typedef struct s_wrapper
@@ -52,6 +52,10 @@ typedef struct s_wrapper
 	t_data	*data;
 	t_map	*map;
 } t_wrapper;
+
+/*initial_check.c*/
+void	check_arguments(int ac);
+int		check_fd(const char *filename);
 
 t_map	*read_map(const char *filename);
 
