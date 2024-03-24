@@ -81,7 +81,10 @@ t_map	*read_map(const char *filename)
 	fd = check_fd(filename);
 	map = init_map();
 	if (!map)
-		return (NULL);
+	{
+		ft_printf("\nError while initializing the map!\n\n");
+		exit (1);
+	}
 	while (1)
 	{
 		row = get_next_line(fd);
