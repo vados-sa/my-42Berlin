@@ -6,7 +6,10 @@ static t_map	*init_map(void)
 
 	map = malloc(sizeof(t_map)); // map is not being freed
 	if (!map)
-		return (NULL);
+	{
+		ft_printf("\nError while initializing the map!\n\n");
+		exit (1);
+	}
 	map->tiles = NULL;
 	map->height = 0;
 	map->width = 0;
@@ -79,12 +82,7 @@ t_map	*read_map(const char *filename)
 	t_map	*map;
 
 	fd = check_fd(filename);
-	map = init_map();
-	if (!map)
-	{
-		ft_printf("\nError while initializing the map!\n\n");
-		exit (1);
-	}
+	map = init_map(); //in case of error, init_map handles it.
 	while (1)
 	{
 		row = get_next_line(fd);
