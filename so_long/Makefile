@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 17:28:49 by vados-sa          #+#    #+#              #
-#    Updated: 2024/03/24 14:07:25 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/03/24 14:40:42 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ RM			= rm -rf
 LIBFT = ./libft
 FT_PRINTF = ./ft_printf
 MINILIBX = ./minilibx-linux
+OBJDIR = ./objects
+
+$(shell mkdir -p $(OBJDIR))
 
 # Libraries
 LIBFT_LIB = $(LIBFT)/libft.a
@@ -33,7 +36,7 @@ MLX_FLAGS = -L$(MLX_LIB) -lmlx -lXext -lX11
 SRC = main.c initial_check.c parse_map.c
 
 # Object files
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
 
 all: libft ft_printf minilibx $(NAME)
 
@@ -51,9 +54,13 @@ minilibx:
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(FT_PRINTF_LIB) $(MLX_FLAGS) -o $(NAME)
 
+# Compilation rule for object files
+$(OBJDIR)/%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 # Cleanup
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJDIR)
 	@$(MAKE) -s -C $(LIBFT) clean
 	@$(MAKE) -s -C $(FT_PRINTF) clean
 	@$(MAKE) -s -C $(MINILIBX) clean
