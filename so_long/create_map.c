@@ -51,30 +51,6 @@ static int	update_map(t_map *map, char *new_row)
 	return (0);
 }
 
-static void	error_exit(t_map *map, int fd) // maybe put in another file
-{
-	int	i;
-	char *temp;
-
-	i = 0;
-	while (i < map->height)
-	{
-		free(map->tiles[i++]);
-		//i++;
-	}
-	free(map->tiles);
-	free(map);
-	while (1)
-	{
-		temp = get_next_line(fd);
-		if (!temp)
-			break ;
-		free(temp);
-	}
-	ft_printf("\nError!\n\n");
-	exit (1);
-}
-
 t_map	*read_map(const char *filename)
 {
 	int		fd;
@@ -100,6 +76,6 @@ t_map	*read_map(const char *filename)
 		//free (row);
 	}
 	close(fd);
-	//validate_map(map);
+	validate_map(map);
 	return (map);
 }

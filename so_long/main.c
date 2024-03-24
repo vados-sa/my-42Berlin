@@ -1,22 +1,4 @@
 #include "so_long.h"
-void	free_map(t_map *map);
-
-void cleanup(t_wrapper *wrapper)
-{
-    if (wrapper->data->win_ptr != NULL)
-    {
-        mlx_destroy_window(wrapper->data->mlx_ptr, wrapper->data->win_ptr);
-        wrapper->data->win_ptr = NULL;
-    }
-    if (wrapper->data->mlx_ptr != NULL)
-    {
-        mlx_destroy_display(wrapper->data->mlx_ptr);
-        free(wrapper->data->mlx_ptr);
-        wrapper->data->mlx_ptr = NULL;
-    }
-	free_map(wrapper->map);
-    exit (0);
-}
 
 int	handle_keypress(int keysym, t_wrapper *wrapper)
 {
@@ -60,25 +42,14 @@ int	render_background(t_data *data)
 	return (0);
 }
 
-void	free_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->height)
-		free(map->tiles[i++]);
-	free(map->tiles);
-	free(map);
-	return ;
-}
-
-int	main(void)
+int	main(int ac, char *av[])
 {
 	t_data		data;
 	t_map		*map;
 	t_wrapper	wrapper;
 
-	map = read_map("map.ber");
+	check_arguments(ac);
+	map = read_map(av[1]);
 	wrapper.data = &data;
 	wrapper.map = map;
 	data.mlx_ptr = mlx_init();
@@ -89,8 +60,7 @@ int	main(void)
 	{
 		free(data.win_ptr);
 		return (MLX_ERROR);
-	}
-	/* Setup hooks */ 
+	} /* Setup hooks */ 
 	mlx_loop_hook(data.mlx_ptr, &render_background, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &wrapper);
 	mlx_hook(data.win_ptr, 17, 1L<<17, close_window, &wrapper);

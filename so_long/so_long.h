@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/24 15:29:51 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/24 16:09:35 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ int		check_fd(const char *filename);
 t_map	*read_map(const char *filename);
 
 /*parse_map.c*/
-int	check_rectang(char *new_row, t_map *map);
+int		check_rectang(char *new_row, t_map *map);
+
+/*error_management.c*/
+void 	cleanup(t_wrapper *wrapper);
+void	error_exit(t_map *map, int fd);
+void	free_map(t_map *map);
 
 #endif
