@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/24 16:37:05 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:15:36 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ typedef struct s_map
 	char			**tiles;
 	unsigned int	width;
 	int				height;
+	int				start_P;
+	int				exit_E;
+	int				collect_C;
 }	t_map;
 
 typedef struct s_wrapper

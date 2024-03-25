@@ -13,6 +13,9 @@ static t_map	*init_map(void)
 	map->tiles = NULL;
 	map->height = 0;
 	map->width = 0;
+	map->start_P = 0;
+	map->exit_E = 0;
+	map->collect_C = 0;
 	return (map);
 }
 
@@ -61,12 +64,7 @@ t_map	*read_map(const char *filename)
 	map = init_map(); //in case of error, init_map handles it.
 	while (1)
 	{
-		row = get_next_line(fd);
-		if (row) // take out - 5 extra lines.
-    	{
-    	    printf("%s", row);
-    	    fflush(stdout);
-    	}
+		row = get_next_line(fd);		
 		if (!row)
 			break ;
 		if(map->height == 0)

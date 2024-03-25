@@ -1,4 +1,4 @@
-#include "so_long.h".
+#include "so_long.h"
 
 void cleanup(t_wrapper *wrapper)
 {
@@ -22,13 +22,18 @@ void	error_exit(t_map *map, int fd)
 	char *temp;
 
 	free_map(map);
-	while (1)
+	if (fd >= 0)
 	{
-		temp = get_next_line(fd);
-		if (!temp)
-			break ;
-		free(temp);
+		while (1)
+		{
+			temp = get_next_line(fd);
+			if (!temp)
+				break ;
+			free(temp);
+		}
 	}
+	if (fd == - 1)
+		ft_printf("Please insert a valid map.\n\n");
 	ft_printf("\nError!\n\n");
 	exit (1);
 }
