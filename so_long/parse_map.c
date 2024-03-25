@@ -70,6 +70,34 @@ static void	invalid_char(t_map *map, int x, int y)
 	error_exit(map, -1);
 }
 
+/*Is the path valid on the map?*/
+static void	valid_path(t_map *map)
+{
+	int	y;
+	int x;
+	int	found_p;
+
+	y = 1;
+	found_p = 0;
+	while (y < map->height && !found_p)
+	{
+		x = 1;
+		while (x < map->width)
+		{
+			if (map->tiles[y][x] == 'P')
+			{
+				found_p = 1;
+				break;
+			}
+			x++;
+		}
+		y++;
+	}
+	flood_fill(y - 1, x, map);
+}
+
+
+
 void validate_map(t_map *map)
 {
 	if (map->height > 0 && map->width > 0)
@@ -96,4 +124,5 @@ void validate_map(t_map *map)
 		ft_printf("\nThe map is empty or not properly initialized!\n\n");
 		error_exit(map, -1);
 	}
+	valid_path(map);
 }

@@ -75,5 +75,6 @@ t_map	*read_map(const char *filename)
 	}
 	close(fd);
 	validate_map(map);
+	// print out map to check if it is correct
 	return (map);
 }
