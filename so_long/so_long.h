@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/25 11:15:36 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:20:45 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ typedef struct s_wrapper
 /*initial_check.c*/
 void	check_arguments(int ac);
 int		check_fd(const char *filename);
+int		check_rectang(char *new_row, t_map *map);
 
 /*create_map.c*/
 t_map	*read_map(const char *filename);
 
 /*parse_map.c*/
-int		check_rectang(char *new_row, t_map *map);
 void	validate_map(t_map *map);
 
 /*error_management.c*/

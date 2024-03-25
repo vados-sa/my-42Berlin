@@ -4,22 +4,6 @@ static void    check_walls(t_map *map);
 static void		invalid_char(t_map *map, int x, int y);
 static int		check_elements(t_map *map);
 
-int	check_rectang(char *new_row, t_map *map)
-{
-	size_t	len;
-
-	len = ft_strlen(new_row);
-	if (new_row[len - 1] == '\n')
-		len--;
-	if (len != map->width)
-	{
-		free(new_row);
-		ft_printf("\nThe map must be rectangle!\n");
-		return (0);
-	}
-	return(len);
-}
-
 /*Is the map surrounded by walls?*/
 static void    check_walls(t_map *map)
 {
@@ -79,6 +63,7 @@ static int	check_elements(t_map *map)
 	return (0);
 }
 
+/*Are the characters valid?*/
 static void	invalid_char(t_map *map, int x, int y)
 {
 	ft_printf("\n\n%c is an invalid character!\n\n", map->tiles[x][y]);
