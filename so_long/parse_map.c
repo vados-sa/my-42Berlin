@@ -95,7 +95,6 @@ static void	valid_path(t_map *map)
 		y++;
 	}
 	flood_fill(y - 1, x, map);
-	print_map(map);
 	final_check(map);
 }
 
