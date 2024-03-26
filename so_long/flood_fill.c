@@ -22,8 +22,6 @@ static void	mark_tile(int y, int x, t_map *map)
 /*Is the exit reachable and all the collectibles colletible?*/
 void	final_check(t_map *map)
 {
-	printf("%d, number of exits found\n%d number of collectibles found\n", map->found_E, map->found_C);
-	printf("\n%d, actual number of exits\n%d actual number of collectibles\n", map->exit_E, map->collect_C);
 	if (map->found_E == 0)
 	{
 		ft_printf("\n\nThe exit (E) is not accessible!\n\n");
