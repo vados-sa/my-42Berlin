@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/25 20:47:00 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:43:14 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_map
 	int				start_P;
 	int				exit_E;
 	int				collect_C;
+	int				found_C;
+	int				found_E;
 }	t_map;
 
 typedef struct s_wrapper
@@ -68,7 +70,8 @@ t_map	*read_map(const char *filename);
 void	validate_map(t_map *map);
 
 /*flood_fill.c*/
-void	flood_fill(int y, int x, t_map *map);
+void	flood_fill(int y, unsigned int x, t_map *map);
+void	final_check(t_map *map);
 
 /*error_management.c*/
 void 	cleanup(t_wrapper *wrapper);

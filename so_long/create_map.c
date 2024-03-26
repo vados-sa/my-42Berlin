@@ -16,6 +16,8 @@ static t_map	*init_map(void)
 	map->start_P = 0;
 	map->exit_E = 0;
 	map->collect_C = 0;
+	map->found_C = 0;
+	map->found_E = 0;
 	return (map);
 }
 
@@ -75,6 +77,5 @@ t_map	*read_map(const char *filename)
 	}
 	close(fd);
 	validate_map(map);
-	// print out map to check if it is correct
 	return (map);
 }

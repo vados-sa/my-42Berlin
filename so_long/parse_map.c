@@ -1,8 +1,9 @@
 #include "so_long.h"
 
 static void    check_walls(t_map *map);
-static void		invalid_char(t_map *map, int x, int y);
 static int		check_elements(t_map *map);
+static void		invalid_char(t_map *map, int x, int y);
+static void		valid_path(t_map *map);
 
 /*Is the map surrounded by walls?*/
 static void    check_walls(t_map *map)
@@ -73,9 +74,9 @@ static void	invalid_char(t_map *map, int x, int y)
 /*Is the path valid on the map?*/
 static void	valid_path(t_map *map)
 {
-	int	y;
-	int x;
-	int	found_p;
+	int				y;
+	unsigned int	x;
+	int				found_p;
 
 	y = 1;
 	found_p = 0;
@@ -94,9 +95,9 @@ static void	valid_path(t_map *map)
 		y++;
 	}
 	flood_fill(y - 1, x, map);
+	print_map(map);
+	final_check(map);
 }
-
-
 
 void validate_map(t_map *map)
 {
