@@ -2,16 +2,16 @@
 
 void cleanup(t_wrapper *wrapper)
 {
-    if (wrapper->data->win_ptr != NULL)
+    if (wrapper->game->win_ptr != NULL)
     {
-        mlx_destroy_window(wrapper->data->mlx_ptr, wrapper->data->win_ptr);
-        wrapper->data->win_ptr = NULL;
+        mlx_destroy_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr);
+        wrapper->game->win_ptr = NULL;
     }
-    if (wrapper->data->mlx_ptr != NULL)
+    if (wrapper->game->mlx_ptr != NULL)
     {
-        mlx_destroy_display(wrapper->data->mlx_ptr);
-        free(wrapper->data->mlx_ptr);
-        wrapper->data->mlx_ptr = NULL;
+        mlx_destroy_display(wrapper->game->mlx_ptr);
+        free(wrapper->game->mlx_ptr);
+        wrapper->game->mlx_ptr = NULL;
     }
 	free_map(wrapper->map);
     exit (0);
