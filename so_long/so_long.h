@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/27 10:56:49 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:32:18 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@
 
 # define MLX_ERROR 1
 
-# define RED_PIXEL 0xFF0000
-# define MAG_PIXEL 0xb2007f
+# define TILE_SIZE 64
 
-# define WIN_WIDTH 600
-# define WIN_HEIGHT 300
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 320
 
 typedef struct s_game
 {
@@ -50,7 +49,7 @@ typedef struct s_game
 typedef struct s_map
 {
 	char			**tiles;
-	unsigned int	width;
+	int				width;
 	int				height;
 	int				start_P;
 	int				exit_E;

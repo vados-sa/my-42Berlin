@@ -1,7 +1,17 @@
 #include "so_long.h"
 
-void cleanup(t_wrapper *wrapper)
+void	clean_game(t_game *game)
 {
+	if (game->floor_img)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->floor_img);
+		game->floor_img = NULL; // set dangling pointers;
+	}
+}
+
+void	cleanup(t_wrapper *wrapper)
+{
+	clean_game(wrapper->game);
     if (wrapper->game->win_ptr != NULL)
     {
         mlx_destroy_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr);
