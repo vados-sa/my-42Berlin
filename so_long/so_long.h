@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/26 16:43:14 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:56:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,18 @@
 # define WIN_WIDTH 600
 # define WIN_HEIGHT 300
 
-typedef struct s_data
+typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-}	t_data;
+	int		width;     // Width of the sprite
+    int		height;    // Height of the sprite
+	void	*barbie_img; // Pointer to Barbie sprite image
+    void	*object_img; // Pointer to collectible sprite image
+    void	*wall_img; // Pointer to wall sprite image
+    void	*exit_img; // Pointer to exit sprite image
+	void	*floor_img;
+}	t_game;
 
 typedef struct s_map
 {
@@ -54,7 +61,7 @@ typedef struct s_map
 
 typedef struct s_wrapper
 {
-	t_data	*data;
+	t_game	*game;
 	t_map	*map;
 } t_wrapper;
 
