@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:33:20 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/29 15:41:41 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:07:07 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_atoi(const char *nptr);
 
-int		ft_strlen(const char *str);
+int			ft_strlen(const char *str);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 
@@ -51,7 +51,7 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char		*ft_strdup(const char *s1);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_substr(char const *s, int start, int len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);

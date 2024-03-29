@@ -6,15 +6,15 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:57:19 by vados-sa          #+#    #+#             */
-/*   Updated: 2023/11/30 16:34:50 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:06:54 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, int start, int len)
 {
-	size_t		i;
+	int		i;
 	char		*substr;
 
 	if (!s)
