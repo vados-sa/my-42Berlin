@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/29 15:43:55 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/29 19:40:29 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,25 @@
 
 # define TILE_SIZE 64
 
-# define WIN_WIDTH 640
-# define WIN_HEIGHT 320
-
 typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		width;     // Width of the sprite
-    int		height;    // Height of the sprite
-	void	*barbie_img; // Pointer to Barbie sprite image
-    void	*object_img; // Pointer to collectible sprite image
-    void	*wall_img; // Pointer to wall sprite image
-    void	*exit_img; // Pointer to exit sprite image
+	//int		width;     // Width of the sprite - AM I USING IT?
+    //int		height;    // Height of the sprite - AM I USING IT?
+	void	*barbie_img;
+	void	*house_img;
+    void	*wall_img;
 	void	*floor_img;
+    void	*exit_img;
+    void	*key_img;
+	void	*iphone_img;
+	void	*purse_img;
+	void	*lipstick_img;
+	void	*wallet_img;
+	void	*hphones_img;
+	void	*skates_img;
+	void	*dog_img;
 }	t_game;
 
 typedef struct s_map
@@ -64,22 +69,28 @@ typedef struct s_wrapper
 	t_map	*map;
 } t_wrapper;
 
-/*initial_check.c*/
+/* initial_check.c */
 void	check_arguments(int ac);
 int		check_fd(const char *filename);
 int		check_rectang(char *new_row, t_map *map);
 
-/*create_map.c*/
+/* create_map.c */
 t_map	*read_map(const char *filename);
 
-/*parse_map.c*/
+/* parse_map.c */
 void	validate_map(t_map *map);
 
-/*flood_fill.c*/
+/* flood_fill.c */
 void	flood_fill(int y, int x, t_map *map);
 void	final_check(t_map *map);
 
-/*error_management.c*/
+/* load_sprites.c */
+int	load_sprites(t_wrapper *wrapper);
+
+/* render_map.c */
+int	render_background(t_wrapper *wrapper);
+
+/* error_management.c */
 void 	cleanup(t_wrapper *wrapper);
 void	error_exit(t_map *map, int fd);
 void	free_map(t_map *map);

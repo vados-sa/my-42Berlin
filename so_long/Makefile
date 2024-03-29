@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 17:28:49 by vados-sa          #+#    #+#              #
-#    Updated: 2024/03/25 20:46:34 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/03/29 19:10:03 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ MLX_FLAGS = -L$(MLX_LIB) -lmlx -lXext -lX11
 
 # Soure files
 SRC = main.c error_management.c initial_check.c create_map.c parse_map.c \
-		flood_fill.c
+		flood_fill.c load_sprites.c render_map.c
 
 # Object files
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
