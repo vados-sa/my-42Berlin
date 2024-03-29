@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/27 13:32:18 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:43:55 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_map	*read_map(const char *filename);
 void	validate_map(t_map *map);
 
 /*flood_fill.c*/
-void	flood_fill(int y, unsigned int x, t_map *map);
+void	flood_fill(int y, int x, t_map *map);
 void	final_check(t_map *map);
 
 /*error_management.c*/

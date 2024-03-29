@@ -14,7 +14,7 @@ void	check_arguments(int ac)
 int	check_fd(const char *filename)
 {
 	int		fd;
-	size_t	len;
+	int		len;
 
 	len = ft_strlen(filename);
 	if(len <= 4 || ft_strncmp(&filename[len - 4], ".ber", 4))
@@ -36,7 +36,7 @@ int	check_fd(const char *filename)
 /*Is the map rectangle?*/
 int	check_rectang(char *new_row, t_map *map)
 {
-	size_t	len;
+	int	len;
 
 	len = ft_strlen(new_row);
 	if (new_row[len - 1] == '\n')

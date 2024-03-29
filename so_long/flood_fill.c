@@ -37,7 +37,7 @@ void	final_check(t_map *map)
 }
 
 /*Flood Fill algorithm to parse through the map's available path.*/
-void	flood_fill(int y, unsigned int x, t_map *map)
+void	flood_fill(int y, int x, t_map *map)
 {
 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
 		return ;

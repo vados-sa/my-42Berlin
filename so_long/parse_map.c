@@ -8,7 +8,7 @@ static void		valid_path(t_map *map);
 /*Is the map surrounded by walls?*/
 static void    check_walls(t_map *map)
 {
-	unsigned int	x;
+	int	x;
 	int	y;
 
 	x = 0;
@@ -38,7 +38,7 @@ static void    check_walls(t_map *map)
 /*Does the map has the required elements?*/
 static int	check_elements(t_map *map)
 {
-	unsigned int	x;
+	int	x;
 	int	y;
 
 	x = 1;
@@ -74,9 +74,9 @@ static void	invalid_char(t_map *map, int x, int y)
 /*Is the path valid on the map?*/
 static void	valid_path(t_map *map)
 {
-	int				y;
-	unsigned int	x;
-	int				found_p;
+	int	y;
+	int	x;
+	int	found_p;
 
 	y = 1;
 	found_p = 0;
