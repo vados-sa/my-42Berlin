@@ -6,15 +6,15 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:30:50 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/03/23 19:30:19 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:41:25 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!str)
