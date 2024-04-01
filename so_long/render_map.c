@@ -32,6 +32,8 @@ static void	*get_sprite(t_wrapper *wrapper, int x, int y)
 		return (wrapper->game->house_img);
 	if (tile == 'E') // Exit
 		return (wrapper->game->exit_img);
+	if (tile == 'K')
+		return (wrapper->game->kenemy_img);
 	else
 		return (get_collect_sprite(wrapper, tile));
 	return (NULL);

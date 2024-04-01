@@ -45,7 +45,8 @@ void	flood_fill(int y, int x, t_map *map)
 		return ;
 	}
 	if (map->tiles[y][x] == '1' || map->tiles[y][x] == 'F' 
-		|| map->tiles[y][x] == 'O' || map->tiles[y][x] == 'S')
+		|| map->tiles[y][x] == 'O' || map->tiles[y][x] == 'S'
+		|| map->tiles[y][x] == 'K')
 		return ;
 	if (map->tiles[y][x] == 'C')
 		map->found_C++;

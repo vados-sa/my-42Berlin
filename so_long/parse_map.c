@@ -53,7 +53,8 @@ static int	check_elements(t_map *map)
 				map->exit_E++;
 			else if (map->tiles[y][x] == 'C')
 				map->collect_C++;
-			else if (map->tiles[y][x] != '0' && map->tiles[y][x] != '1')
+			else if (map->tiles[y][x] != '0' && map->tiles[y][x] != '1'
+						&& map->tiles[y][x] != 'K')
 				invalid_char(map, x, y);
 			y++;
 		}

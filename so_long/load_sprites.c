@@ -32,6 +32,7 @@ int	load_sprites(t_wrapper *wrapper)
 	int	width;
 	int	height;
 	int	collectibles;
+	int	bonus;
 
 	width = TILE_SIZE;
 	height = TILE_SIZE;
@@ -44,8 +45,10 @@ int	load_sprites(t_wrapper *wrapper)
 	wrapper->game->exit_img = mlx_xpm_file_to_image(wrapper->game->mlx_ptr, \
 		"textures/exit.xpm", &width, &height);
 	collectibles = load_collectibles(wrapper, width, height);
+	bonus = load_bonus(wrapper, width, height);
 	if (!wrapper->game->key_img || !wrapper->game->wall_img || \
-		!wrapper->game->house_img || !wrapper->game->exit_img || collectibles)
+		!wrapper->game->house_img || !wrapper->game->exit_img || \
+		collectibles || bonus)
 	{
 		ft_printf("Failed to load one or more sprite(s).\n");
 		return (1);
