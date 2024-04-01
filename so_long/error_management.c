@@ -73,6 +73,7 @@ void	clean_game(t_game *game)
 	free_collectibles_1(game);
 	free_collectibles_2(game);
 	free_bonus(game);
+	free_bonus2(game);
 }
 
 void	cleanup(t_wrapper *wrapper)

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/01 15:36:50 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:05:04 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_game
     void	*wall_img;
 	void	*floor_img;
     void	*exit_img;
+	void	*exit2_img;
+	/*collectibles*/
     void	*key_img;
 	void	*iphone_img;
 	void	*purse_img;
@@ -49,8 +51,15 @@ typedef struct s_game
 	void	*hphones_img;
 	void	*skates_img;
 	void	*dog_img;
-	/*bonus*/
+	/*kenemy*/
 	void	*kenemy_img;
+	void	*ken_img;
+	void	*mdch_img;
+	void	*horse_img;
+	void	*kenwall_img;
+	void	*kenough_img;
+	//void	*kencar_img;
+	//void	*downbarbie_img;
 }	t_game;
 
 typedef struct s_map
@@ -100,5 +109,6 @@ void	free_map(t_map *map);
 /*bonus.c*/
 int	load_bonus(t_wrapper *wrapper, int width, int height);
 void	free_bonus(t_game *game);
+void	free_bonus2(t_game *game);
 
 #endif
