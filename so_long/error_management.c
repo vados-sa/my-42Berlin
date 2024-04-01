@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static void free_collectibles_1(t_game *game)
+static void	free_collectibles_1(t_game *game)
 {
 	if (game->key_img)
 	{
@@ -24,7 +24,7 @@ static void free_collectibles_1(t_game *game)
 	}
 }
 
-static void free_collectibles_2(t_game *game)
+static void	free_collectibles_2(t_game *game)
 {
 	if (game->wallet_img)
 	{
@@ -53,22 +53,22 @@ void	clean_game(t_game *game)
 	if (game->floor_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->floor_img);
-		game->floor_img = NULL; // set dangling pointers;
+		game->floor_img = NULL;
 	}
 	if (game->wall_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->wall_img);
-		game->wall_img = NULL; // set dangling pointers;
+		game->wall_img = NULL;
 	}
 	if (game->house_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->house_img);
-		game->house_img = NULL; // set dangling pointers;
+		game->house_img = NULL;
 	}
 	if (game->exit_img)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->exit_img);
-		game->exit_img = NULL; // set dangling pointers;
+		game->exit_img = NULL;
 	}
 	free_collectibles_1(game);
 	free_collectibles_2(game);
@@ -78,23 +78,23 @@ void	cleanup(t_wrapper *wrapper)
 {
 	clean_game(wrapper->game);
 	free_map(wrapper->map);
-    if (wrapper->game->win_ptr != NULL)
-    {
-        mlx_destroy_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr);
-        wrapper->game->win_ptr = NULL;
-    }
-    if (wrapper->game->mlx_ptr != NULL)
-    {
-        mlx_destroy_display(wrapper->game->mlx_ptr);
-        free(wrapper->game->mlx_ptr);
-        wrapper->game->mlx_ptr = NULL;
-    }
-    exit (0);
+	if (wrapper->game->win_ptr != NULL)
+	{
+		mlx_destroy_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr);
+		wrapper->game->win_ptr = NULL;
+	}
+	if (wrapper->game->mlx_ptr != NULL)
+	{
+		mlx_destroy_display(wrapper->game->mlx_ptr);
+		free(wrapper->game->mlx_ptr);
+		wrapper->game->mlx_ptr = NULL;
+	}
+	exit (0);
 }
 
 void	error_exit(t_map *map, int fd)
 {
-	char *temp;
+	char	*temp;
 
 	free_map(map);
 	if (fd >= 0)
@@ -107,7 +107,7 @@ void	error_exit(t_map *map, int fd)
 			free(temp);
 		}
 	}
-	if (fd == - 1)
+	if (fd == -1)
 		ft_printf("Please insert a valid map.\n\n");
 	ft_printf("\nError!\n\n");
 	exit (1);

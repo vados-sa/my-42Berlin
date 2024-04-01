@@ -50,7 +50,7 @@ static int	update_map(t_map *map, char *new_row)
 		i++;
 	} // Add new_row to temp and update map->tiles.
 	temp[map->height] = new_row; 
-	free(map->tiles); // Free old tiles array.
+	free (map->tiles); // Free old tiles array.
 	map->tiles = temp; // Update tiles to new array.
 	map->height++;
 	return (0);
@@ -63,13 +63,13 @@ t_map	*read_map(const char *filename)
 	t_map	*map;
 
 	fd = check_fd(filename);
-	map = init_map(); //in case of error, init_map handles it.
+	map = init_map();
 	while (1)
 	{
-		row = get_next_line(fd);		
+		row = get_next_line(fd);
 		if (!row)
 			break ;
-		if(map->height == 0)
+		if (map->height == 0)
 			set_map_width(map, row);
 		if (update_map(map, row) == -1)
 			error_exit(map, fd);

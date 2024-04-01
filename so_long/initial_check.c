@@ -17,7 +17,7 @@ int	check_fd(const char *filename)
 	int		len;
 
 	len = ft_strlen(filename);
-	if(len <= 4 || ft_strncmp(&filename[len - 4], ".ber", 4))
+	if (len <= 4 || ft_strncmp(&filename[len - 4], ".ber", 4))
 	{
 		ft_printf("\nError!\n\nInvalid file type: \"%s\".\n", filename);
 		ft_printf("The file has to end with a .ber extention.\n\n");
@@ -27,7 +27,7 @@ int	check_fd(const char *filename)
 	if (fd == -1)
 	{
 		ft_printf("\nError!\n\nFile does not exist or cannot be opened: ");
-        ft_printf("\"%s\".\n\n", filename);
+		ft_printf("\"%s\".\n\n", filename);
 		exit (1);
 	}
 	return (fd);
@@ -47,5 +47,5 @@ int	check_rectang(char *new_row, t_map *map)
 		ft_printf("\nThe map must be rectangle!\n");
 		return (0);
 	}
-	return(len);
+	return (len);
 }

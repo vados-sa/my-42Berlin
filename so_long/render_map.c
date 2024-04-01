@@ -1,24 +1,24 @@
 #include "so_long.h"
 
-static void *get_collect_sprite(t_wrapper *wrapper, char tile)
+static void	*get_collect_sprite(t_wrapper *wrapper, char tile)
 {
-    if (tile == 'a')
-        return (wrapper->game->key_img);
-    if (tile == 'b')
-        return (wrapper->game->iphone_img);
-    if (tile == 'c')
-        return (wrapper->game->purse_img);
-    if (tile == 'd')
-        return (wrapper->game->lipstick_img);
-    if (tile == 'e')
-        return (wrapper->game->wallet_img);
-    if (tile == 'f')
-        return (wrapper->game->hphones_img);
-    if (tile == 'g')
-        return (wrapper->game->skates_img);
-    if (tile == 'h')
-        return (wrapper->game->dog_img);
-    return (NULL);
+	if (tile == 'a')
+		return (wrapper->game->key_img);
+	if (tile == 'b')
+		return (wrapper->game->iphone_img);
+	if (tile == 'c')
+		return (wrapper->game->purse_img);
+	if (tile == 'd')
+		return (wrapper->game->lipstick_img);
+	if (tile == 'e')
+		return (wrapper->game->wallet_img);
+	if (tile == 'f')
+		return (wrapper->game->hphones_img);
+	if (tile == 'g')
+		return (wrapper->game->skates_img);
+	if (tile == 'h')
+		return (wrapper->game->dog_img);
+	return (NULL);
 }
 
 static void	*get_sprite(t_wrapper *wrapper, int x, int y)
@@ -30,14 +30,14 @@ static void	*get_sprite(t_wrapper *wrapper, int x, int y)
 		return (wrapper->game->wall_img);
 	if (tile == 'S') // Player start position
 		return (wrapper->game->house_img);
-	if (tile == 'D') // Exit
+	if (tile == 'E') // Exit
 		return (wrapper->game->exit_img);
 	else
-        return(get_collect_sprite(wrapper, tile));
+		return (get_collect_sprite(wrapper, tile));
 	return (NULL);
 }
 
-static void render_sprites(t_wrapper *wrapper)
+static void	render_sprites(t_wrapper *wrapper)
 {
 	int		x;
 	int		y;

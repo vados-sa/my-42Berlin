@@ -6,6 +6,7 @@ int	handle_keypress(int keysym, t_wrapper *wrapper)
 		cleanup(wrapper);
 	return (0);
 }
+
 int	close_window(t_wrapper *wrapper)
 {
 	cleanup(wrapper);
@@ -16,7 +17,7 @@ static int	init_game(t_game *game, t_map *map)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
-	{	
+	{
 		ft_printf("Failed to initialize mlx.\n");
 		return (1);
 	}
@@ -26,7 +27,7 @@ static int	init_game(t_game *game, t_map *map)
 	{
 		free(game->win_ptr);
 		ft_printf("Failed to create 'Barbie Dream World <3'.\n");
-        return 1;
+		return (1);
 	}
 	return (0);
 }
@@ -34,7 +35,7 @@ static int	init_game(t_game *game, t_map *map)
 static void	setup_hooks(t_game *game, t_wrapper *wrapper)
 {
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, wrapper);
-	mlx_hook(game->win_ptr, 17, 1L<<17, &close_window, wrapper);
+	mlx_hook(game->win_ptr, 17, 1L << 17, &close_window, wrapper);
 }
 
 void	distribute_collectibles(t_map *map)

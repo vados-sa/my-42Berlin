@@ -1,19 +1,19 @@
 #include "so_long.h"
 
-static void    check_walls(t_map *map);
-static int		check_elements(t_map *map);
-static void		invalid_char(t_map *map, int x, int y);
-static void		valid_path(t_map *map);
+static void	check_walls(t_map *map);
+static int	check_elements(t_map *map);
+static void	invalid_char(t_map *map, int x, int y);
+static void	valid_path(t_map *map);
 
 /*Is the map surrounded by walls?*/
-static void    check_walls(t_map *map)
+static void	check_walls(t_map *map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while(x < map->width)
+	while (x < map->width)
 	{
 		if (map->tiles[0][x] != '1' || map->tiles[map->height - 1][x] != '1')
 		{
@@ -23,7 +23,7 @@ static void    check_walls(t_map *map)
 		}
 		x++;
 	}
-	while(y < map->height)
+	while (y < map->height)
 	{
 		if (map->tiles[y][0] != '1' || map->tiles[y][map->width - 1] != '1')
 		{
@@ -42,7 +42,7 @@ static int	check_elements(t_map *map)
 	int	y;
 
 	x = 1;
-	while(x < map->width)
+	while (x < map->width)
 	{
 		y = 1;
 		while (y < map->height)
@@ -88,7 +88,7 @@ static void	valid_path(t_map *map)
 			if (map->tiles[y][x] == 'P')
 			{
 				found_p = 1;
-				break;
+				break ;
 			}
 			x++;
 		}
@@ -98,7 +98,7 @@ static void	valid_path(t_map *map)
 	final_check(map);
 }
 
-void validate_map(t_map *map)
+void	validate_map(t_map *map)
 {
 	if (map->height > 0 && map->width > 0)
 	{
