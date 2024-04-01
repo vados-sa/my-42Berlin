@@ -1,5 +1,29 @@
 #include "so_long.h"
 
+static void	collectibles_back_to_c(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->tiles[y][x] == 'a' || map->tiles[y][x] == 'b' ||
+				map->tiles[y][x] == 'c' || map->tiles[y][x] == 'd' || 
+				map->tiles[y][x] == 'e' || map->tiles[y][x] == 'f' || 
+				map->tiles[y][x] == 'g' || map->tiles[y][x] == 'h')
+			{
+				map->tiles[y][x] = 'C';
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 static void	*get_collect_sprite(t_wrapper *wrapper, char tile)
 {
 	if (tile == 'a')
@@ -32,7 +56,7 @@ static void	*get_sprite(t_wrapper *wrapper, int x, int y)
 		return (wrapper->game->house_img);
 	if (tile == 'E') // Exit
 		return (wrapper->game->exit_img);
-	if (tile == 'K')
+	if (tile == 'K') // Kenemy
 		return (wrapper->game->kenemy_img);
 	else
 		return (get_collect_sprite(wrapper, tile));
@@ -81,5 +105,6 @@ int	render_background(t_wrapper *wrapper)
 		y++;
 	}
 	render_sprites(wrapper);
+	collectibles_back_to_c(wrapper->map);
 	return (0);
 }
