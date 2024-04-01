@@ -14,8 +14,6 @@ static void	mark_tile(int y, int x, t_map *map)
 		new_char = 'F';
 	else if (original_char == 'C')
 		new_char = 'O';
-	else if (original_char == 'E')
-		new_char = 'D';
 	map->tiles[y][x] = new_char;
 }
 
@@ -41,17 +39,19 @@ void	flood_fill(int y, int x, t_map *map)
 {
 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
 		return ;
-	if (map->tiles[y][x] == '1' || map->tiles[y][x] == 'F' 
-		|| map->tiles[y][x] == 'O' || map->tiles[y][x] == 'S' 
-		|| map->tiles[y][x] == 'D')
-		return ;
 	if (map->tiles[y][x] == 'E')
+	{
 		map->found_E++;
+		return ;
+	}
+	if (map->tiles[y][x] == '1' || map->tiles[y][x] == 'F' 
+		|| map->tiles[y][x] == 'O' || map->tiles[y][x] == 'S')
+		return ;
 	if (map->tiles[y][x] == 'C')
 		map->found_C++;
 	mark_tile(y, x, map);
 	flood_fill(y, x + 1, map); // Right
-    flood_fill(y, x - 1, map); // Left
-    flood_fill(y + 1, x, map); // Down
-    flood_fill(y - 1, x, map); // Up
+	flood_fill(y, x - 1, map); // Left
+	flood_fill(y + 1, x, map); // Down
+	flood_fill(y - 1, x, map); // Up
 }
