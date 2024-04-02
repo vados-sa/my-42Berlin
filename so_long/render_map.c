@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/02 20:53:08 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/04/02 20:53:09 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	collectibles_back_to_c(t_map *map)
@@ -52,11 +64,11 @@ static void	*get_sprite(t_wrapper *wrapper, int x, int y)
 	tile = wrapper->map->tiles[y][x];
 	if (tile == '1')
 		return (wrapper->game->wall_img);
-	if (tile == 'S') // Player start position
+	if (tile == 'S')
 		return (wrapper->game->house_img);
-	if (tile == 'E') // Exit
+	if (tile == 'E')
 		return (wrapper->game->exit_img);
-	if (tile == 'K') // Kenemy
+	if (tile == 'K')
 		return (wrapper->game->kenemy_img);
 	else
 		return (get_collect_sprite(wrapper, tile));
