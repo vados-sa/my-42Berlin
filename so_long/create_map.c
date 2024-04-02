@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/02 19:40:39 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/04/02 19:40:40 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static t_map	*init_map(void)
 {
 	t_map	*map;
 
-	map = malloc(sizeof(t_map)); // map is not being freed
+	map = malloc(sizeof(t_map));
 	if (!map)
 	{
 		ft_printf("\nError while initializing the map!\n\n");
@@ -25,7 +37,7 @@ static t_map	*init_map(void)
 	return (map);
 }
 
-void	set_map_width(t_map *map, char *row)
+static void	set_map_width(t_map *map, char *row)
 {
 	size_t	len;
 
@@ -43,19 +55,19 @@ static int	update_map(t_map *map, char *new_row)
 
 	len = check_rectang(new_row, map);
 	if (!len)
-		return (-1);//error_exit(map, fd);
-	temp = malloc(sizeof(char *) * (map->height + 1)); // Allocate space for one more pointer in tiles.
+		return (-1);
+	temp = malloc(sizeof(char *) * (map->height + 1));
 	if (!temp)
 		return (-1);
 	i = 0;
-	while (i < map->height) // Copy existing pointers from map->tiles to temp.
+	while (i < map->height)
 	{
 		temp[i] = map->tiles[i];
 		i++;
-	} // Add new_row to temp and update map->tiles.
+	}
 	temp[map->height] = new_row; 
-	free (map->tiles); // Free old tiles array.
-	map->tiles = temp; // Update tiles to new array.
+	free (map->tiles);
+	map->tiles = temp;
 	map->height++;
 	return (0);
 }
@@ -77,7 +89,6 @@ t_map	*read_map(const char *filename)
 			set_map_width(map, row);
 		if (update_map(map, row) == -1)
 			error_exit(map, fd);
-		//free (row);
 	}
 	close(fd);
 	validate_map(map);
