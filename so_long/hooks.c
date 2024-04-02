@@ -244,9 +244,26 @@ void	on_kenemy(t_wrapper *wrapper, char *direction)
 	mlx_put_image_to_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr, \
 		wrapper->game->ken_img, x * TILE_SIZE, y * TILE_SIZE);
 	render_game_over(wrapper);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, TILE_SIZE, \
-		TILE_SIZE / 2, 0xFFF4F8, "Barbie lost!");
 	wrapper->map->game_over = 1;
+}
+
+void	display_count(t_wrapper *wrapper)
+{
+	char	*move_count_str;
+	char	*label;
+	char	*full_message;
+
+	label = "Movement count: ";
+	move_count_str = ft_itoa(wrapper->map->move_count);
+	full_message = ft_strjoin(label, move_count_str);
+	mlx_put_image_to_window(wrapper->game->mlx_ptr, \
+		wrapper->game->win_ptr, wrapper->game->wall_img, 0, 0);
+	mlx_put_image_to_window(wrapper->game->mlx_ptr, \
+		wrapper->game->win_ptr, wrapper->game->wall_img, 1 * TILE_SIZE, 0);
+	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
+		TILE_SIZE / 2, 0xFFF4F8, full_message);
+	free(move_count_str);
+	free(full_message);
 }
 
 /*move those to moves.c*/
@@ -257,6 +274,8 @@ void    move_up(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
     x = wrapper->map->x_position;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 	if (wrapper->map->tiles[y - 1][x] == 'F')
 		on_empty_tile(wrapper, "up");
 	else if (wrapper->map->tiles[y - 1][x] == 'C')
@@ -270,9 +289,6 @@ void    move_up(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
-		TILE_SIZE / 2, 0xFFF4F8, "Movement count:");
 }
 
 void    move_left(t_wrapper *wrapper)
@@ -281,6 +297,8 @@ void    move_left(t_wrapper *wrapper)
 	int x;
 
 	y = wrapper->map->y_position;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
     x = wrapper->map->x_position;
 	if (wrapper->map->tiles[y][x - 1] == 'F')
 		on_empty_tile(wrapper, "left");
@@ -295,9 +313,6 @@ void    move_left(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
-		TILE_SIZE / 2, 0xFFF4F8, "Movement count:");
 }
 
 void    move_right(t_wrapper *wrapper)
@@ -307,6 +322,8 @@ void    move_right(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
     x = wrapper->map->x_position;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 	if (wrapper->map->tiles[y][x + 1] == 'F')
 		on_empty_tile(wrapper, "right");
 	else if (wrapper->map->tiles[y][x + 1] == 'C')
@@ -320,9 +337,6 @@ void    move_right(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
-		TILE_SIZE / 2, 0xFFF4F8, "Movement count:");
 }
 
 void    move_down(t_wrapper *wrapper)
@@ -332,6 +346,8 @@ void    move_down(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
     x = wrapper->map->x_position;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 	if (wrapper->map->tiles[y + 1][x] == 'F')
 		on_empty_tile(wrapper, "down");
 	else if (wrapper->map->tiles[y + 1][x] == 'C')
@@ -345,7 +361,4 @@ void    move_down(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
-		TILE_SIZE / 2, 0xFFF4F8, "Movement count:");
 }
