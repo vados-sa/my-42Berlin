@@ -18,6 +18,10 @@ static t_map	*init_map(void)
 	map->collect_C = 0;
 	map->found_C = 0;
 	map->found_E = 0;
+	map->move_count = 0;
+	map->x_position = 0;
+	map->y_position = 0;
+	map->game_over = 0;
 	return (map);
 }
 

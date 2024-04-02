@@ -1,18 +1,5 @@
 #include "so_long.h"
 
-int	handle_keypress(int keysym, t_wrapper *wrapper)
-{
-	if (keysym == XK_Escape)
-		cleanup(wrapper);
-	return (0);
-}
-
-int	close_window(t_wrapper *wrapper)
-{
-	cleanup(wrapper);
-	return (0);
-}
-
 static int	init_game(t_game *game, t_map *map)
 {
 	game->mlx_ptr = mlx_init();
@@ -30,12 +17,6 @@ static int	init_game(t_game *game, t_map *map)
 		return (1);
 	}
 	return (0);
-}
-
-static void	setup_hooks(t_game *game, t_wrapper *wrapper)
-{
-	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, &handle_keypress, wrapper);
-	mlx_hook(game->win_ptr, 17, 1L << 17, &close_window, wrapper);
 }
 
 void	distribute_collectibles(t_map *map)
@@ -64,6 +45,46 @@ void	distribute_collectibles(t_map *map)
 	}
 }
 
+/* void print_map(t_map *map)
+{
+    int y;
+	int	x;
+
+    for (y = 0; y < map->height; y++)
+    {
+        for (x = 0; x < map->width; x++)
+        {
+            ft_putchar_fd(map->tiles[y][x], 1); // Assuming ft_putchar_fd prints a single character to the given file descriptor, in this case, stdout.
+        }
+        ft_putchar_fd('\n', 1);
+    }
+} */
+
+void	find_player_position(t_map *map)
+{
+	int	x;
+	int	y;
+
+	x = 1;
+	while (x < map->width)
+	{
+		y = 1;
+		while (y < map->height)
+		{
+			if (map->tiles[y][x] == 'S' || map->tiles[y][x] == 'B')
+			{
+				map->x_position = x;
+				map->y_position = y;
+				if (map->tiles[y][x] == 'S')
+					map->tiles[y][x] = 'H';
+				return ;
+			}
+			y++;
+		}
+		x++;
+	}
+}
+
 int	main(int ac, char *av[])
 {
 	t_game		game;
@@ -80,8 +101,8 @@ int	main(int ac, char *av[])
 		error_exit(map, -2);
 	distribute_collectibles(map);
 	render_background(&wrapper);
+	find_player_position(map);
 	setup_hooks(&game, &wrapper);
-	mlx_loop(game.mlx_ptr); // start the game loop
-	//cleanup(&wrapper); // seems to be unecessary
+	mlx_loop(game.mlx_ptr);
 	return (0);
 }

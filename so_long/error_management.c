@@ -70,6 +70,18 @@ void	clean_game(t_game *game)
 		mlx_destroy_image(game->mlx_ptr, game->exit_img);
 		game->exit_img = NULL;
 	}
+	if (game->barbie_img)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->barbie_img);
+		game->barbie_img = NULL;
+
+	}
+	if (game->exit2_img)
+	{
+		mlx_destroy_image(game->mlx_ptr, game->exit2_img);
+		game->exit2_img = NULL;
+
+	}
 	free_collectibles_1(game);
 	free_collectibles_2(game);
 	free_bonus(game);

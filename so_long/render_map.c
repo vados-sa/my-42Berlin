@@ -15,9 +15,9 @@ static void	collectibles_back_to_c(t_map *map)
 				map->tiles[y][x] == 'c' || map->tiles[y][x] == 'd' || 
 				map->tiles[y][x] == 'e' || map->tiles[y][x] == 'f' || 
 				map->tiles[y][x] == 'g' || map->tiles[y][x] == 'h')
-			{
 				map->tiles[y][x] = 'C';
-			}
+			if (map->tiles[y][x] == '0')
+				map->tiles[y][x] = 'F';
 			x++;
 		}
 		y++;

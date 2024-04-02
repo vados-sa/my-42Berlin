@@ -44,11 +44,15 @@ int	load_sprites(t_wrapper *wrapper)
 		"textures/house.xpm", &width, &height);
 	wrapper->game->exit_img = mlx_xpm_file_to_image(wrapper->game->mlx_ptr, \
 		"textures/exit.xpm", &width, &height);
+	wrapper->game->barbie_img = mlx_xpm_file_to_image(wrapper->game->mlx_ptr, \
+		"textures/barbie.xpm", &width, &height);
+	wrapper->game->exit2_img = mlx_xpm_file_to_image(wrapper->game->mlx_ptr, \
+		"textures/exit2.xpm", &width, &height);
 	collectibles = load_collectibles(wrapper, width, height);
 	bonus = load_bonus(wrapper, width, height);
 	if (!wrapper->game->key_img || !wrapper->game->wall_img || \
 		!wrapper->game->house_img || !wrapper->game->exit_img || \
-		collectibles || bonus)
+		!wrapper->game->barbie_img || collectibles || bonus)
 	{
 		ft_printf("Failed to load one or more sprite(s).\n");
 		return (1);

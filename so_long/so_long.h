@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/01 16:05:04 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:37:34 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,18 @@ typedef struct s_game
 
 typedef struct s_map
 {
-	char			**tiles;
-	int				width;
-	int				height;
-	int				start_P;
-	int				exit_E;
-	int				collect_C;
-	int				found_C;
-	int				found_E;
+	char	**tiles;
+	int		width;
+	int		height;
+	int		start_P;
+	int		exit_E;
+	int		collect_C;
+	int		found_C;
+	int		found_E;
+	int		move_count;
+	int		x_position;
+	int		y_position;
+	int		game_over;
 }	t_map;
 
 typedef struct s_wrapper
@@ -100,6 +104,9 @@ int	load_sprites(t_wrapper *wrapper);
 
 /* render_map.c */
 int	render_background(t_wrapper *wrapper);
+
+/*hooks.c*/
+void	setup_hooks(t_game *game, t_wrapper *wrapper);
 
 /* error_management.c */
 void 	cleanup(t_wrapper *wrapper);
