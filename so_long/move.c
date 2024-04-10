@@ -6,13 +6,13 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:14:04 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 14:27:22 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:31:33 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	display_count(t_wrapper *wrapper)
+static void	display_count(t_wrapper *wrapper)
 {
 	char	*move_count_str;
 	char	*label;
