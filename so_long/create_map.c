@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:40:39 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/02 19:40:40 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/02 22:55:08 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static t_map	*init_map(void)
 	map->tiles = NULL;
 	map->height = 0;
 	map->width = 0;
-	map->start_P = 0;
-	map->exit_E = 0;
-	map->collect_C = 0;
-	map->found_C = 0;
-	map->found_E = 0;
+	map->start_p = 0;
+	map->exit_e = 0;
+	map->collect_c = 0;
+	map->found_c = 0;
+	map->found_e = 0;
 	map->move_count = 0;
 	map->x_position = 0;
 	map->y_position = 0;
