@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:59:03 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/02 19:59:04 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/02 22:27:58 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ void	free_images(t_game *game)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->exit_img);
 		game->exit_img = NULL;
-	}
-}
-
-void	free_extra_sprites(t_game *game)
-{
-	if (game->barbie_img)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->barbie_img);
-		game->barbie_img = NULL;
-
-	}
-	if (game->exit2_img)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->exit2_img);
-		game->exit2_img = NULL;
-
 	}
 }
 
