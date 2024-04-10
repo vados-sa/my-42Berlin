@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/10 11:55:03 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/04/10 11:55:04 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 /*Update visited tile.*/
@@ -20,13 +32,13 @@ static void	mark_tile(int y, int x, t_map *map)
 /*Is the exit reachable and all the collectibles colletible?*/
 void	final_check(t_map *map)
 {
-	if (map->found_E == 0)
+	if (map->found_e == 0)
 	{
 		ft_printf("\n\nThe exit (E) is not accessible!\n\n");
 		ft_printf("Please enter a valid path.\n\n");
 		error_exit(map, -2);
 	}
-	if (map->found_C != map->collect_C)
+	if (map->found_c != map->collect_c)
 	{
 		ft_printf("\n\nNot all collectibles (C) are accessible!\n\n");
 		ft_printf("Please enter a valid path.\n\n");
@@ -41,7 +53,7 @@ void	flood_fill(int y, int x, t_map *map)
 		return ;
 	if (map->tiles[y][x] == 'E')
 	{
-		map->found_E++;
+		map->found_e++;
 		return ;
 	}
 	if (map->tiles[y][x] == '1' || map->tiles[y][x] == 'F' 
@@ -49,10 +61,10 @@ void	flood_fill(int y, int x, t_map *map)
 		|| map->tiles[y][x] == 'K')
 		return ;
 	if (map->tiles[y][x] == 'C')
-		map->found_C++;
+		map->found_c++;
 	mark_tile(y, x, map);
-	flood_fill(y, x + 1, map); // Right
-	flood_fill(y, x - 1, map); // Left
-	flood_fill(y + 1, x, map); // Down
-	flood_fill(y - 1, x, map); // Up
+	flood_fill(y, x + 1, map);
+	flood_fill(y, x - 1, map);
+	flood_fill(y + 1, x, map);
+	flood_fill(y - 1, x, map);
 }
