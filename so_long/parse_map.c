@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/10 12:00:08 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/04/10 12:00:54 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	check_walls(t_map *map);
@@ -48,19 +60,19 @@ static int	check_elements(t_map *map)
 		while (y < map->height)
 		{
 			if (map->tiles[y][x] == 'P')
-				map->start_P++;
+				map->start_p++;
 			else if (map->tiles[y][x] == 'E')
-				map->exit_E++;
+				map->exit_e++;
 			else if (map->tiles[y][x] == 'C')
-				map->collect_C++;
+				map->collect_c++;
 			else if (map->tiles[y][x] != '0' && map->tiles[y][x] != '1'
-						&& map->tiles[y][x] != 'K')
-			invalid_char(map, x, y);
+				&& map->tiles[y][x] != 'K')
+				invalid_char(map, x, y);
 			y++;
 		}
 		x++;
 	}
-	if (map->start_P != 1 || map->exit_E != 1 || map->collect_C < 1)
+	if (map->start_p != 1 || map->exit_e != 1 || map->collect_c < 1)
 		return (1);
 	return (0);
 }
@@ -106,16 +118,16 @@ void	validate_map(t_map *map)
 		check_walls(map);
 		if (check_elements(map) == 1)
 		{
-			if (map->start_P == 0)
+			if (map->start_p == 0)
 				ft_printf("\nStarting Position (P) not found!\n\n");
-			if (map->exit_E == 0)
+			if (map->exit_e == 0)
 				ft_printf("\nExit (E) not found!\n\n");
-			if (map->start_P > 1 || map->exit_E > 1)
+			if (map->start_p > 1 || map->exit_e > 1)
 			{
 				ft_printf("\nNo duplicates allowed!\nOnly one Starting pos");
 				ft_printf("ition (P) and only one Exit (E) are accepted!\n\n");
 			}
-			if (map->collect_C < 1)
+			if (map->collect_c < 1)
 				ft_printf("\nAt least one Collectible (C) is required!\n\n");
 			error_exit(map, -1);
 		}
