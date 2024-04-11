@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:17:28 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 14:30:10 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:25:24 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_image(t_wrapper *wrapper, char tile, int y, int x)
 		img = wrapper->game->house_img;
 	else if (tile == 'F')
 		img = wrapper->game->floor_img;
-	else if (tile == 'B')  // maybe some sprite animation here for Barbie!!
+	else if (tile == 'B')
 		img = wrapper->game->barbie_img;
 	else if (tile == 'W')
 		img = wrapper->game->win_exit_img;
@@ -57,7 +57,7 @@ void	on_empty_tile(t_wrapper *wrapper, char *direction)
 	y = wrapper->map->y_position;
 	x = wrapper->map->x_position;
 	wrapper->map->tiles[y][x] = 'B';
-	put_image(wrapper, 'B', y, x);
+	put_barbie_img(wrapper, y, x, direction);
 }
 
 void	on_object(t_wrapper *wrapper, char *direction)
@@ -85,7 +85,7 @@ void	on_object(t_wrapper *wrapper, char *direction)
 	y = wrapper->map->y_position;
 	x = wrapper->map->x_position;
 	wrapper->map->tiles[y][x] = 'B';
-	put_image(wrapper, 'B', y, x);
+	put_barbie_img(wrapper, y, x, direction);
 	wrapper->map->collect_c--;
 }
 
@@ -133,5 +133,6 @@ void	on_the_exit(t_wrapper *wrapper, char *direction)
 	x = wrapper->map->x_position;
 	wrapper->map->tiles[y][x] = 'W';
 	put_image(wrapper, 'W', y, x);
+	render_game_win(wrapper);
 	wrapper->map->game_over = 1;
 }
