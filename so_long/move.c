@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:14:04 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 14:31:33 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:14:43 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ void	move_up(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
 	x = wrapper->map->x_position;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	display_count(wrapper);
 	if (wrapper->map->tiles[y - 1][x] == 'F')
 		on_empty_tile(wrapper, "up");
 	else if (wrapper->map->tiles[y - 1][x] == 'C')
+	{
 		on_object(wrapper, "up");
+		if (!wrapper->map->collect_c)
+			render_unlocked_exit(wrapper);
+	}
 	else if (wrapper->map->tiles[y - 1][x] == 'H')
 		on_house(wrapper, "up");
 	else if (wrapper->map->tiles[y - 1][x] == 'E' && !wrapper->map->collect_c)
@@ -53,6 +55,8 @@ void	move_up(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 }
 
 void	move_left(t_wrapper *wrapper)
@@ -61,13 +65,15 @@ void	move_left(t_wrapper *wrapper)
 	int	x;
 
 	y = wrapper->map->y_position;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	display_count(wrapper);
 	x = wrapper->map->x_position;
 	if (wrapper->map->tiles[y][x - 1] == 'F')
 		on_empty_tile(wrapper, "left");
 	else if (wrapper->map->tiles[y][x - 1] == 'C')
+	{
 		on_object(wrapper, "left");
+		if (!wrapper->map->collect_c)
+			render_unlocked_exit(wrapper);
+	}
 	else if (wrapper->map->tiles[y][x - 1] == 'H')
 		on_house(wrapper, "left");
 	else if (wrapper->map->tiles[y][x - 1] == 'E' && !wrapper->map->collect_c)
@@ -77,6 +83,8 @@ void	move_left(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 }
 
 void	move_right(t_wrapper *wrapper)
@@ -86,12 +94,14 @@ void	move_right(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
 	x = wrapper->map->x_position;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	display_count(wrapper);
 	if (wrapper->map->tiles[y][x + 1] == 'F')
 		on_empty_tile(wrapper, "right");
 	else if (wrapper->map->tiles[y][x + 1] == 'C')
+	{
 		on_object(wrapper, "right");
+		if (!wrapper->map->collect_c)
+			render_unlocked_exit(wrapper);
+	}
 	else if (wrapper->map->tiles[y][x + 1] == 'H')
 		on_house(wrapper, "right");
 	else if (wrapper->map->tiles[y][x + 1] == 'E' && !wrapper->map->collect_c)
@@ -101,6 +111,8 @@ void	move_right(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 }
 
 void	move_down(t_wrapper *wrapper)
@@ -110,12 +122,14 @@ void	move_down(t_wrapper *wrapper)
 
 	y = wrapper->map->y_position;
 	x = wrapper->map->x_position;
-	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
-	display_count(wrapper);
 	if (wrapper->map->tiles[y + 1][x] == 'F')
 		on_empty_tile(wrapper, "down");
 	else if (wrapper->map->tiles[y + 1][x] == 'C')
+	{
 		on_object(wrapper, "down");
+		if (!wrapper->map->collect_c)
+			render_unlocked_exit(wrapper);
+	}
 	else if (wrapper->map->tiles[y + 1][x] == 'H')
 		on_house(wrapper, "down");
 	else if (wrapper->map->tiles[y + 1][x] == 'E' && !wrapper->map->collect_c)
@@ -125,4 +139,6 @@ void	move_down(t_wrapper *wrapper)
 	else
 		return ;
 	wrapper->map->move_count++;
+	ft_printf("\nNumber of movements: %d\n\n", wrapper->map->move_count);
+	display_count(wrapper);
 }
