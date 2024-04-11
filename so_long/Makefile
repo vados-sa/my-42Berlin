@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 17:28:49 by vados-sa          #+#    #+#              #
-#    Updated: 2024/04/01 17:36:07 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/04/11 09:42:00 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ LIBFT = ./libft
 FT_PRINTF = ./ft_printf
 MINILIBX = ./minilibx-linux
 OBJDIR = ./objects
-
-$(shell mkdir -p $(OBJDIR))
+BONUSDIR = ./bonus
 
 # Libraries
 LIBFT_LIB = $(LIBFT)/libft.a
@@ -33,15 +32,32 @@ MLX_LIB = $(MINILIBX)
 MLX_FLAGS = -L$(MLX_LIB) -lmlx -lXext -lX11
 
 # Soure files
-SRC = main.c error_management.c initial_check.c create_map.c parse_map.c \
-		flood_fill.c load_sprites.c render_map.c hooks.c bonus.c
+SRC = main.c cleanup_management.c initial_check.c create_map.c parse_map.c \
+		flood_fill.c init_game.c load_sprites.c render_map.c hooks.c move.c \
+		free_images.c rerender.c
+BONUS_SRC = $(addprefix $(BONUSDIR)/, kenemy.c load_bonus_sprites.c free_bonus.c \
+		sprite_anim.c)
 
 # Object files
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
+BONUS_OBJS = $(BONUS_SRC:$(BONUSDIR)/%.c=$(OBJDIR)/%.o)
 
 all: libft ft_printf minilibx $(NAME)
 
-# Compiling libft and ft_printf
+# Building executables
+$(NAME): $(OBJS) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(BONUS_OBJS) $(LIBFT_LIB) $(FT_PRINTF_LIB) $(MLX_FLAGS)
+
+# Compilation rule for object files
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I$(LIBFT) -I$(FT_PRINTF) -I$(MINILIBX) -c $< -o $@
+
+$(OBJDIR)/%.o: $(BONUSDIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -I$(LIBFT) -I$(FT_PRINTF) -I$(MINILIBX) -c $< -o $@
+
+# Including external Makefiles
 libft:
 	@$(MAKE) -s -C $(LIBFT)
 
@@ -51,17 +67,9 @@ ft_printf:
 minilibx:
 	@$(MAKE) -s -C $(MINILIBX)
 
-# Building executables
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(FT_PRINTF_LIB) $(MLX_FLAGS) -o $(NAME)
-
-# Compilation rule for object files
-$(OBJDIR)/%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 # Cleanup
 clean:
-	$(RM) $(OBJDIR)
+	$(RM) $(OBJDIR) $(BONUS_OBJS)
 	@$(MAKE) -s -C $(LIBFT) clean
 	@$(MAKE) -s -C $(FT_PRINTF) clean
 	@$(MAKE) -s -C $(MINILIBX) clean
@@ -71,7 +79,6 @@ fclean: clean
 	@$(MAKE) -s -C $(LIBFT) fclean
 	@$(MAKE) -s -C $(FT_PRINTF) fclean
 	@$(MAKE) -s -C $(MINILIBX) clean 
-                            # Usually MinilibX doesn't have an fclean rule, but calling clean as a safety
 
 re: fclean all
 
