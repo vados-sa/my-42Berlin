@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:17:28 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 10:25:24 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:13:33 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	put_image(t_wrapper *wrapper, char tile, int y, int x)
 		img = wrapper->game->house_img;
 	else if (tile == 'F')
 		img = wrapper->game->floor_img;
-	else if (tile == 'B')
-		img = wrapper->game->barbie_img;
+	/* else if (tile == 'B')
+		img = wrapper->game->barbie_img; */
 	else if (tile == 'W')
 		img = wrapper->game->win_exit_img;
 	if (img)
