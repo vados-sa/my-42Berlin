@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:05:27 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 11:13:07 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:22:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,11 @@ int	load_sprites(t_wrapper *wrapper)
 	int	bonus;
 
 	width = TILE_SIZE;
-	height = TILE_SIZE;/* 
-	wrapper->game->barbie_img = mlx_xpm_file_to_image(wrapper->game->mlx_ptr, \
-		"textures/barbie.xpm", &width, &height); */
+	height = TILE_SIZE;
 	images = load_images(wrapper, width, height);
 	collectibles = load_collectibles(wrapper, width, height);
 	bonus = load_bonus(wrapper, width, height);
-	if (images ||/*  !wrapper->game->barbie_img \
-		|| */ collectibles || bonus)
+	if (images || collectibles || bonus)
 	{
 		ft_printf("Failed to load one or more sprite(s).\n");
 		return (1);
