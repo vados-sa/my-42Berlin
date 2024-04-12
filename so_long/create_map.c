@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:40:39 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/02 22:55:08 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:01:23 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_map	*init_map(void)
 	map->x_position = 0;
 	map->y_position = 0;
 	map->game_over = 0;
+	map->game_end = 0;
 	return (map);
 }
 

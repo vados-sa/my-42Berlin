@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:39:40 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 10:23:46 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:15:55 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void	render_game_win(t_wrapper *wrapper)
 			if (wrapper->map->tiles[y][x] == '1')
 				mlx_put_image_to_window(wrapper->game->mlx_ptr, \
 				wrapper->game->win_ptr, wrapper->game->win_wall_img, \
+				x * TILE_SIZE, y * TILE_SIZE);
+			if (wrapper->map->tiles[y][x] == 'K')
+				mlx_put_image_to_window(wrapper->game->mlx_ptr, \
+				wrapper->game->win_ptr, wrapper->game->floor_img, \
 				x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}

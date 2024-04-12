@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:14:04 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 13:38:59 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:06:03 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ static void	display_count(t_wrapper *wrapper)
 	char	*label;
 	char	*full_message;
 
-	label = "Movement count: ";
-	move_count_str = ft_itoa(wrapper->map->move_count);
-	full_message = ft_strjoin(label, move_count_str);
-	mlx_put_image_to_window(wrapper->game->mlx_ptr, \
-		wrapper->game->win_ptr, wrapper->game->wall_img, 0, 0);
-	mlx_put_image_to_window(wrapper->game->mlx_ptr, \
-		wrapper->game->win_ptr, wrapper->game->wall_img, 1 * TILE_SIZE, 0);
-	mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
-		TILE_SIZE / 2, 0xFFF4F8, full_message);
-	free(move_count_str);
-	free(full_message);
+	if (wrapper->map->game_end == 0)
+	{
+		label = "Movement count: ";
+		move_count_str = ft_itoa(wrapper->map->move_count);
+		full_message = ft_strjoin(label, move_count_str);
+		mlx_put_image_to_window(wrapper->game->mlx_ptr, \
+			wrapper->game->win_ptr, wrapper->game->wall_img, 0, 0);
+		mlx_put_image_to_window(wrapper->game->mlx_ptr, \
+			wrapper->game->win_ptr, wrapper->game->wall_img, 1 * TILE_SIZE, 0);
+		mlx_string_put(wrapper->game->mlx_ptr, wrapper->game->win_ptr, 0, \
+			TILE_SIZE / 2, 0xFFF4F8, full_message);
+		free(move_count_str);
+		free(full_message);
+	}
 }
 
 void	move_up(t_wrapper *wrapper)

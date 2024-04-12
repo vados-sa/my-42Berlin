@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 10:40:39 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:01:03 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_map
 	int		x_position;
 	int		y_position;
 	int		game_over;
+	int		game_end;
 }	t_map;
 
 typedef struct s_wrapper

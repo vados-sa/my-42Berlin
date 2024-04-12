@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:17:28 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 11:13:33 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:04:22 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,6 @@ void	on_the_exit(t_wrapper *wrapper, char *direction)
 	wrapper->map->tiles[y][x] = 'W';
 	put_image(wrapper, 'W', y, x);
 	render_game_win(wrapper);
+	wrapper->map->game_end = 1;
 	wrapper->map->game_over = 1;
 }

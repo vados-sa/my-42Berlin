@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus.c                                            :+:      :+:    :+:   */
+/*   kenemy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:43:24 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 14:44:00 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/12 09:04:51 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	on_kenemy(t_wrapper *wrapper, char *direction)
 	mlx_put_image_to_window(wrapper->game->mlx_ptr, wrapper->game->win_ptr, \
 		wrapper->game->ken_img, x * TILE_SIZE, y * TILE_SIZE);
 	render_game_over(wrapper);
+	wrapper->map->game_end = 1;
 	wrapper->map->game_over = 1;
 }
