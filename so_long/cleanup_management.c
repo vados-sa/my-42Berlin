@@ -26,6 +26,7 @@ void	error_exit(t_map *map, int fd)
 				break ;
 			free(temp);
 		}
+		close(fd);
 	}
 	if (fd == -1)
 		ft_printf("Please insert a valid map.\n\n");
