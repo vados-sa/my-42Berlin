@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:01:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 09:34:57 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/15 10:38:50 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	send_bit(char c, int pid)
 			if (kill(pid, SIGUSR2) == -1)
 				error_exit();
 		}
-		usleep(1095);
+		usleep(100);
 		i--;
 	}
 }

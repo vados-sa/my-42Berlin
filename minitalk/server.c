@@ -6,15 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 19:00:35 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 09:29:27 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/15 10:37:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <signal.h>
-#include "./ft_printf/ft_printf.h"
-#include "./libft/libft.h"
+#include "minitalk.h"
 
 static void	handle_signal(int sig)
 {
@@ -38,12 +34,16 @@ static void	handle_signal(int sig)
 	}
 }
 
+static void	receive_signal(void)
+{
+	signal(SIGUSR1, handle_signal);
+	signal(SIGUSR2, handle_signal);
+}
+
 int	main(void)
 {
 	ft_printf("Server running with PID: %d\n", getpid());
-	signal(SIGUSR1, handle_signal);
-	signal(SIGUSR2, handle_signal);
 	while (1)
-		pause();
+		receive_signal();
 	return (0);
 }
