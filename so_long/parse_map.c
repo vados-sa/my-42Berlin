@@ -6,16 +6,16 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:00:08 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/10 12:00:54 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:36:50 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static void	check_walls(t_map *map);
-static int	check_elements(t_map *map);
-static void	invalid_char(t_map *map, int x, int y);
-static void	valid_path(t_map *map);
+static int	check_elements(t_map *map, t_wrapper *wrapper);
+static void	invalid_char(t_map *map, t_wrapper *wrapper, int x, int y);
+static void	valid_path(t_map *map, t_wrapper *wrapper);
 
 /*Is the map surrounded by walls?*/
 static void	check_walls(t_map *map)
@@ -48,7 +48,7 @@ static void	check_walls(t_map *map)
 }
 
 /*Does the map has the required elements?*/
-static int	check_elements(t_map *map)
+static int	check_elements(t_map *map, t_wrapper *wrapper)
 {
 	int	x;
 	int	y;
@@ -67,7 +67,7 @@ static int	check_elements(t_map *map)
 				map->collect_c++;
 			else if (map->tiles[y][x] != '0' && map->tiles[y][x] != '1'
 				&& map->tiles[y][x] != 'K')
-				invalid_char(map, x, y);
+				invalid_char(map, wrapper, x, y);
 			y++;
 		}
 		x++;
@@ -78,14 +78,14 @@ static int	check_elements(t_map *map)
 }
 
 /*Are the characters valid?*/
-static void	invalid_char(t_map *map, int x, int y)
+static void	invalid_char(t_map *map, t_wrapper *wrapper, int x, int y)
 {
 	ft_printf("\n\n%c is an invalid character!\n\n", map->tiles[x][y]);
-	error_exit(map, -1);
+	error_exit(wrapper, -1);
 }
 
 /*Is the path valid on the map?*/
-static void	valid_path(t_map *map)
+static void	valid_path(t_map *map, t_wrapper *wrapper)
 {
 	int	y;
 	int	x;
@@ -107,16 +107,16 @@ static void	valid_path(t_map *map)
 		}
 		y++;
 	}
-	flood_fill(y - 1, x, map);
-	final_check(map);
+	flood_fill(y - 1, x, map, wrapper);
+	final_check(map, wrapper);
 }
 
-void	validate_map(t_map *map)
+void	validate_map(t_map *map, t_wrapper *wrapper)
 {
 	if (map->height > 0 && map->width > 0)
 	{
 		check_walls(map);
-		if (check_elements(map) == 1)
+		if (check_elements(map, wrapper) == 1)
 		{
 			if (map->start_p == 0)
 				ft_printf("\nStarting Position (P) not found!\n\n");
@@ -129,13 +129,13 @@ void	validate_map(t_map *map)
 			}
 			if (map->collect_c < 1)
 				ft_printf("\nAt least one Collectible (C) is required!\n\n");
-			error_exit(map, -1);
+			error_exit(wrapper, -1);
 		}
 	}
 	else
 	{
 		ft_printf("\nThe map is empty or not properly initialized!\n\n");
-		error_exit(map, -1);
+		error_exit(wrapper, -1);
 	}
-	valid_path(map);
+	valid_path(map, wrapper);
 }

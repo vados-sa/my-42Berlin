@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/16 13:48:39 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:36:36 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ int		check_fd(const char *filename);
 int		check_rectang(char *new_row, t_map *map);
 
 /* create_map.c */
-t_map	*read_map(const char *filename);
+t_map	*read_map(const char *filename, t_wrapper *wrapper);
 
 /* parse_map.c */
-void	validate_map(t_map *map);
+void	validate_map(t_map *map, t_wrapper *wrapper);
 
 /* flood_fill.c */
-void	flood_fill(int y, int x, t_map *map);
-void	final_check(t_map *map);
+void	flood_fill(int y, int x, t_map *map, t_wrapper *wrapper);
+void	final_check(t_map *map, t_wrapper *wrapper);
 
 /*init_game.c*/
 int		init_game(t_game *game, t_map *map);

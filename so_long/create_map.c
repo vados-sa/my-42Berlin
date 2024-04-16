@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:40:39 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/12 09:01:23 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:30:49 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	update_map(t_map *map, char *new_row)
 	return (0);
 }
 
-t_map	*read_map(const char *filename)
+t_map	*read_map(const char *filename, t_wrapper *wrapper)
 {
 	int		fd;
 	char	*row;
@@ -89,9 +89,9 @@ t_map	*read_map(const char *filename)
 		if (map->height == 0)
 			set_map_width(map, row);
 		if (update_map(map, row) == -1)
-			error_exit(map, fd);
+			error_exit(wrapper, fd);
 	}
 	close(fd);
-	validate_map(map);
+	validate_map(map, wrapper);
 	return (map);
 }

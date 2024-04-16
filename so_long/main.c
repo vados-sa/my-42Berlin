@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:44:04 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/16 13:49:17 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:29:15 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char *av[])
 	t_wrapper	wrapper;
 
 	check_arguments(ac);
-	map = read_map(av[1]);
+	map = read_map(av[1], &wrapper);
 	wrapper.game = &game;
 	wrapper.map = map;
 	if (init_game(&game, map))
