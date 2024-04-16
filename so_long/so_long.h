@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:05:10 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/12 09:01:03 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:48:39 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	on_house(t_wrapper *wrapper, char *direction);
 void	on_the_exit(t_wrapper *wrapper, char *direction);
 
 /* cleanup_management.c */
-void	error_exit(t_map *map, int fd);
+void	error_exit(t_wrapper *wrapper, int fd);
 void	cleanup(t_wrapper *wrapper);
 void	clean_game(t_game *game);
 void	free_map(t_map *map);

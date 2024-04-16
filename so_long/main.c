@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 19:44:04 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/04/11 10:37:08 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:49:17 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int ac, char *av[])
 	wrapper.game = &game;
 	wrapper.map = map;
 	if (init_game(&game, map))
-		error_exit(map, -2);
+		error_exit(&wrapper, -2);
 	if (load_sprites(&wrapper))
-		error_exit(map, -2);
+		error_exit(&wrapper, -2);
 	distribute_collectibles(map);
 	render_background(&wrapper);
 	find_player_position(map);
