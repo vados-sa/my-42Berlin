@@ -4,13 +4,14 @@
 'time_to_eat', 'time_to_sleep', and, optionally, '[number_of_times_each_philosopher_must_eat]'*/
 int	main(int ac, char *av[])
 {
-	if (ac == 5)
+	int	optional_arg; // flag for 'number_of_times_each_philosophers_must_eat'
+
+	optional_arg = 0;
+	if (ac == 5 || ac == 6)
 	{
-		// handle program without 'number_of_times_each_philosophers_must_eat'
-	}
-	else if (ac == 6)
-	{
-		// handle program with 'number_of_times_each_philosophers_must_eat'
+		if (ac == 6)
+			optional_arg = 1;
+		
 	}
 	else
 	{
