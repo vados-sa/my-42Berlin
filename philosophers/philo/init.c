@@ -1,0 +1,45 @@
+#include "philo.h"
+
+t_elements	*init_struct(void)
+{
+	t_elements	*info;
+
+	info = malloc(sizeof(t_elements));
+	if (!info)
+	{
+		printf("Error initializing arguments!\n");
+		exit (1);
+	}
+	info->nbr_of_philo = 0;
+	info->time_to_die = 0;
+	info->time_to_eat = 0;
+	info->time_to_sleep = 0;
+	info->nbr_of_meals = 0;
+	return (info);
+}
+
+void	parse_args(int ac, char *av[], t_elements *info)
+{
+	info->nbr_of_philo = ft_custom_atoi(av[1]);
+	info->time_to_die = ft_custom_atoi(av[2]);
+	info->time_to_eat = ft_custom_atoi(av[3]);
+	info->time_to_sleep = ft_custom_atoi(av[4]);
+	info->nbr_of_meals = 0;
+
+	if (info->nbr_of_philo <= 0 || info->time_to_die <= 0 || 
+		info->time_to_eat <= 0 || info->time_to_sleep <= 0)
+	{
+		printf("All input values must be positive integers.\n");
+		error_exit(info);
+	}
+	if (ac == 6)
+	{
+		info->nbr_of_meals = ft_custom_atoi(av[5]);
+		if (info->nbr_of_meals <= 0)
+		{
+			printf("'number_of_times_each_philosopher_must_eat' must be\
+ a positive interger.\n");
+			error_exit(info);
+		}
+	}
+}
