@@ -20,12 +20,18 @@ typedef struct s_elements
 
 typedef struct s_philo
 {
-	//data for philosophers
+	int				id;
+	int				count_meals;
+	pthread_t		thread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	t_elements		*info;
 }	t_philo;
 
 /*init.c*/
 void		parse_args(int ac, char *av[], t_elements *info);
 t_elements	*init_struct(void);
+t_philo		*init_philo(t_elements *info);
 
 /*utils.c*/
 int			ft_custom_atoi(const char *s);

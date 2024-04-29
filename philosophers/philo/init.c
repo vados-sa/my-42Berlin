@@ -43,3 +43,22 @@ void	parse_args(int ac, char *av[], t_elements *info)
 		}
 	}
 }
+
+t_philo	*init_philo(t_elements *info) //might not be necessary
+{
+	t_philo	*philo;
+
+	philo = malloc(sizeof(t_philo));
+	if (!philo)
+	{
+		printf("Failed to allocate memory for philosopher.\n");
+		error_exit(info);
+	}
+	philo->id = 0;
+	philo->count_meals = 0;
+	philo->thread = 0;
+	philo->left_fork = NULL;
+	philo->right_fork = NULL;
+	philo->info = info;
+	return (philo);
+}
