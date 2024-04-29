@@ -8,7 +8,7 @@ t_elements	*init_struct(void)
 	if (!info)
 	{
 		printf("Error initializing arguments!\n");
-		exit (1);
+		exit (EXIT_FAILURE);
 	}
 	info->nbr_of_philo = 0;
 	info->time_to_die = 0;
