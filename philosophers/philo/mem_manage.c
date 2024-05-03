@@ -11,6 +11,7 @@ static void	clean_forks(pthread_mutex_t *fork, int quantity)
 		i++;
 	}
 	free (fork);
+	fork = NULL;
 }
 
 /* static void	clean_philo(t_philo *philo)
@@ -20,8 +21,8 @@ static void	clean_forks(pthread_mutex_t *fork, int quantity)
 
 void	cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo)
 {
-	free (info);
 	clean_forks(fork, info->nbr_of_philo);
+	free (info);
 	free (philo);
 	//clean_philo(philo);
 } 
