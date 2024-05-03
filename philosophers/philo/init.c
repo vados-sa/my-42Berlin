@@ -44,21 +44,47 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	}
 }
 
-t_philo	*init_philo(t_elements *info) //might not be necessary
+pthread_mutex_t	*init_forks(int quantity)
 {
+	int				i;
+	pthread_mutex_t	*forks;
+
+	i = 0;
+	forks = malloc(quantity * sizeof(pthread_mutex_t));
+	if (!forks)
+		return (NULL);
+	while (i < quantity)
+	{
+		if (pthread_mutex_init(&forks[i], NULL))
+		{
+			while (i-- > 0)
+				pthread_mutex_destroy(&forks[i]);
+			free (forks);
+			return (NULL);
+		}
+		printf("fork[%d] created\n", i + 1);
+		i++;
+	}
+	return (forks);
+}
+
+t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
+{
+	int		i;
 	t_philo	*philo;
 
-	philo = malloc(sizeof(t_philo));
+	i = 0;
+	philo = malloc(info->nbr_of_philo * sizeof(t_philo));
 	if (!philo)
+		return (NULL);
+	while (i < info->nbr_of_philo)
 	{
-		printf("Failed to allocate memory for philosopher.\n");
-		error_exit(info);
+		philo[i].id = i + 1;
+		philo[i].count_meals = 0;
+		philo[i].left_fork = &fork[i];
+		philo[i].right_fork = &fork[(i + 1) % info->nbr_of_philo];
+		philo[i].info = info;
+		i++;
 	}
-	philo->id = 0;
-	philo->count_meals = 0;
-	philo->thread = 0;
-	philo->left_fork = NULL;
-	philo->right_fork = NULL;
-	philo->info = info;
 	return (philo);
 }

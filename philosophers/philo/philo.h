@@ -5,6 +5,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
 # include <limits.h>
@@ -29,15 +30,17 @@ typedef struct s_philo
 }	t_philo;
 
 /*init.c*/
-void		parse_args(int ac, char *av[], t_elements *info);
-t_elements	*init_struct(void);
-t_philo		*init_philo(t_elements *info);
+void			parse_args(int ac, char *av[], t_elements *info);
+t_elements		*init_struct(void);
+pthread_mutex_t	*init_forks(int quantity);
+t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
 
 /*utils.c*/
 int			ft_custom_atoi(const char *s);
 
 /*mem_manage.c*/
 void		error_exit(t_elements *info);
+void		cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo);
 
 
 #endif
