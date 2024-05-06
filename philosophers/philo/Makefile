@@ -30,11 +30,11 @@ $(OBJDIR)/%.o: %.c
 # Cleanup
 clean:
 	@$(RM) $(OBJDIR)
-	@echo "\033[33;1mObject files removed.\033[0m"
+	@echo "\033[37;1mObject files removed.\033[0m"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "\033[31;1mExecutable removed.\033[0m"
+	@echo "\033[37;1mExecutable removed.\033[0m"
 
 re: fclean all
 

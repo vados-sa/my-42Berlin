@@ -26,6 +26,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	// mutex for printing statements
 	t_elements		*info;
 }	t_philo;
 
@@ -36,11 +37,12 @@ pthread_mutex_t	*init_forks(int quantity);
 t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
 
 /*utils.c*/
-int			ft_custom_atoi(const char *s);
+int				ft_custom_atoi(const char *s);
 
 /*mem_manage.c*/
-void		error_exit(t_elements *info);
-void		cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo);
+void			error_exit(t_elements *info);
+void			cleanup(t_elements *info, pthread_mutex_t *fork, \
+t_philo *philo);
 
 
 #endif

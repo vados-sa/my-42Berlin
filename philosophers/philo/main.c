@@ -1,6 +1,5 @@
 #include "philo.h"
 
-
 /*The program takes as arguments: 
 'number_of_philosophers', 'time_to_die', 'time_to_eat',
 'time_to_sleep', and, optionally,
@@ -28,7 +27,6 @@ int	main(int ac, char *av[])
 	cleanup(info, fork, philo);
 	return (0);
 }
-
 
 /* void*	function(void *arg)
 {

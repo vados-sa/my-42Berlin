@@ -62,7 +62,6 @@ pthread_mutex_t	*init_forks(int quantity)
 			free (forks);
 			return (NULL);
 		}
-		printf("fork[%d] created\n", i + 1);
 		i++;
 	}
 	return (forks);

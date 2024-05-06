@@ -5,7 +5,7 @@ static void	clean_forks(pthread_mutex_t *fork, int quantity)
 	int	i;
 
 	i = 0;
-	while(i < quantity)
+	while (i < quantity)
 	{
 		pthread_mutex_destroy(&fork[i]);
 		i++;
