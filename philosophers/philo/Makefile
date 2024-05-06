@@ -18,7 +18,8 @@ all: $(NAME)
 # Building executables
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "Compilation complete. Program $(NAME) is ready to run."
+	@echo "\033[32;1mCompilation complete \033[5m✓ ✓ ✓\033[0m"
+	@echo "\033[35;1mProgram $(NAME) is ready to run.\033[0m"
 
 
 # Compilation rule for object files
@@ -29,11 +30,11 @@ $(OBJDIR)/%.o: %.c
 # Cleanup
 clean:
 	@$(RM) $(OBJDIR)
-	@echo "Object files removed."
+	@echo "\033[33;1mObject files removed.\033[0m"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "Executable removed."
+	@echo "\033[31;1mExecutable removed.\033[0m"
 
 re: fclean all
 
