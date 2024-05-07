@@ -23,24 +23,7 @@ int	main(int ac, char *av[])
 	philo = init_philo_data(info, fork);
 	if (!philo)
 		error_exit(info);
-	//start_simulation(info, fork, philo);
+	simulation(info, /* fork,  */philo);
 	cleanup(info, fork, philo);
 	return (0);
 }
-
-/* void*	function(void *arg)
-{
-	printf("thread created\n");
-	usleep(10);
-	printf("finished thread\n");
-	return NULL;
-} */
-
-/* if ((pthread_create(&philo[i].thread, NULL, &function, NULL)))
-		{
-			printf("Failed to allocate memory for philosopher %d.\n", i + 1);
-			while(i-- > 0)
-				pthread_join(philo[i].thread, NULL);
-			free(philo);
-			return (NULL);
-		} */
