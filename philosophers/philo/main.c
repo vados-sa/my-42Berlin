@@ -23,7 +23,7 @@ int	main(int ac, char *av[])
 	philo = init_philo_data(info, fork);
 	if (!philo)
 		error_exit(info);
-	simulation(info, /* fork,  */philo);
+	simulation(philo);
 	cleanup(info, fork, philo);
 	return (0);
 }

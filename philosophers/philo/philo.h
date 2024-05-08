@@ -26,7 +26,9 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t print;
+	pthread_mutex_t	print;
+	struct timeval	last_meal_t;
+	int				is_live;
 	t_elements		*info;
 }	t_philo;
 
@@ -45,7 +47,6 @@ void			cleanup(t_elements *info, pthread_mutex_t *fork, \
 t_philo *philo);
 
 /*simulation.c*/
-void			simulation(t_elements *info, /* pthread_mutex_t *fork,  */\
-t_philo *philo);
+void			simulation(t_philo *philo);
 
 #endif
