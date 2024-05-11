@@ -15,6 +15,8 @@ t_elements	*init_struct(void)
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
 	info->nbr_of_meals = 0;
+	info->start_time.tv_sec = 0;
+	info->start_time.tv_usec = 0;
 	return (info);
 }
 
@@ -25,6 +27,7 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	info->time_to_eat = ft_custom_atoi(av[3]);
 	info->time_to_sleep = ft_custom_atoi(av[4]);
 	info->nbr_of_meals = 0;
+	gettimeofday(&info->start_time, NULL);
 
 	if (info->nbr_of_philo <= 0 || info->time_to_die <= 0 || 
 		info->time_to_eat <= 0 || info->time_to_sleep <= 0)

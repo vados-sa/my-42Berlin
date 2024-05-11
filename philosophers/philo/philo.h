@@ -12,11 +12,12 @@
 
 typedef struct s_elements
 {
-	int	nbr_of_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	nbr_of_meals;
+	int				nbr_of_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				nbr_of_meals;
+	struct timeval	start_time;
 }	t_elements;
 
 typedef struct s_philo
@@ -27,6 +28,7 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	print;
+	pthread_mutex_t	state;
 	struct timeval	last_meal_t;
 	int				is_live;
 	t_elements		*info;
@@ -48,5 +50,15 @@ t_philo *philo);
 
 /*simulation.c*/
 void			simulation(t_philo *philo);
+
+/*check.c*/
+int				check_starvation(t_philo *philo);
+int				check_state(t_philo *philo);
+int				check_forks(t_philo *philo);
+
+/*routine_utils.c*/
+void	eat(t_philo *philo);
+void	nap(t_philo *philo);
+void	think(t_philo *philo);
 
 #endif
