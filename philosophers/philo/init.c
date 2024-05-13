@@ -90,6 +90,7 @@ t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
 		philo[i].last_meal_t.tv_sec = 0;
 		philo[i].last_meal_t.tv_usec = 0;
 		philo[i].is_live = 0;
+		philo[i].priority = 0;
 		philo[i].info = info;
 		i++;
 	}

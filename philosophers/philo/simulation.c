@@ -1,38 +1,34 @@
 #include "philo.h"
 
-void*	monitoring(void *arg)
+void	*monitoring(void *arg)
 {
 	t_philo			*philo;
 	int				i;
 	int				j;
 
 	philo = (t_philo *)arg;
-	while(1)
+	while (1)
 	{
 		i = 0;
-		while(i < philo->info->nbr_of_philo)
+		while (i < philo->info->nbr_of_philo)
 		{
 			if (check_starvation(&philo[i]))
-			{
-				j = 0;
-				while(i < philo->info->nbr_of_philo)
-					philo[j++].is_live = 1;
-			}
+				announce_death(philo);
+			//set_priority(philo, i);
 			// check if forks are available;
-			// give priority to philosophers;
 			i++;
 		}
 	}
 	return (NULL);
 }
 
-void*	routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	gettimeofday(&philo->last_meal_t, NULL);
-	while(1)
+	while (1)
 	{
 		if (check_state(philo))
 			break ;
@@ -50,11 +46,11 @@ void*	routine(void *arg)
 				if (can_eat(philo))
 					break ;
 		}
-	}	
+	}
 	return (NULL);
 }
 
-void    simulation(t_philo *philo)
+void	simulation(t_philo *philo)
 {
 	pthread_t	monitor;
 	int			i;
@@ -68,7 +64,7 @@ void    simulation(t_philo *philo)
 		{
 			printf("Failed to allocate memory for philosopher %d.\n", i + 1);
 			j = 0;
-			while(j < i)
+			while (j < i)
 				pthread_join(philo[j++].thread, NULL);
 			return ;
 		}
