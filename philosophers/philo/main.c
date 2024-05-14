@@ -25,5 +25,6 @@ int	main(int ac, char *av[])
 		error_exit(info);
 	simulation(philo);
 	cleanup(info, fork, philo);
+	printf("Program ends\n");
 	return (0);
 }

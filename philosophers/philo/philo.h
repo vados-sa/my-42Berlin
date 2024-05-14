@@ -43,6 +43,7 @@ t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
 
 /*utils.c*/
 int				ft_custom_atoi(const char *s);
+long long		timeval_to_microsecond(struct timeval tv);
 
 /*mem_manage.c*/
 void			error_exit(t_elements *info);
@@ -56,9 +57,11 @@ void			simulation(t_philo *philo);
 int				check_starvation(t_philo *philo);
 int				check_state(t_philo *philo);
 int				check_forks(t_philo *philo);
+int				check_if_can_eat(t_philo *philo);
 
 /*monitor_util.c*/
 void	announce_death(t_philo *philo);
+void	set_priority(t_philo *philo, int nbr_of_philos);
 
 /*routine_utils.c*/
 void	eat(t_philo *philo);

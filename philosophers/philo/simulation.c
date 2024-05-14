@@ -4,7 +4,7 @@ void	*monitoring(void *arg)
 {
 	t_philo			*philo;
 	int				i;
-	int				j;
+	//int				j;
 
 	philo = (t_philo *)arg;
 	while (1)
@@ -13,11 +13,16 @@ void	*monitoring(void *arg)
 		while (i < philo->info->nbr_of_philo)
 		{
 			if (check_starvation(&philo[i]))
+			{
 				announce_death(philo);
-			//set_priority(philo, i);
+				return (NULL);
+			}
+			if (philo->info->nbr_of_philo > 1)
+				set_priority(philo, philo->info->nbr_of_philo);
 			// check if forks are available;
 			i++;
 		}
+		//usleep(10000);
 	}
 	return (NULL);
 }
@@ -32,7 +37,7 @@ void	*routine(void *arg)
 	{
 		if (check_state(philo))
 			break ;
-		if (can_eat(philo))
+		if (check_if_can_eat(philo))
 		{
 			eat(philo);
 			if (check_state(philo))
@@ -42,9 +47,7 @@ void	*routine(void *arg)
 		else
 		{
 			think(philo);
-			while (1) // I don't yet know if this is necessary
-				if (can_eat(philo))
-					break ;
+			usleep(10000);
 		}
 	}
 	return (NULL);

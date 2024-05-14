@@ -1,5 +1,10 @@
 #include "philo.h"
 
+long long	timeval_to_microsecond(struct timeval tv)
+{
+	return((long long)tv.tv_sec * 1000000 + tv.tv_usec);
+}
+
 int	ft_custom_atoi(const char *s)
 {
 	int	i;
