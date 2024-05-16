@@ -7,10 +7,10 @@ int	check_starvation(t_philo *philo)
 
 	current_time_ms = get_time();
 	elapsed_time_ms = current_time_ms - philo->last_meal_t;
-	if (elapsed_time_ms >= (unsigned int)philo->info->time_to_die)
+	if (elapsed_time_ms >= philo->info->time_to_die)
 	{
 		pthread_mutex_lock(&philo->print);
-		printf("%.1f %d died\n", (double)(current_time_ms - philo->info->start_time), philo->id);
+		printf("%" PRIu64 " %d died\n", (current_time_ms - philo->info->start_time), philo->id);
 		pthread_mutex_unlock(&philo->print);
 		return (1);
 	}
@@ -21,11 +21,10 @@ int	check_state(t_philo *philo)
 {
 	int live;
 
-	//live = 0;
 	pthread_mutex_lock(&philo->state);
 	live = philo->is_live;
 	pthread_mutex_unlock(&philo->state);
-	if (live)
+	if (live == 0)
 		return (1);
 	return (0);
 }

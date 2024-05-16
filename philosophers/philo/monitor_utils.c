@@ -5,8 +5,8 @@ void	announce_death(t_philo *philo)
 	int	i;
 
 	i = 0;
-	while (i < philo->info->nbr_of_philo)
-		philo[i++].is_live = 1;
+	while (i < (int)philo->info->nbr_of_philo)
+		philo[i++].is_live = 0;
 }
 
 static int	find_longest_wait(t_philo *philo, int nbr_of_philos)

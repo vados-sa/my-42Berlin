@@ -9,9 +9,9 @@ void	*monitoring(void *arg)
 	while (1)
 	{
 		i = 0;
-		while (i < philo->info->nbr_of_philo)
+		while (i < (int)philo->info->nbr_of_philo)
 		{
-			if (check_starvation(&philo[i]))
+			if (check_starvation(&philo[i]) == 1)
 			{
 				announce_death(philo);
 				return (NULL);
@@ -34,19 +34,20 @@ void	*routine(void *arg)
 	philo->last_meal_t = get_time();
 	while (1)
 	{
-		if (check_state(philo))
+		if (check_state(philo) == 1)
 			break ;
 		if (check_if_can_eat(philo))
 		{
 			eat(philo);
-			if (check_state(philo))
+			if (check_state(philo) == 1)
 				break ;
 			nap(philo);
 		}
 		else
 		{
 			think(philo);
-			usleep(10000);
+			while (check_if_can_eat(philo) == 0)
+				continue ;
 		}
 	}
 	return (NULL);
@@ -60,7 +61,7 @@ void	simulation(t_philo *philo)
 
 	pthread_create(&monitor, NULL, &monitoring, philo);
 	i = 0;
-	while (i < philo->info->nbr_of_philo)
+	while (i < (int)philo->info->nbr_of_philo)
 	{
 		if ((pthread_create(&philo[i].thread, NULL, &routine, &philo[i])))
 		{
@@ -73,7 +74,7 @@ void	simulation(t_philo *philo)
 		i++;
 	}
 	i = 0;
-	while (i < philo->info->nbr_of_philo)
-		pthread_join(philo[i++].thread, NULL);
 	pthread_join(monitor, NULL);
+	while (i < (int)philo->info->nbr_of_philo)
+		pthread_join(philo[i++].thread, NULL);
 }

@@ -5,15 +5,14 @@ uint64_t	get_time(void)
 {
 	struct timeval	tv;
 	
-	if (gettimeofday(&tv, NULL))
-		return (0);
-	return ((tv.tv_sec * (uint16_t)1000) + (tv.tv_usec / (uint64_t)1000));
+	gettimeofday(&tv, NULL);
+	return (((uint64_t)tv.tv_sec * 1000) + ((uint64_t)tv.tv_usec / 1000));
 }
 
-int	ft_custom_atoi(const char *s)
+uint64_t	ft_custom_atoi(const char *s)
 {
 	int	i;
-	unsigned long long	nbr;
+	uint64_t	nbr;
 
 	i = 0;
 	nbr = 0;
@@ -21,7 +20,7 @@ int	ft_custom_atoi(const char *s)
 		i++;
 	if (!s[i] || s[i] == '-' || ((s[i] == '+')
 			&& !(s[i + 1] >= '0' && s[i + 1] <= '9')))
-		return (-1);
+		return ((uint64_t)-1);
 	if (s[i] == '+')
 		i++;
 	while (s[i])
@@ -32,6 +31,6 @@ int	ft_custom_atoi(const char *s)
 		i++;
 	}
 	if (nbr > INT_MAX)
-		return (-1);
-	return ((int)nbr);
+		return ((uint64_t)-1);
+	return (nbr);
 }
