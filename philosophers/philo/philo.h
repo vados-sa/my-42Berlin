@@ -9,6 +9,7 @@
 # include <sys/time.h>
 # include <pthread.h>
 # include <limits.h>
+# include <stdint.h>
 
 typedef struct s_elements
 {
@@ -17,7 +18,7 @@ typedef struct s_elements
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nbr_of_meals;
-	struct timeval	start_time;
+	uint64_t		start_time;
 }	t_elements;
 
 typedef struct s_philo
@@ -43,6 +44,8 @@ t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
 
 /*utils.c*/
 int				ft_custom_atoi(const char *s);
+//void			set_start_time(struct timeval *start_time);
+uint64_t		get_time(void);
 long long		timeval_to_microsecond(struct timeval tv);
 
 /*mem_manage.c*/

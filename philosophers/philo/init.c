@@ -15,8 +15,7 @@ t_elements	*init_struct(void)
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
 	info->nbr_of_meals = 0;
-	info->start_time.tv_sec = 0;
-	info->start_time.tv_usec = 0;
+	info->start_time = get_time();
 	return (info);
 }
 
