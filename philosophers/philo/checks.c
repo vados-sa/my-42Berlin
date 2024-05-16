@@ -2,21 +2,15 @@
 
 int	check_starvation(t_philo *philo)
 {
-	struct timeval	now;
-	double		current_time_ms;
-	double		elapsed_time_ms;
+	uint64_t		current_time_ms;
+	uint64_t		elapsed_time_ms;
 
-	now.tv_sec = 0;
-	now.tv_usec = 0;
-	gettimeofday(&now, NULL);
-	current_time_ms = (double)(now.tv_sec - philo->info->start_time.tv_sec) * \
-	1000.0 + (double)(now.tv_usec - philo->info->start_time.tv_usec) / 1000.0;
-	elapsed_time_ms = (double)(now.tv_sec - philo->last_meal_t.tv_sec) * \
-	1000.0 + (double)(now.tv_usec - philo->last_meal_t.tv_usec) / 1000.0;
-	if (elapsed_time_ms >= philo->info->time_to_die)
+	current_time_ms = get_time();
+	elapsed_time_ms = current_time_ms - philo->last_meal_t;
+	if (elapsed_time_ms >= (unsigned int)philo->info->time_to_die)
 	{
 		pthread_mutex_lock(&philo->print);
-		printf("%.2f %d died\n", current_time_ms, philo->id);
+		printf("%.1f %d died\n", (double)(current_time_ms - philo->info->start_time), philo->id);
 		pthread_mutex_unlock(&philo->print);
 		return (1);
 	}

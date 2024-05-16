@@ -30,7 +30,7 @@ typedef struct s_philo
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	print;
 	pthread_mutex_t	state;
-	struct timeval	last_meal_t;
+	uint16_t		last_meal_t;
 	int				is_live;
 	int				priority;
 	t_elements		*info;

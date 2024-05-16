@@ -26,7 +26,6 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	info->time_to_eat = ft_custom_atoi(av[3]);
 	info->time_to_sleep = ft_custom_atoi(av[4]);
 	info->nbr_of_meals = 0;
-	gettimeofday(&info->start_time, NULL);
 
 	if (info->nbr_of_philo <= 0 || info->time_to_die <= 0 || 
 		info->time_to_eat <= 0 || info->time_to_sleep <= 0)
@@ -86,8 +85,7 @@ t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
 		philo[i].right_fork = &fork[(i + 1) % info->nbr_of_philo];
 		if (pthread_mutex_init(&philo[i].print, NULL))
 			return (NULL);
-		philo[i].last_meal_t.tv_sec = 0;
-		philo[i].last_meal_t.tv_usec = 0;
+		philo[i].last_meal_t = get_time();
 		philo[i].is_live = 0;
 		philo[i].priority = 0;
 		philo[i].info = info;

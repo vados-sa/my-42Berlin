@@ -4,7 +4,6 @@ void	*monitoring(void *arg)
 {
 	t_philo			*philo;
 	int				i;
-	//int				j;
 
 	philo = (t_philo *)arg;
 	while (1)
@@ -22,7 +21,7 @@ void	*monitoring(void *arg)
 			// check if forks are available;
 			i++;
 		}
-		//usleep(10000);
+		//usleep (10000);
 	}
 	return (NULL);
 }
@@ -32,7 +31,7 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	gettimeofday(&philo->last_meal_t, NULL);
+	philo->last_meal_t = get_time();
 	while (1)
 	{
 		if (check_state(philo))

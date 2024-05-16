@@ -1,8 +1,13 @@
 #include "philo.h"
 
-long long	timeval_to_microsecond(struct timeval tv)
+
+uint64_t	get_time(void)
 {
-	return((long long)tv.tv_sec * 1000000 + tv.tv_usec);
+	struct timeval	tv;
+	
+	if (gettimeofday(&tv, NULL))
+		return (0);
+	return ((tv.tv_sec * (uint16_t)1000) + (tv.tv_usec / (uint64_t)1000));
 }
 
 int	ft_custom_atoi(const char *s)

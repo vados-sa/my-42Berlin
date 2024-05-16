@@ -13,15 +13,15 @@ static int	find_longest_wait(t_philo *philo, int nbr_of_philos)
 {
 	int			philo_index;
 	int			i;
-	long long	max_time;
-	long long	current_time;
+	uint64_t	max_time;
+	uint64_t	current_time;
 
 	philo_index = 0;
-	max_time = timeval_to_microsecond(philo[0].last_meal_t);
+	max_time = philo[0].last_meal_t;
 	i = 1;
 	while (i < nbr_of_philos)
 	{
-		current_time = timeval_to_microsecond(philo[i].last_meal_t);
+		current_time = philo[i].last_meal_t;
 		if (current_time > max_time)
 		{
 			max_time = current_time;
