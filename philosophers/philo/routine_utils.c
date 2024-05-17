@@ -42,12 +42,11 @@ void	nap(t_philo *philo)
 
 void	think(t_philo *philo)
 {
-	if (check_state(philo))
-		return ;
 	pthread_mutex_lock(&philo->print);
 	printf("%" PRIu64 " %d is thinking\n", (get_time() - \
 	philo->info->start_time), philo->id);
 	pthread_mutex_unlock(&philo->print);
+	usleep(1);
 }
 
 

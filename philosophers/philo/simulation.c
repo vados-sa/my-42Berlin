@@ -17,8 +17,7 @@ void	*monitoring(void *arg)
 				return (NULL);
 			}
 			if (philo->info->nbr_of_philo > 1)
-				set_priority(philo, philo->info->nbr_of_philo);
-			// check if forks are available;
+				set_priority(philo, philo->info->nbr_of_philo); // apparently not necessary
 			i++;
 		}
 		//usleep (10000);
@@ -36,7 +35,7 @@ void	*routine(void *arg)
 	{
 		if (check_state(philo) == 1)
 			break ;
-		if (check_if_can_eat(philo))
+		if (check_if_can_eat(philo) == 1)
 		{
 			eat(philo);
 			if (check_state(philo) == 1)

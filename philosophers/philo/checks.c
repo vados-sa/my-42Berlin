@@ -7,13 +7,8 @@ int	check_starvation(t_philo *philo)
 
 	current_time_ms = get_time();
 	elapsed_time_ms = current_time_ms - philo->last_meal_t;
-	if (elapsed_time_ms >= philo->info->time_to_die)
-	{
-		pthread_mutex_lock(&philo->print);
-		printf("%" PRIu64 " %d died\n", (current_time_ms - philo->info->start_time), philo->id);
-		pthread_mutex_unlock(&philo->print);
+	if (elapsed_time_ms > philo->info->time_to_die)
 		return (1);
-	}
 	return (0);
 }
 
@@ -36,7 +31,7 @@ int	check_if_can_eat(t_philo *philo)
 	pthread_mutex_lock(&philo->state);
 	eat = philo->priority;
 	pthread_mutex_unlock(&philo->state);
-	if (eat)
+	if (eat == 1)
 		return (1);
 	return (0);
 }
