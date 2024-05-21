@@ -2,8 +2,9 @@
 
 void	*monitoring(void *arg)
 {
-	t_philo			*philo;
-	int				i;
+	t_philo		*philo;
+	int			i;
+	int			starved;
 
 	philo = (t_philo *)arg;
 	while (1)
@@ -11,9 +12,12 @@ void	*monitoring(void *arg)
 		i = 0;
 		while (i < (int)philo->info->nbr_of_philo)
 		{
-			if (check_starvation(&philo[i]) == 1)
+			starved = check_starvation(&philo[i]);
+			if (starved)
 			{
+				pthread_mutex_lock(&philo->state);
 				announce_death(philo);
+				pthread_mutex_unlock(&philo->state);
 				return (NULL);
 			}
 			if (philo->info->nbr_of_philo > 1)
@@ -33,18 +37,21 @@ void	*routine(void *arg)
 	philo->last_meal_t = get_time();
 	while (1)
 	{
-		if (check_state(philo) == 1)
-			break ;
 		if (check_if_can_eat(philo) == 1)
 		{
-			eat(philo);
-			if (check_state(philo) == 1)
-				break ;
-			nap(philo);
+			/* if (check_state(philo) == 1) // added check_state inside eat, nap and think
+				return (NULL); */
+			if (eat(philo) == 1)
+				return (NULL);
+			/* if (check_state(philo) == 1)
+				return (NULL); */
+			if (nap(philo) == 1)
+				return (NULL);
 		}
 		else
 		{
-			think(philo);
+			if (think(philo) == 1)
+				return (NULL);
 			while (check_if_can_eat(philo) == 0)
 				continue ;
 		}

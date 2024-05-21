@@ -3,15 +3,10 @@
 void	announce_death(t_philo *philo)
 {
 	int	i;
-	uint64_t		current_time_ms;
-
-	current_time_ms = get_time();
-	pthread_mutex_lock(&philo->print);
-	printf("%" PRIu64 " %d died\n", (current_time_ms - philo->info->start_time), philo->id);
-	pthread_mutex_unlock(&philo->print);
+	
 	i = 0;
 	while (i < (int)philo->info->nbr_of_philo)
-		philo[i++].is_live = 0;
+		philo[i++].is_live = 1;
 }
 
 static int	find_longest_wait(t_philo *philo, int nbr_of_philos)
@@ -42,16 +37,16 @@ void	set_priority(t_philo *philo, int nbr_of_philos)
 	int			i;
 	int			philo_index;
 
+	pthread_mutex_lock(&philo->state);
 	philo_index = find_longest_wait(philo, nbr_of_philos);
 	i = 0;
 	while (i < nbr_of_philos)
 	{
-		pthread_mutex_lock(&philo[i].state);
 		if (i == philo_index)
 			philo[i].priority = 1;
 		else
 			philo[i].priority = 0;
-		pthread_mutex_unlock(&philo[i].state);
 		i++;
 	}
+	pthread_mutex_unlock(&philo->state);
 }

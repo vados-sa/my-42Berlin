@@ -62,12 +62,12 @@ int				check_forks(t_philo *philo);
 int				check_if_can_eat(t_philo *philo);
 
 /*monitor_util.c*/
-void	announce_death(t_philo *philo);
-void	set_priority(t_philo *philo, int nbr_of_philos);
+void			announce_death(t_philo *philo);
+void			set_priority(t_philo *philo, int nbr_of_philos);
 
 /*routine_utils.c*/
-void	eat(t_philo *philo);
-void	nap(t_philo *philo);
-void	think(t_philo *philo);
+int				eat(t_philo *philo);
+int				nap(t_philo *philo);
+int				think(t_philo *philo);
 
 #endif
