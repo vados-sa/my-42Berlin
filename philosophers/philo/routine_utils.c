@@ -32,7 +32,7 @@ int	eat(t_philo *philo)
 	philo->info->start_time), philo->id);
 	pthread_mutex_unlock(&philo->print);
 	philo->last_meal_t = get_time();
-	usleep(philo->info->time_to_eat * 1000);
+	precise_usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	return (0);
@@ -46,7 +46,7 @@ int	nap(t_philo *philo)
 	printf("%" PRIu64 " %d is sleeping\n", (get_time() - \
 	philo->info->start_time), philo->id);
 	pthread_mutex_unlock(&philo->print);
-	usleep(philo->info->time_to_sleep * 1000);
+	precise_usleep(philo->info->time_to_sleep * 1000);
 	return (0);
 }
 
@@ -58,7 +58,7 @@ int	think(t_philo *philo)
 	printf("%" PRIu64 " %d is thinking\n", (get_time() - \
 	philo->info->start_time), philo->id);
 	pthread_mutex_unlock(&philo->print);
-	usleep(1);
+	precise_usleep(1);
 	return (0);
 }
 

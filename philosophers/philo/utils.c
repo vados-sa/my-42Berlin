@@ -1,17 +1,31 @@
 #include "philo.h"
 
+void	precise_usleep(uint64_t usec)
+{
+	struct timeval	start;
+	struct timeval	end;
+	uint64_t		elapsed;
+
+	elapsed = 0;
+	gettimeofday(&start, NULL);
+	while (elapsed < usec)
+	{
+		gettimeofday(&end, NULL);
+		elapsed = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
+	}
+}
 
 uint64_t	get_time(void)
 {
 	struct timeval	tv;
-	
+
 	gettimeofday(&tv, NULL);
 	return (((uint64_t)tv.tv_sec * 1000) + ((uint64_t)tv.tv_usec / 1000));
 }
 
 uint64_t	ft_custom_atoi(const char *s)
 {
-	int	i;
+	int			i;
 	uint64_t	nbr;
 
 	i = 0;
@@ -20,7 +34,7 @@ uint64_t	ft_custom_atoi(const char *s)
 		i++;
 	if (!s[i] || s[i] == '-' || ((s[i] == '+')
 			&& !(s[i + 1] >= '0' && s[i + 1] <= '9')))
-		return ((uint64_t)-1);
+		return (-1);
 	if (s[i] == '+')
 		i++;
 	while (s[i])
@@ -31,6 +45,6 @@ uint64_t	ft_custom_atoi(const char *s)
 		i++;
 	}
 	if (nbr > INT_MAX)
-		return ((uint64_t)-1);
+		return (-1);
 	return (nbr);
 }
