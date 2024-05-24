@@ -20,8 +20,6 @@ void	*monitoring(void *arg)
 				pthread_mutex_unlock(&philo->state);
 				return (NULL);
 			}
-			if (philo->info->nbr_of_philo > 1)
-				set_priority(philo, philo->info->nbr_of_philo); // apparently not necessary
 			i++;
 		}
 		//usleep (10000);
@@ -37,24 +35,12 @@ void	*routine(void *arg)
 	philo->last_meal_t = get_time();
 	while (1)
 	{
-		if (check_if_can_eat(philo) == 1)
-		{
-			/* if (check_state(philo) == 1) // added check_state inside eat, nap and think
-				return (NULL); */
-			if (eat(philo) == 1)
+		if (eat(philo) == 1)
+			return (NULL);
+		if (nap(philo) == 1)
+			return (NULL);
+		if (think(philo) == 1)
 				return (NULL);
-			/* if (check_state(philo) == 1)
-				return (NULL); */
-			if (nap(philo) == 1)
-				return (NULL);
-		}
-		else
-		{
-			if (think(philo) == 1)
-				return (NULL);
-			while (check_if_can_eat(philo) == 0)
-				continue ;
-		}
 	}
 	return (NULL);
 }

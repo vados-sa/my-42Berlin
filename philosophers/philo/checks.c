@@ -29,15 +29,3 @@ int	check_state(t_philo *philo)
 		return (1);
 	return (0);
 }
-
-int	check_if_can_eat(t_philo *philo)
-{
-	int	eat;
-	
-	pthread_mutex_lock(&philo->state);
-	eat = philo->priority;
-	pthread_mutex_unlock(&philo->state);
-	if (eat == 1)
-		return (1);
-	return (0);
-}

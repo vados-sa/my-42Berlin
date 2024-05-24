@@ -36,7 +36,6 @@ typedef struct s_philo
 	pthread_mutex_t	state;
 	uint64_t		last_meal_t;
 	int				life_status;
-	int				priority;
 	t_elements		*info;
 }	t_philo;
 
@@ -64,7 +63,6 @@ void			simulation(t_philo *philo);
 int				check_starvation(t_philo *philo);
 int				check_state(t_philo *philo);
 int				check_forks(t_philo *philo);
-int				check_if_can_eat(t_philo *philo);
 
 /*monitor_util.c*/
 void			announce_death(t_philo *philo);
