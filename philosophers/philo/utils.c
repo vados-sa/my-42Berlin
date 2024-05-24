@@ -11,7 +11,8 @@ void	precise_usleep(uint64_t usec)
 	while (elapsed < usec)
 	{
 		gettimeofday(&end, NULL);
-		elapsed = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec);
+		elapsed = (end.tv_sec - start.tv_sec) * 1000000 + \
+		(end.tv_usec - start.tv_usec);
 	}
 }
 

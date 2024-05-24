@@ -23,7 +23,7 @@ int	check_state(t_philo *philo)
 	int live;
 
 	pthread_mutex_lock(&philo->state);
-	live = philo->is_live;
+	live = philo->life_status;
 	pthread_mutex_unlock(&philo->state);
 	if (live == 1)
 		return (1);

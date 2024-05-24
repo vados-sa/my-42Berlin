@@ -12,6 +12,9 @@
 # include <stdint.h>
 # include <inttypes.h>
 
+# define DEAD 1
+# define ALIVE 0
+
 typedef struct s_elements
 {
 	uint64_t	nbr_of_philo;
@@ -32,7 +35,7 @@ typedef struct s_philo
 	pthread_mutex_t	print;
 	pthread_mutex_t	state;
 	uint64_t		last_meal_t;
-	int				is_live;
+	int				life_status;
 	int				priority;
 	t_elements		*info;
 }	t_philo;
