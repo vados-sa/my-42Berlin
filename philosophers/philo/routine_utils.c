@@ -14,23 +14,18 @@ int	eat(t_philo *philo)
 	if (check_state(philo) == 1)
 		return (1);
 	pthread_mutex_lock(philo->left_fork);
-	pthread_mutex_lock(&philo->print);
-	/* printf("%" PRIu64 " %d has taken a fork\n", \
-	(get_time() - philo->info->start_time), philo->id); */
+	print_status(philo, "has taken a fork");
+	/* pthread_mutex_lock(&philo->print);
 	printf("%" PRIu64 " %d has taken the %d fork\n", (get_time() - \
 	philo->info->start_time), philo->id, philo->id - 1);
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->print); */
 	pthread_mutex_lock(philo->right_fork);
-	pthread_mutex_lock(&philo->print);
-	/* printf("%" PRIu64 " %d has taken a fork\n", \
-	(get_time() - philo->info->start_time), philo->id); */
+	print_status(philo, "has taken a fork");
+	/* pthread_mutex_lock(&philo->print);
 	printf("%" PRIu64 " %d has taken the %d fork\n", (get_time() - \
 	philo->info->start_time), philo->id, philo->id);
-	pthread_mutex_unlock(&philo->print);
-	pthread_mutex_lock(&philo->print);
-	printf("%" PRIu64 " %d is eating\n", (get_time() - \
-	philo->info->start_time), philo->id);
-	pthread_mutex_unlock(&philo->print);
+	pthread_mutex_unlock(&philo->print); */
+	print_status(philo, "is eating");
 	philo->last_meal_t = get_time();
 	precise_usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
@@ -42,10 +37,7 @@ int	nap(t_philo *philo)
 {
 	if (check_state(philo) == 1)
 		return (1);
-	pthread_mutex_lock(&philo->print);
-	printf("%" PRIu64 " %d is sleeping\n", (get_time() - \
-	philo->info->start_time), philo->id);
-	pthread_mutex_unlock(&philo->print);
+	print_status(philo, "is sleeping");
 	precise_usleep(philo->info->time_to_sleep * 1000);
 	return (0);
 }
@@ -54,10 +46,7 @@ int	think(t_philo *philo)
 {
 	if (check_state(philo) == 1)
 		return (1);
-	pthread_mutex_lock(&philo->print);
-	printf("%" PRIu64 " %d is thinking\n", (get_time() - \
-	philo->info->start_time), philo->id);
-	pthread_mutex_unlock(&philo->print);
+	print_status(philo, "is thinking");
 	precise_usleep(1);
 	return (0);
 }

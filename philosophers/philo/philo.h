@@ -50,6 +50,7 @@ t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
 uint64_t		ft_custom_atoi(const char *s);
 uint64_t		get_time(void);
 void			precise_usleep(uint64_t usec);
+void			print_status(t_philo *philo, char *s);
 
 /*mem_manage.c*/
 void			error_exit(t_elements *info);
