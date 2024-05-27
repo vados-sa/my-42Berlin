@@ -22,7 +22,6 @@ void	*monitoring(void *arg)
 			}
 			i++;
 		}
-		//usleep (10000);
 	}
 	return (NULL);
 }
@@ -33,6 +32,7 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	philo->last_meal_t = get_time();
+	precise_usleep(1000);
 	while (1)
 	{
 		if (eat(philo) == 1)
@@ -40,7 +40,7 @@ void	*routine(void *arg)
 		if (nap(philo) == 1)
 			return (NULL);
 		if (think(philo) == 1)
-				return (NULL);
+			return (NULL);
 	}
 	return (NULL);
 }
