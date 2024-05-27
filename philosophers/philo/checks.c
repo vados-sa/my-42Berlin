@@ -30,7 +30,9 @@ int	check_state(t_philo *philo)
 int	check_meals(t_philo *philo)
 {
 	int	meals_done;
-	
+
+	pthread_mutex_lock(&philo->state);
 	meals_done = philo->count_meals;
-	return(meals_done);
+	pthread_mutex_unlock(&philo->state);
+	return (meals_done);
 }

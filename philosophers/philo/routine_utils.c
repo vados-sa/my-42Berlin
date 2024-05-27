@@ -24,9 +24,9 @@ int	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&philo->state);
 	 philo->count_meals++;
+	pthread_mutex_unlock(&philo->state);
 	if (philo->count_meals == (int)philo->info->nbr_of_meals)
 		return (2);
-	pthread_mutex_unlock(&philo->state);
 	return (0);
 }
 
