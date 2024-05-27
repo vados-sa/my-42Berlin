@@ -1,14 +1,5 @@
 #include "philo.h"
 
-/* int	can_eat(t_philo *philo)
-{
-	// Question 1: are both forks available?
-	// Question 2: o I have priority?
-	// If (1 && 2 are true)
-	//		return (1);
-	return (0);
-} */
-
 int	eat(t_philo *philo)
 {
 	if (check_state(philo) == 1)

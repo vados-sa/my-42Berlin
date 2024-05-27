@@ -46,7 +46,7 @@ void	*routine(void *arg)
 		if (nap(philo))
 			return (NULL);
 		if (think(philo))
-			return (NULL); // I'm not sure abput this
+			return (NULL);
 	}
 	return (NULL);
 }
