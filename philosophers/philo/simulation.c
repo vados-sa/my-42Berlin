@@ -34,6 +34,8 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->info->nbr_of_philo == 1)
+		return (NULL);
 	philo->last_meal_t = get_time();
 	precise_usleep(1000);
 	while (1)
