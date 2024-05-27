@@ -50,5 +50,3 @@ int	think(t_philo *philo)
 	precise_usleep(1);
 	return (0);
 }
-
-
