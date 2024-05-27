@@ -26,3 +26,11 @@ int	check_state(t_philo *philo)
 		return (1);
 	return (0);
 }
+
+int	check_meals(t_philo *philo)
+{
+	int	meals_done;
+	
+	meals_done = philo->count_meals;
+	return(meals_done);
+}

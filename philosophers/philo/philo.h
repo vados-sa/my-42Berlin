@@ -63,6 +63,7 @@ void			simulation(t_philo *philo);
 int				check_starvation(t_philo *philo);
 int				check_state(t_philo *philo);
 int				check_forks(t_philo *philo);
+int				check_meals(t_philo *philo);
 
 /*monitor_util.c*/
 void			announce_death(t_philo *philo);

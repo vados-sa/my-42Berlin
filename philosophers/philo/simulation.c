@@ -5,8 +5,10 @@ void	*monitoring(void *arg)
 	t_philo		*philo;
 	int			i;
 	int			starved;
+	uint64_t	total_meals;
 
 	philo = (t_philo *)arg;
+	total_meals = 0;
 	while (1)
 	{
 		i = 0;
@@ -20,8 +22,12 @@ void	*monitoring(void *arg)
 				pthread_mutex_unlock(&philo->state);
 				return (NULL);
 			}
+			total_meals += check_meals(&philo[i]);
 			i++;
 		}
+		if (total_meals == philo->info->nbr_of_philo * 
+			philo->info->nbr_of_meals)
+			return (NULL);
 	}
 	return (NULL);
 }
@@ -35,12 +41,12 @@ void	*routine(void *arg)
 	precise_usleep(1000);
 	while (1)
 	{
-		if (eat(philo) == 1)
+		if (eat(philo))
 			return (NULL);
-		if (nap(philo) == 1)
+		if (nap(philo))
 			return (NULL);
-		if (think(philo) == 1)
-			return (NULL);
+		if (think(philo))
+			return (NULL); // I'm not sure abput this
 	}
 	return (NULL);
 }
