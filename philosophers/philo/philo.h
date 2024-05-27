@@ -67,7 +67,7 @@ int				check_meals(t_philo *philo);
 
 /*monitor_util.c*/
 void			announce_death(t_philo *philo);
-void			set_priority(t_philo *philo, int nbr_of_philos);
+int				track_meals(t_philo *philo, uint64_t total_meals);
 
 /*routine_utils.c*/
 int				eat(t_philo *philo);

@@ -16,17 +16,14 @@ void	*monitoring(void *arg)
 		{
 			starved = check_starvation(&philo[i]);
 			if (starved)
-			{
-				pthread_mutex_lock(&philo->state);
-				announce_death(philo);
-				pthread_mutex_unlock(&philo->state);
+			{				
+				announce_death(philo); // I put the mutexes inside the function
 				return (NULL);
 			}
 			total_meals += check_meals(&philo[i]);
 			i++;
 		}
-		if (total_meals == philo->info->nbr_of_philo * 
-			philo->info->nbr_of_meals)
+		if (track_meals(philo, total_meals))
 			return (NULL);
 	}
 	return (NULL);
