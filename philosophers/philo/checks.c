@@ -24,9 +24,7 @@ int	check_state(t_philo *philo)
 	pthread_mutex_lock(&philo->state);
 	live = philo->life_status;
 	pthread_mutex_unlock(&philo->state);
-	if (live == 1)
-		return (1);
-	return (0);
+	return (live);
 }
 
 int	check_meals(t_philo *philo)
