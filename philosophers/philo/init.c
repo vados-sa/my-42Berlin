@@ -26,7 +26,6 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	info->time_to_eat = ft_custom_atoi(av[3]);
 	info->time_to_sleep = ft_custom_atoi(av[4]);
 	info->nbr_of_meals = 0;
-
 	if (info->nbr_of_philo <= 0 || info->time_to_die <= 0 || 
 		info->time_to_eat <= 0 || info->time_to_sleep <= 0)
 	{
