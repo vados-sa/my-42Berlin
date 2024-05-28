@@ -16,8 +16,8 @@ void	*monitoring(void *arg)
 		{
 			starved = check_starvation(&philo[i]);
 			if (starved)
-			{				
-				announce_death(philo); // I put the mutexes inside the function
+			{
+				announce_death(philo);
 				return (NULL);
 			}
 			total_meals += check_meals(&philo[i]);
@@ -34,18 +34,19 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->info->nbr_of_philo == 1)
-		return (NULL);
 	philo->last_meal_t = get_time();
 	precise_usleep(1000);
-	while (1)
+	if (philo->info->nbr_of_philo != 1)
 	{
-		if (eat(philo))
-			return (NULL);
-		if (nap(philo))
-			return (NULL);
-		if (think(philo))
-			return (NULL);
+		while (1)
+		{
+			if (eat(philo))
+				return (NULL);
+			if (nap(philo))
+				return (NULL);
+			if (think(philo))
+				return (NULL);
+		}
 	}
 	return (NULL);
 }
