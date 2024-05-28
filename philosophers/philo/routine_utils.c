@@ -23,7 +23,7 @@ int	eat(t_philo *philo)
 {
 	if (check_state(philo) == 1)
 		return (1);
-	precise_usleep(500);
+	precise_usleep(500); // verify if really needed
 	line_to_eat(philo);
 	pthread_mutex_lock(&philo->state);
 	philo->last_meal_t = get_time();
