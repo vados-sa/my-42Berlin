@@ -25,7 +25,7 @@ void	cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo)
 	free (info);
 	free (philo);
 	//clean_philo(philo);
-} 
+}
 
 void	error_exit(t_elements *info)
 {
