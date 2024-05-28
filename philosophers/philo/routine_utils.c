@@ -25,7 +25,9 @@ int	eat(t_philo *philo)
 		return (1);
 	precise_usleep(500);
 	line_to_eat(philo);
+	pthread_mutex_lock(&philo->state);
 	philo->last_meal_t = get_time();
+	pthread_mutex_unlock(&philo->state);
 	precise_usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
