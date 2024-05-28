@@ -1,6 +1,6 @@
 #include "philo.h"
 
-static void	eat_odd(t_philo *philo)
+static void	line_to_eat(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 	{
@@ -19,23 +19,12 @@ static void	eat_odd(t_philo *philo)
 	print_status(philo, "is eating");
 }
 
-static void	eat_even(t_philo *philo)
-{
-	pthread_mutex_lock(philo->left_fork);
-	print_status(philo, "has taken a fork");
-	pthread_mutex_lock(philo->right_fork);
-	print_status(philo, "has taken a fork");
-	print_status(philo, "is eating");
-}
-
 int	eat(t_philo *philo)
 {
 	if (check_state(philo) == 1)
 		return (1);
-	if (philo->info->nbr_of_philo % 2 == 0)
-		eat_even(philo);
-	else
-		eat_odd(philo);
+	precise_usleep(500);
+	line_to_eat(philo);
 	philo->last_meal_t = get_time();
 	precise_usleep(philo->info->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
