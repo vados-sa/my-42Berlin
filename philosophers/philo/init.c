@@ -84,6 +84,8 @@ t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
 		philo[i].right_fork = &fork[(i + 1) % info->nbr_of_philo];
 		if (pthread_mutex_init(&philo[i].print, NULL))
 			return (NULL);
+		if (pthread_mutex_init(&philo[i].state, NULL))
+			return (NULL);
 		philo[i].last_meal_t = get_time();
 		philo[i].life_status = ALIVE;
 		philo[i].info = info;

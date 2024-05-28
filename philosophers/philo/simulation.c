@@ -76,5 +76,8 @@ void	simulation(t_philo *philo)
 	i = 0;
 	pthread_join(monitor, NULL);
 	while (i < (int)philo->info->nbr_of_philo)
-		pthread_join(philo[i++].thread, NULL);
+	{
+		pthread_join(philo[i].thread, NULL);
+		i++;
+	}
 }

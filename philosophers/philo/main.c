@@ -22,10 +22,8 @@ int	main(int ac, char *av[])
 		error_exit(info);
 	philo = init_philo_data(info, fork);
 	if (!philo)
-		error_exit(info);
+		cleanup(info, fork, philo);
 	simulation(philo);
 	cleanup(info, fork, philo);
-	printf("%" PRIu64 " Program ends\n", (get_time() - \
-	philo->info->start_time));
 	return (0);
 }
