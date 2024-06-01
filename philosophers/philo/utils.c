@@ -3,9 +3,11 @@
 void	print_status(t_philo *philo, char *status)
 {
 	pthread_mutex_lock(&philo->print);
+	pthread_mutex_lock(&philo->state);
 	if (philo->life_status == ALIVE)
 		printf("%" PRIu64 " %d %s\n", (get_time() - \
 	philo->info->start_time), philo->id, status);
+	pthread_mutex_unlock(&philo->state);
 	pthread_mutex_unlock(&philo->print);
 }
 

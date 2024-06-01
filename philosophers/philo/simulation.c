@@ -59,7 +59,7 @@ void	simulation(t_philo *philo)
 	int			i;
 	int			j;
 
-	pthread_create(&monitor, NULL, &monitoring, philo);
+	pthread_create(&monitor, NULL, &monitoring, philo); // protect in case of failure
 	i = 0;
 	while (i < (int)philo->info->nbr_of_philo)
 	{

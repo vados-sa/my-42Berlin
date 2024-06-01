@@ -7,7 +7,7 @@ void	announce_death(t_philo *philo)
 	i = 0;
 	while (i < (int)philo->info->nbr_of_philo)
 	{
-		pthread_mutex_lock(&philo->state);
+		pthread_mutex_lock(&philo->state); // should maybe the lock be outside the loop?
 		philo[i].life_status = DEAD;
 		pthread_mutex_unlock(&philo->state);
 		i++;
