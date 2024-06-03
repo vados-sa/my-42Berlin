@@ -25,7 +25,7 @@ int	eat(t_philo *philo)
 		return (1);
 	precise_usleep(500); // verify if really needed
 	line_to_eat(philo);
-	pthread_mutex_lock(&philo->state); // maybe this block could go int the line_to_eat function
+	pthread_mutex_lock(&philo->state); // maybe this block could go in the line_to_eat function
 	philo->last_meal_t = get_time();
 	pthread_mutex_unlock(&philo->state);
 	precise_usleep(philo->info->time_to_eat * 1000);
