@@ -35,7 +35,7 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	if (ac == 6)
 	{
 		info->nbr_of_meals = ft_custom_atoi(av[5]);
-		if (info->nbr_of_meals <= 0)
+		if (info->nbr_of_meals < 0)
 		{
 			printf("'number_of_times_each_philosopher_must_eat' must be\
  a positive interger.\n");
