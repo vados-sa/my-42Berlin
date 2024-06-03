@@ -59,7 +59,8 @@ void	simulation(t_philo *philo)
 	int			i;
 	int			j;
 
-	pthread_create(&monitor, NULL, &monitoring, philo); // protect in case of failure
+	if (pthread_create(&monitor, NULL, &monitoring, philo))
+		return ;
 	i = 0;
 	while (i < (int)philo->info->nbr_of_philo)
 	{
@@ -76,8 +77,5 @@ void	simulation(t_philo *philo)
 	i = 0;
 	pthread_join(monitor, NULL);
 	while (i < (int)philo->info->nbr_of_philo)
-	{
-		pthread_join(philo[i].thread, NULL);
-		i++;
-	}
+		pthread_join(philo[i++].thread, NULL);
 }
