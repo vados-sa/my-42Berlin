@@ -5,12 +5,14 @@ void	print_status(t_philo *philo, char *status)
 	pthread_mutex_lock(&philo->state);
 	if (philo->life_status == ALIVE)
 	{
+		pthread_mutex_unlock(&philo->state);
 		pthread_mutex_lock(&philo->print);
 		printf("%" PRIu64 " %d %s\n", (get_time() - \
 		philo->info->start_time), philo->id, status);
 		pthread_mutex_unlock(&philo->print);
 	}
-	pthread_mutex_unlock(&philo->state);
+	else
+		pthread_mutex_unlock(&philo->state);
 }
 
 void	precise_usleep(uint64_t usec)
@@ -43,7 +45,6 @@ uint64_t	ft_custom_atoi(const char *s)
 	uint64_t	nbr;
 
 	i = 0;
-	nbr = 0;
 	while ((s[i] == ' ') || (s[i] >= '\t' && s[i] <= '\r'))
 		i++;
 	if (!s[i] || s[i] == '-' || ((s[i] == '+')
@@ -51,6 +52,7 @@ uint64_t	ft_custom_atoi(const char *s)
 		return (-1);
 	if (s[i] == '+')
 		i++;
+	nbr = 0;
 	while (s[i])
 	{
 		if (!(s[i] >= '0' && s[i] <= '9'))

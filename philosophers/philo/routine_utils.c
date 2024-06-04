@@ -33,12 +33,9 @@ int	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork); // block until here
 	pthread_mutex_lock(&philo->state);
 	philo->count_meals++;
-	if (philo->count_meals == (int)philo->info->nbr_of_meals)
-	{
-		pthread_mutex_unlock(&philo->state);
-		return (2);
-	}
 	pthread_mutex_unlock(&philo->state);
+	if (philo->count_meals == (int)philo->info->nbr_of_meals)
+		return (2);
 	return (0);
 }
 
@@ -56,6 +53,6 @@ int	think(t_philo *philo)
 	if (check_state(philo) == 1)
 		return (1);
 	print_status(philo, "is thinking");
-	precise_usleep(1); // maybe put bigger time here
+	precise_usleep(1); // 1000 or dependent on nbr_of_philo?
 	return (0);
 }

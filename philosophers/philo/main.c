@@ -22,7 +22,10 @@ int	main(int ac, char *av[])
 		error_exit(info);
 	philo = init_philo_data(info, fork);
 	if (!philo)
-		cleanup(info, fork, philo);
+	{
+		cleanup(info, fork, philo); // before was 'error_exit(info);'
+		return (1);
+	}
 	simulation(philo);
 	cleanup(info, fork, philo);
 	return (0);

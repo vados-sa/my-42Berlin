@@ -11,8 +11,6 @@ void	*monitoring(void *arg)
 	total_meals = 0;
 	while (1)
 	{
-		if (track_meals(philo, total_meals))
-			return (NULL);
 		i = 0;
 		while (i < (int)philo->info->nbr_of_philo)
 		{
@@ -25,6 +23,8 @@ void	*monitoring(void *arg)
 			total_meals += check_meals(&philo[i]);
 			i++;
 		}
+		if (track_meals(philo, total_meals))
+			return (NULL);
 	}
 	return (NULL);
 }

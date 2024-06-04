@@ -26,8 +26,8 @@ void	parse_args(int ac, char *av[], t_elements *info)
 	info->time_to_eat = ft_custom_atoi(av[3]);
 	info->time_to_sleep = ft_custom_atoi(av[4]);
 	info->nbr_of_meals = 0;
-	if (info->nbr_of_philo <= 0 || info->time_to_die <= 0 || 
-		info->time_to_eat <= 0 || info->time_to_sleep <= 0)
+	if ((int)info->nbr_of_philo <= 0 || (int)info->time_to_die <= 0 || 
+		(int)info->time_to_eat <= 0 || (int)info->time_to_sleep <= 0)
 	{
 		printf("All input values must be positive integers.\n");
 		error_exit(info);
@@ -41,6 +41,8 @@ void	parse_args(int ac, char *av[], t_elements *info)
  a positive interger.\n");
 			error_exit(info);
 		}
+		if (info->nbr_of_meals == 0)
+			error_exit(info);
 	}
 }
 
@@ -85,7 +87,7 @@ t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
 		if (pthread_mutex_init(&philo[i].print, NULL))
 			return (NULL);
 		if (pthread_mutex_init(&philo[i].state, NULL))
-			return (NULL);
+			return (NULL); // I didn't had this when it was working
 		philo[i].last_meal_t = get_time();
 		philo[i].life_status = ALIVE;
 		philo[i].info = info;
