@@ -5,10 +5,10 @@ void	announce_death(t_philo *philo)
 	int	i;
 
 	i = 0;
-	pthread_mutex_lock(&philo->state);
+	pthread_mutex_lock(&philo->state_mutex);
 	while (i < (int)philo->info->nbr_of_philo)
 		philo[i++].life_status = DEAD;
-	pthread_mutex_unlock(&philo->state);
+	pthread_mutex_unlock(&philo->state_mutex);
 }
 
 int	track_meals(t_philo *philo, uint64_t total_meals)

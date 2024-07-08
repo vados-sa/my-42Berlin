@@ -34,14 +34,16 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->state);
+	pthread_mutex_lock(&philo->meal_mutex);
 	philo->last_meal_t = get_time();
-	pthread_mutex_unlock(&philo->state);
+	pthread_mutex_unlock(&philo->meal_mutex);
 	precise_usleep(1000);
 	if (philo->info->nbr_of_philo != 1)
 	{
 		while (1)
 		{
+			if (check_state(philo) == 1)
+				return (NULL);
 			if (eat(philo))
 				return (NULL);
 			if (nap(philo))

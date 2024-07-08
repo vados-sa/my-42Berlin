@@ -29,13 +29,14 @@ typedef struct s_philo
 {
 	int				id;
 	int				count_meals;
+	int				life_status;
+	uint64_t		last_meal_t;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	print;
-	pthread_mutex_t	state;
-	uint64_t		last_meal_t;
-	int				life_status;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	state_mutex;
+	pthread_mutex_t	meal_mutex;
 	t_elements		*info;
 }	t_philo;
 
