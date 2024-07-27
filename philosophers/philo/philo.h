@@ -37,12 +37,12 @@ typedef struct s_philo
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	state_mutex;
 	pthread_mutex_t	meal_mutex;
-	t_data		*info;
+	t_data			*info;
 }	t_philo;
 
 /*init.c*/
 void			parse_args(int ac, char *av[], t_data *info);
-t_data		*init_struct(void);
+t_data			*init_struct(void);
 pthread_mutex_t	*init_forks(int quantity);
 t_philo			*init_philo_data(t_data *info, pthread_mutex_t *fork);
 
