@@ -1,25 +1,21 @@
 #include "philo.h"
 
-t_elements	*init_struct(void)
+t_data	*init_struct(void)
 {
-	t_elements	*info;
+	t_data	*info;
 
-	info = malloc(sizeof(t_elements));
+	info = malloc(sizeof(t_data));
 	if (!info)
 	{
 		printf("Error initializing arguments!\n");
 		exit (EXIT_FAILURE);
 	}
-	info->nbr_of_philo = 0;
-	info->time_to_die = 0;
-	info->time_to_eat = 0;
-	info->time_to_sleep = 0;
-	info->nbr_of_meals = 0;
+	memset(info, 0, sizeof(t_data));
 	info->start_time = get_time();
 	return (info);
 }
 
-void	parse_args(int ac, char *av[], t_elements *info)
+void	parse_args(int ac, char *av[], t_data *info)
 {
 	info->nbr_of_philo = ft_custom_atoi(av[1]);
 	info->time_to_die = ft_custom_atoi(av[2]);
@@ -69,19 +65,19 @@ pthread_mutex_t	*init_forks(int quantity)
 	return (forks);
 }
 
-t_philo	*init_philo_data(t_elements *info, pthread_mutex_t *fork)
+t_philo	*init_philo_data(t_data *info, pthread_mutex_t *fork)
 {
 	int		i;
 	t_philo	*philo;
 
-	i = 0;
+	i = -1;
 	philo = malloc(info->nbr_of_philo * sizeof(t_philo));
 	if (!philo)
 		return (NULL);
+	memset(philo, 0, info->nbr_of_philo * sizeof(t_philo));
 	while (i < (int)info->nbr_of_philo)
 	{
 		philo[i].id = i + 1;
-		philo[i].count_meals = 0;
 		philo[i].left_fork = &fork[i];
 		philo[i].right_fork = &fork[(i + 1) % info->nbr_of_philo];
 		if (pthread_mutex_init(&philo[i].print_mutex, NULL))

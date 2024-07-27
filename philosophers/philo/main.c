@@ -6,7 +6,7 @@
 '[number_of_times_each_philosopher_must_eat]'*/
 int	main(int ac, char *av[])
 {
-	t_elements		*info;
+	t_data			*info;
 	pthread_mutex_t	*fork;
 	t_philo			*philo;
 

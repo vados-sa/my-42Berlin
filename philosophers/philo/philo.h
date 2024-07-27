@@ -15,7 +15,7 @@
 # define DEAD 1
 # define ALIVE 0
 
-typedef struct s_elements
+typedef struct s_data
 {
 	uint64_t	nbr_of_philo;
 	uint64_t	time_to_die;
@@ -23,7 +23,7 @@ typedef struct s_elements
 	uint64_t	time_to_sleep;
 	uint64_t	nbr_of_meals;
 	uint64_t	start_time;
-}	t_elements;
+}	t_data;
 
 typedef struct s_philo
 {
@@ -37,14 +37,14 @@ typedef struct s_philo
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	state_mutex;
 	pthread_mutex_t	meal_mutex;
-	t_elements		*info;
+	t_data		*info;
 }	t_philo;
 
 /*init.c*/
-void			parse_args(int ac, char *av[], t_elements *info);
-t_elements		*init_struct(void);
+void			parse_args(int ac, char *av[], t_data *info);
+t_data		*init_struct(void);
 pthread_mutex_t	*init_forks(int quantity);
-t_philo			*init_philo_data(t_elements *info, pthread_mutex_t *fork);
+t_philo			*init_philo_data(t_data *info, pthread_mutex_t *fork);
 
 /*utils.c*/
 uint64_t		ft_custom_atoi(const char *s);
@@ -53,8 +53,8 @@ void			precise_usleep(uint64_t usec);
 void			print_status(t_philo *philo, char *s);
 
 /*mem_manage.c*/
-void			error_exit(t_elements *info);
-void			cleanup(t_elements *info, pthread_mutex_t *fork, \
+void			error_exit(t_data *info);
+void			cleanup(t_data *info, pthread_mutex_t *fork, \
 t_philo *philo);
 
 /*simulation.c*/

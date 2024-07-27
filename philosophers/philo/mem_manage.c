@@ -1,6 +1,6 @@
 #include "philo.h"
 
-void	cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo)
+void	cleanup(t_data *info, pthread_mutex_t *fork, t_philo *philo)
 {
 	int	i;
 
@@ -18,7 +18,7 @@ void	cleanup(t_elements *info, pthread_mutex_t *fork, t_philo *philo)
 	free (philo);
 }
 
-void	error_exit(t_elements *info)
+void	error_exit(t_data *info)
 {
 	free(info);
 	exit (EXIT_FAILURE);
