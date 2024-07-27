@@ -70,7 +70,7 @@ t_philo	*init_philo_data(t_data *info, pthread_mutex_t *fork)
 	int		i;
 	t_philo	*philo;
 
-	i = -1;
+	i = 0;
 	philo = malloc(info->nbr_of_philo * sizeof(t_philo));
 	if (!philo)
 		return (NULL);
