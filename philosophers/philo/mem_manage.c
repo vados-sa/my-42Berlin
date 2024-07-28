@@ -1,25 +1,29 @@
 #include "philo.h"
 
-void	cleanup(t_data *info, pthread_mutex_t *fork, t_philo *philo)
+static void	destroy_threads(t_data *data);
+ 
+void	cleanup(t_data *data, char *message, int exit_code)
+{
+	if (exit_code == EXIT_SUCCESS)
+		destroy_threads(data);
+	if (message)
+		printf("%s\n", message);
+	if (data->philo)
+		free (data->philo);
+	if (data->forks)
+		free (data->forks);
+	free(data);
+	exit(exit_code);
+}
+
+static void	destroy_threads(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (i < (int)info->nbr_of_philo)
-	{
-		pthread_mutex_destroy(&fork[i]);
-		pthread_mutex_destroy(&philo[i].print_mutex);
-        pthread_mutex_destroy(&philo[i].state_mutex);
-		pthread_mutex_destroy(&philo[i].meal_mutex);
-		i++;
-	}
-	free (fork);
-	free (info);
-	free (philo);
-}
-
-void	error_exit(t_data *info)
-{
-	free(info);
-	exit (EXIT_FAILURE);
+	while (i < (int)data->nbr_of_philo)
+		pthread_mutex_destroy(&data->forks[i++]);
+	pthread_mutex_destroy(&data->meal_mutex);
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->state_mutex);
 }

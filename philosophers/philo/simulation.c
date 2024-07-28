@@ -1,49 +1,46 @@
 #include "philo.h"
 
-void	*monitoring(void *arg)
-{
-	t_philo		*philo;
-	int			i;
-	int			starved;
-	uint64_t	total_meals;
+static void	*routine(void *arg);
 
-	philo = (t_philo *)arg;
-	total_meals = 0;
-	while (1)
+void	simulation(t_data *data)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < (int)data->nbr_of_philo)
 	{
-		i = 0;
-		while (i < (int)philo->info->nbr_of_philo)
+		pthread_mutex_lock(&data->meal_mutex);
+		data->philo[i].last_meal_t = get_time();
+		pthread_mutex_unlock(&data->meal_mutex);
+		if ((pthread_create(&data->philo[i].thread, NULL, &routine, &data->philo[i])))
 		{
-			starved = check_starvation(&philo[i]);
-			if (starved)
-			{
-				announce_death(philo);
-				return (NULL);
-			}
-			total_meals += check_meals(&philo[i]);
-			i++;
+			printf("Failed to create Philosopher %d.\n", i + 1);
+			j = 0;
+			while (j < i)
+				pthread_join(data->philo[j++].thread, NULL);
+			cleanup(data, NULL, EXIT_FAILURE);
 		}
-		if (track_meals(philo, total_meals))
-			return (NULL);
+		i++;
 	}
-	return (NULL);
+	i = 0;
+	while (i < (int)data->nbr_of_philo)
+		pthread_join(data->philo[i++].thread, NULL);
 }
 
-void	*routine(void *arg)
+static void	*routine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->meal_mutex);
+	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_t = get_time();
-	pthread_mutex_unlock(&philo->meal_mutex);
-	precise_usleep(1000);
-	if (philo->info->nbr_of_philo != 1)
+	pthread_mutex_unlock(&philo->data->meal_mutex);
+	precise_usleep(1000); // check later if necessary
+	if (philo->data->nbr_of_philo != 1)
 	{
 		while (1)
 		{
-			if (check_state(philo) == 1)
-				return (NULL);
 			if (eat(philo))
 				return (NULL);
 			if (nap(philo))
@@ -53,31 +50,4 @@ void	*routine(void *arg)
 		}
 	}
 	return (NULL);
-}
-
-void	simulation(t_philo *philo)
-{
-	pthread_t	monitor;
-	int			i;
-	int			j;
-
-	if (pthread_create(&monitor, NULL, &monitoring, philo))
-		return ;
-	i = 0;
-	while (i < (int)philo->info->nbr_of_philo)
-	{
-		if ((pthread_create(&philo[i].thread, NULL, &routine, &philo[i])))
-		{
-			printf("Failed to allocate memory for philosopher %d.\n", i + 1);
-			j = 0;
-			while (j < i)
-				pthread_join(philo[j++].thread, NULL);
-			return ;
-		}
-		i++;
-	}
-	i = 0;
-	pthread_join(monitor, NULL);
-	while (i < (int)philo->info->nbr_of_philo)
-		pthread_join(philo[i++].thread, NULL);
 }

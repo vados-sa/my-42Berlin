@@ -1,3 +1,4 @@
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -15,14 +16,22 @@
 # define DEAD 1
 # define ALIVE 0
 
+typedef struct s_philo t_philo;
+
 typedef struct s_data
 {
-	uint64_t	nbr_of_philo;
-	uint64_t	time_to_die;
-	uint64_t	time_to_eat;
-	uint64_t	time_to_sleep;
-	uint64_t	nbr_of_meals;
-	uint64_t	start_time;
+	uint64_t		nbr_of_philo;
+	uint64_t		time_to_die;
+	uint64_t		time_to_eat;
+	uint64_t		time_to_sleep;
+	uint64_t		nbr_of_meals;
+	uint64_t		start_time;
+	//int				life_status;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_mutex; 
+	pthread_mutex_t	state_mutex;
+	pthread_mutex_t	meal_mutex; // check if it is a relevant mutex
+	t_philo			*philo;
 }	t_data;
 
 typedef struct s_philo
@@ -30,45 +39,35 @@ typedef struct s_philo
 	int				id;
 	int				count_meals;
 	int				life_status;
+	int				nbr_of_meals;
+	uint64_t		time_to_die;
+	uint64_t		time_to_eat;
+	uint64_t		time_to_sleep;
 	uint64_t		last_meal_t;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	state_mutex;
-	pthread_mutex_t	meal_mutex;
-	t_data			*info;
+	t_data			*data;
 }	t_philo;
 
 /*init.c*/
-void			parse_args(int ac, char *av[], t_data *info);
-t_data			*init_struct(void);
-pthread_mutex_t	*init_forks(int quantity);
-t_philo			*init_philo_data(t_data *info, pthread_mutex_t *fork);
+void			parse_args(int ac, char *av[]);
+t_data			*init_data(int ac, char *av[]);
 
 /*utils.c*/
-uint64_t		ft_custom_atoi(const char *s);
-uint64_t		get_time(void);
-void			precise_usleep(uint64_t usec);
 void			print_status(t_philo *philo, char *s);
+void			precise_usleep(uint64_t usec);
+uint64_t		get_time(void);
+uint64_t		ft_custom_atoi(const char *s);
 
 /*mem_manage.c*/
-void			error_exit(t_data *info);
-void			cleanup(t_data *info, pthread_mutex_t *fork, \
-t_philo *philo);
+void			cleanup(t_data *data, char *message, int exit_code);
 
 /*simulation.c*/
-void			simulation(t_philo *philo);
+void			simulation(t_data *data);
 
-/*check.c*/
-int				check_starvation(t_philo *philo);
-int				check_state(t_philo *philo);
-int				check_forks(t_philo *philo);
-int				check_meals(t_philo *philo);
-
-/*monitor_util.c*/
-void			announce_death(t_philo *philo);
-int				track_meals(t_philo *philo, uint64_t total_meals);
+/*monitor.c*/
+void			*monitor(t_data *data);
 
 /*routine_utils.c*/
 int				eat(t_philo *philo);
