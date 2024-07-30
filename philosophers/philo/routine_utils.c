@@ -16,9 +16,12 @@ int	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->count_meals++;
-	pthread_mutex_unlock(&philo->data->meal_mutex);
 	if (philo->count_meals == philo->nbr_of_meals)
+	{
+		pthread_mutex_unlock(&philo->data->meal_mutex);
 		return (2);
+	}
+	pthread_mutex_unlock(&philo->data->meal_mutex);
 	return (0);
 }
 
@@ -36,7 +39,7 @@ int	think(t_philo *philo)
 	if (check_state(philo) == DEAD)
 		return (1);
 	print_status(philo, "is thinking");
-	//precise_usleep(1); // 1000 or dependent on nbr_of_philo?
+	precise_usleep(1000); // 1000 or dependent on nbr_of_philo?
 	return (0);
 }
 

@@ -12,6 +12,7 @@ void *monitor(t_data *data)
 	int	total_meals;
 
 	total_meals = 0;
+	//printf("starting monitor routine.\n");
 	while (1)
 	{
 		precise_usleep(500);

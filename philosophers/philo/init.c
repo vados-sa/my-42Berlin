@@ -50,6 +50,7 @@ t_data	*init_data(int ac, char *av[])
 	//data->nbr_of_meals = -1; // check initial number !
 	if (ac == 6)
 		data->nbr_of_meals = ft_custom_atoi(av[5]);
+	//printf("nbr of meals: %d\n", (int)data->nbr_of_meals);
 	init_forks(data);
 	mutex_init(data);
 	philo_init(data);
@@ -102,12 +103,13 @@ static void	*philo_init(t_data *data)
 	data->philo = malloc(data->nbr_of_philo * sizeof(t_philo));
 	if (!data->philo)
 		cleanup(data, "Error initializing philo data!", EXIT_FAILURE);
-	while (i++ < (int)data->nbr_of_philo)
+	while (++i < ((int)data->nbr_of_philo))
 	{
 		data->philo[i].id = i + 1;
 		data->philo->count_meals = 0;
 		data->philo[i].life_status = ALIVE;
-		data->philo->nbr_of_meals = (int)data->nbr_of_meals;
+		data->philo[i].nbr_of_meals = (int)data->nbr_of_meals;
+		//printf("nbr of meals of philo %d: %d\n", i, (int)data->philo[i].nbr_of_meals);
 		data->philo[i].time_to_die = data->time_to_die;
 		data->philo[i].time_to_eat = data->time_to_eat;
 		data->philo[i].time_to_sleep = data->time_to_sleep;
@@ -119,6 +121,7 @@ static void	*philo_init(t_data *data)
 		else
 			data->philo[i].right_fork = 0;
 		data->philo[i].data = data;
+		//printf("initializing philo[%d], id[%d].\nCount_meals: %d\n", i, data->philo[i].id, data->philo->count_meals);
 	}
 	return (NULL);
 }

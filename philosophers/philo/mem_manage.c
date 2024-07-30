@@ -1,11 +1,17 @@
 #include "philo.h"
 
-static void	destroy_threads(t_data *data);
+static void	join_threads(t_data *data);
+static void	destroy_mutexes(t_data *data);
  
 void	cleanup(t_data *data, char *message, int exit_code)
 {
 	if (exit_code == EXIT_SUCCESS)
-		destroy_threads(data);
+	{
+		join_threads(data);
+		printf("threads joined.\n");
+		destroy_mutexes(data);
+		printf("mutexes destroyed.\n");
+	}
 	if (message)
 		printf("%s\n", message);
 	if (data->philo)
@@ -13,10 +19,20 @@ void	cleanup(t_data *data, char *message, int exit_code)
 	if (data->forks)
 		free (data->forks);
 	free(data);
+	printf("program has ended and everything is cleaned.\n");
 	exit(exit_code);
 }
 
-static void	destroy_threads(t_data *data)
+static void	join_threads(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < (int)data->nbr_of_philo)
+		pthread_join(data->philo[i++].thread, NULL);
+}
+
+static void	destroy_mutexes(t_data *data)
 {
 	int	i;
 

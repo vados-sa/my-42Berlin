@@ -23,9 +23,6 @@ void	simulation(t_data *data)
 		}
 		i++;
 	}
-	i = 0;
-	while (i < (int)data->nbr_of_philo)
-		pthread_join(data->philo[i++].thread, NULL);
 }
 
 static void	*routine(void *arg)
