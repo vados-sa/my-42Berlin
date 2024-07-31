@@ -19,14 +19,12 @@ void	parse_args(int ac, char *av[])
 	}
 	if (ac == 6) 
 	{
-		if (ft_custom_atoi(av[5]) < 0)
+		if ((int)ft_custom_atoi(av[5]) <= 0)
 		{
 			printf("'number_of_times_each_philosopher_must_eat' must be\
  a positive interger.\n");
 			exit(1);
 		}
-		if (ft_custom_atoi(av[5]) == 0)
-			exit(1);
 	}
 }
 
@@ -50,6 +48,7 @@ t_data	*init_data(int ac, char *av[])
 	//data->nbr_of_meals = -1; // check initial number !
 	if (ac == 6)
 		data->nbr_of_meals = ft_custom_atoi(av[5]);
+	//printf("%d\n", (int)data->nbr_of_meals);
 	//printf("nbr of meals: %d\n", (int)data->nbr_of_meals);
 	init_forks(data);
 	mutex_init(data);
@@ -105,11 +104,13 @@ static void	*philo_init(t_data *data)
 		cleanup(data, "Error initializing philo data!", EXIT_FAILURE);
 	while (++i < ((int)data->nbr_of_philo))
 	{
+		//printf("start init, philo[%d]\n", i);
 		data->philo[i].id = i + 1;
 		data->philo->count_meals = 0;
 		data->philo[i].life_status = ALIVE;
+		//data->philo[i].full = HUNGRY;
+		//printf("philo[%d] is hungry? %d\n", i, data->philo[i].full);
 		data->philo[i].nbr_of_meals = (int)data->nbr_of_meals;
-		//printf("nbr of meals of philo %d: %d\n", i, (int)data->philo[i].nbr_of_meals);
 		data->philo[i].time_to_die = data->time_to_die;
 		data->philo[i].time_to_eat = data->time_to_eat;
 		data->philo[i].time_to_sleep = data->time_to_sleep;
@@ -121,7 +122,7 @@ static void	*philo_init(t_data *data)
 		else
 			data->philo[i].right_fork = 0;
 		data->philo[i].data = data;
-		//printf("initializing philo[%d], id[%d].\nCount_meals: %d\n", i, data->philo[i].id, data->philo->count_meals);
+		//printf("finish init, philo[%d]\n", i);
 	}
 	return (NULL);
 }

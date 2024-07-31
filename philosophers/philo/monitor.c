@@ -42,12 +42,13 @@ static int	check_starvation(t_philo *philo)
 	current_time_ms = get_time();
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	elapsed_time_ms = current_time_ms - philo->last_meal_t;
-	pthread_mutex_unlock(&philo->data->meal_mutex);
-	if (elapsed_time_ms >= philo->data->time_to_die)
+	if (elapsed_time_ms >= philo->data->time_to_die/*  && (philo->full == HUNGRY) */)
 	{
+		pthread_mutex_unlock(&philo->data->meal_mutex);
 		print_status(philo, "died");
 		return (1);
 	}
+	pthread_mutex_unlock(&philo->data->meal_mutex);
 	return (0);
 }
 

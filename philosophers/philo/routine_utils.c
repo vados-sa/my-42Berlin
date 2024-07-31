@@ -18,6 +18,7 @@ int	eat(t_philo *philo)
 	philo->count_meals++;
 	if (philo->count_meals == philo->nbr_of_meals)
 	{
+		//philo->full = FULL;
 		pthread_mutex_unlock(&philo->data->meal_mutex);
 		return (2);
 	}

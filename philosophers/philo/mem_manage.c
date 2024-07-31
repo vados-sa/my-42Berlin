@@ -8,9 +8,9 @@ void	cleanup(t_data *data, char *message, int exit_code)
 	if (exit_code == EXIT_SUCCESS)
 	{
 		join_threads(data);
-		printf("threads joined.\n");
+		//printf("threads joined.\n");
 		destroy_mutexes(data);
-		printf("mutexes destroyed.\n");
+		//printf("mutexes destroyed.\n");
 	}
 	if (message)
 		printf("%s\n", message);
@@ -19,7 +19,7 @@ void	cleanup(t_data *data, char *message, int exit_code)
 	if (data->forks)
 		free (data->forks);
 	free(data);
-	printf("program has ended and everything is cleaned.\n");
+	//printf("program has ended and everything is cleaned.\n");
 	exit(exit_code);
 }
 

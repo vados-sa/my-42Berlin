@@ -15,6 +15,8 @@
 
 # define DEAD 1
 # define ALIVE 0
+# define FULL 1
+# define HUNGRY 0
 
 typedef struct s_philo t_philo;
 
@@ -39,6 +41,7 @@ typedef struct s_philo
 	int				id;
 	int				count_meals;
 	int				life_status;
+	//int				full;
 	int				nbr_of_meals;
 	uint64_t		time_to_die;
 	uint64_t		time_to_eat;
