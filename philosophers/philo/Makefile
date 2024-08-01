@@ -8,7 +8,13 @@ RM			= rm -rf
 OBJDIR = ./objects
 
 # Soure files
-SRC = main.c init.c utils.c mem_manage.c simulation.c routine_utils.c monitor.c
+SRC =	sources/main.c \
+		sources/init.c \
+		sources/utils/utils.c \
+		sources/mem_manage.c \
+		sources/simulation.c \
+		sources/routine_utils.c \
+		sources/monitor.c
 
 # Object files
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
