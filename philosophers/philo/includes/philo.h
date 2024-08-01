@@ -54,27 +54,28 @@ typedef struct s_philo
 }	t_philo;
 
 /*init.c*/
-void			parse_args(int ac, char *av[]);
-t_data			*init_data(int ac, char *av[]);
+void		parse_args(int ac, char *av[]);
+t_data		*init_data(int ac, char *av[]);
 
 /*utils.c*/
-void			print_status(t_philo *philo, char *s);
-void			precise_usleep(uint64_t usec);
-uint64_t		get_time(void);
-uint64_t		ft_custom_atoi(const char *s);
+void		print_status(t_philo *philo, char *s);
+void		precise_usleep(uint64_t usec);
+uint64_t	get_time(void);
+uint64_t	ft_custom_atoi(const char *s);
 
 /*mem_manage.c*/
-void			cleanup(t_data *data, char *message, int exit_code);
+void		print_error_exit(char *message, int exit_code);
+void		cleanup(t_data *data, char *message, int exit_code);
 
 /*simulation.c*/
-void			simulation(t_data *data);
+void		simulation(t_data *data);
 
 /*monitor.c*/
-void			*monitor(t_data *data);
+void		*monitor(t_data *data);
 
 /*routine_utils.c*/
-int				eat(t_philo *philo);
-int				nap(t_philo *philo);
-int				think(t_philo *philo);
+int			eat(t_philo *philo);
+int			nap(t_philo *philo);
+int			think(t_philo *philo);
 
 #endif

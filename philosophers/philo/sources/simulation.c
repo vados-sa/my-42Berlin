@@ -13,7 +13,8 @@ void	simulation(t_data *data)
 		pthread_mutex_lock(&data->meal_mutex);
 		data->philo[i].last_meal_t = get_time();
 		pthread_mutex_unlock(&data->meal_mutex);
-		if ((pthread_create(&data->philo[i].thread, NULL, &routine, &data->philo[i])))
+		if ((pthread_create(&data->philo[i].thread, NULL, \
+			&routine, &data->philo[i])))
 		{
 			printf("Failed to create Philosopher %d.\n", i + 1);
 			j = 0;

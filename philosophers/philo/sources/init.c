@@ -7,25 +7,13 @@ static void	*philo_init(t_data *data);
 void	parse_args(int ac, char *av[])
 {
 	if (ac != 5 && ac != 6)
-	{
-		printf("Wrong number of arguments!\n");
-		exit(1);
-	}
+		print_error_exit("Wrong number of arguments!", EXIT_FAILURE);
 	if ((int)ft_custom_atoi(av[1]) <= 0 || (int)ft_custom_atoi(av[2]) <= 0 || 
 		(int)ft_custom_atoi(av[3]) <= 0 || (int)ft_custom_atoi(av[4]) <= 0)
-	{
-		printf("All input values must be positive integers.\n");
-		exit(1);
-	}
-	if (ac == 6) 
-	{
+		print_error_exit("All values must be positive!", EXIT_FAILURE);
+	if (ac == 6)
 		if ((int)ft_custom_atoi(av[5]) <= 0)
-		{
-			printf("'number_of_times_each_philosopher_must_eat' must be\
- a positive interger.\n");
-			exit(1);
-		}
-	}
+			print_error_exit("All values must be positive!", EXIT_FAILURE);
 }
 
 t_data	*init_data(int ac, char *av[])

@@ -2,6 +2,12 @@
 
 static void	join_threads(t_data *data);
 static void	destroy_mutexes(t_data *data);
+
+void	print_error_exit(char *message, int exit_code)
+{
+	printf("%s\n", message);
+	exit(exit_code);
+}
  
 void	cleanup(t_data *data, char *message, int exit_code)
 {
