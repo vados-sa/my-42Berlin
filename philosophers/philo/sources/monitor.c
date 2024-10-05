@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/10/05 15:45:07 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static int	check_starvation(t_philo *philo);
@@ -5,7 +17,7 @@ static void	announce_death(t_data *data);
 static int	check_meals(t_philo *philo);
 static int	track_meals(t_data *data, uint64_t total_meals);
 
-void *monitor(t_data *data)
+void	*monitor(t_data *data)
 {
 	int	i;
 	int	starved;
@@ -29,7 +41,7 @@ void *monitor(t_data *data)
 			i++;
 		}
 		if (track_meals(data, total_meals))
-			return (NULL);
+			return (NULL); // monitor doesn't let them know they should stop.
 	}
 	return (NULL);
 }

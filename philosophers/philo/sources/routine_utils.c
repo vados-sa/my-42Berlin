@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/05 15:21:11 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/10/05 16:55:08 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static int	check_state(t_philo *philo);
@@ -40,7 +52,8 @@ int	think(t_philo *philo)
 	if (check_state(philo) == DEAD)
 		return (1);
 	print_status(philo, "is thinking");
-	precise_usleep(1000); // 1000 or dependent on nbr_of_philo?
+	precise_usleep((philo->time_to_die - philo->time_to_eat - \
+		philo->time_to_sleep) / 2 * 1000);
 	return (0);
 }
 

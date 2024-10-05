@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simulation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/05 15:21:14 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/10/05 16:54:43 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static void	*routine(void *arg);
@@ -34,7 +46,7 @@ static void	*routine(void *arg)
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_t = get_time();
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	precise_usleep(1000); // check later if necessary
+	precise_usleep(10); // check later if necessary
 	if (philo->data->nbr_of_philo != 1)
 	{
 		while (1)

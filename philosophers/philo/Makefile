@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/05 15:22:44 by vados-sa          #+#    #+#              #
+#    Updated: 2024/10/05 16:31:30 by vados-sa         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = philo
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread -fsanitize=thread
+CFLAGS		= -Wall -Wextra -Werror -pthread -fsanitize=thread -g
 RM			= rm -rf
 
 # Paths

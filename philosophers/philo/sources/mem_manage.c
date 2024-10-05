@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mem_manage.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/05 15:21:06 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/10/05 15:22:06 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static void	join_threads(t_data *data);
@@ -8,7 +20,7 @@ void	print_error_exit(char *message, int exit_code)
 	printf("%s\n", message);
 	exit(exit_code);
 }
- 
+
 void	cleanup(t_data *data, char *message, int exit_code)
 {
 	if (exit_code == EXIT_SUCCESS)
