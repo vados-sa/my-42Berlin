@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/09 14:24:46 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:24:27 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	philo_init(t_data *data)
 		data->philo[i].id = i + 1;
 		data->philo->count_meals = 0;
 		data->philo[i].life_status = ALIVE;
-		//data->philo[i].full = HUNGRY;
+		data->philo[i].full = HUNGRY;
 		data->philo[i].nbr_of_meals = (int)data->nbr_of_meals;
 		data->philo[i].time_to_die = data->time_to_die;
 		data->philo[i].time_to_eat = data->time_to_eat;

@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/05 16:55:08 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:53:48 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	eat(t_philo *philo)
 	philo->count_meals++;
 	if (philo->count_meals == philo->nbr_of_meals)
 	{
-		//philo->full = FULL;
+		philo->full = FULL;
 		pthread_mutex_unlock(&philo->data->meal_mutex);
-		return (2);
+		return (FULL);
 	}
 	pthread_mutex_unlock(&philo->data->meal_mutex);
 	return (0);

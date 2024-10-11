@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/05 15:45:07 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:54:08 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	*monitor(t_data *data)
 	int	total_meals;
 
 	total_meals = 0;
-	//printf("starting monitor routine.\n");
 	while (1)
 	{
 		precise_usleep(500);
@@ -39,9 +38,9 @@ void	*monitor(t_data *data)
 			}
 			total_meals += check_meals(&data->philo[i]);
 			i++;
+			if (track_meals(data, total_meals))
+				return (NULL);
 		}
-		if (track_meals(data, total_meals))
-			return (NULL); // monitor doesn't let them know they should stop.
 	}
 	return (NULL);
 }
@@ -54,7 +53,7 @@ static int	check_starvation(t_philo *philo)
 	current_time_ms = get_time();
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	elapsed_time_ms = current_time_ms - philo->last_meal_t;
-	if (elapsed_time_ms >= philo->data->time_to_die/*  && (philo->full == HUNGRY) */)
+	if (elapsed_time_ms >= philo->data->time_to_die && (philo->full == HUNGRY))
 	{
 		pthread_mutex_unlock(&philo->data->meal_mutex);
 		print_status(philo, "died");
