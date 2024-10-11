@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:14 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/11 13:53:32 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:10:17 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ static void	*routine(void *arg);
 
 void	simulation(t_data *data)
 {
-	int			i;
-	int			j;
+	int	i;
+	int	j;
+	int	nb_philo;
 
 	i = 0;
-	while (i < (int)data->nbr_of_philo)
+	nb_philo = (int)data->nbr_of_philo;
+	while (i < nb_philo)
 	{
 		pthread_mutex_lock(&data->meal_mutex);
 		data->philo[i].last_meal_t = get_time();
@@ -46,7 +48,6 @@ static void	*routine(void *arg)
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_t = get_time();
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	precise_usleep(10); // check later if necessary
 	if (philo->data->nbr_of_philo != 1)
 	{
 		while (1)

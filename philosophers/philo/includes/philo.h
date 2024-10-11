@@ -54,7 +54,6 @@ typedef struct s_philo
 }	t_philo;
 
 /*init.c*/
-void		parse_args(int ac, char *av[]);
 t_data		*init_data(int ac, char *av[]);
 
 /*utils.c*/

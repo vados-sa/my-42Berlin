@@ -6,11 +6,15 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:20:57 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/11 13:53:39 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:17:50 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+//setarch `uname -m` -R $SHELL
+
+static void	parse_args(int ac, char *av[]);
 
 int	main(int ac, char *av[])
 {
@@ -22,4 +26,16 @@ int	main(int ac, char *av[])
 	monitor(data);
 	cleanup(data, NULL, 0);
 	return (0);
+}
+
+static void	parse_args(int ac, char *av[])
+{
+	if (ac != 5 && ac != 6)
+		print_error_exit("Wrong number of arguments!", EXIT_FAILURE);
+	if ((int)ft_custom_atoi(av[1]) <= 0 || (int)ft_custom_atoi(av[2]) <= 0 || 
+		(int)ft_custom_atoi(av[3]) <= 0 || (int)ft_custom_atoi(av[4]) <= 0)
+		print_error_exit("All values must be positive!", EXIT_FAILURE);
+	if (ac == 6)
+		if ((int)ft_custom_atoi(av[5]) <= 0)
+			print_error_exit("All values must be positive!", EXIT_FAILURE);
 }
