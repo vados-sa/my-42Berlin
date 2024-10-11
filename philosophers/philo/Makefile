@@ -6,7 +6,7 @@
 #    By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 15:22:44 by vados-sa          #+#    #+#              #
-#    Updated: 2024/10/05 16:31:30 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/10/11 12:08:16 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ RM			= rm -rf
 
 # Paths
 OBJDIR = ./objects
+INCLUDES = includes
 
 # Soure files
 SRC =	sources/main.c \
@@ -41,7 +42,7 @@ $(NAME): $(OBJS)
 
 
 # Compilation rule for object files
-$(OBJDIR)/%.o: %.c
+$(OBJDIR)/%.o: %.c $(INCLUDES)/philo.h
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
