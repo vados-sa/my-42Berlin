@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/05 16:57:40 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/09 14:24:46 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	*init_forks(t_data *data);
 static void	mutex_init(t_data *data);
-static void	*philo_init(t_data *data);
+static void	philo_init(t_data *data);
 
 void	parse_args(int ac, char *av[])
 {
@@ -92,7 +92,7 @@ static void	mutex_init(t_data *data)
 	}
 }
 
-static void	*philo_init(t_data *data)
+void	philo_init(t_data *data)
 {
 	int		i;
 
