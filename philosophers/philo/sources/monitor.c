@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/11 13:54:08 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:15:32 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	*monitor(t_data *data)
 	total_meals = 0;
 	while (1)
 	{
-		precise_usleep(500);
 		i = 0;
 		while (i < (int)data->nbr_of_philo)
 		{

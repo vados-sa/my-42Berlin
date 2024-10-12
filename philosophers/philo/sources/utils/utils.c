@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:19 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/05 15:21:20 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/12 17:18:44 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_status(t_philo *philo, char *status)
 		pthread_mutex_unlock(&philo->data->state_mutex);
 }
 
-void	precise_usleep(uint64_t usec)
+/* void	precise_usleep(uint64_t usec)
 {
 	struct timeval	start;
 	struct timeval	end;
@@ -41,7 +41,7 @@ void	precise_usleep(uint64_t usec)
 		elapsed = (end.tv_sec - start.tv_sec) * 1000000 + \
 		(end.tv_usec - start.tv_usec);
 	}
-}
+} */
 
 uint64_t	get_time(void)
 {

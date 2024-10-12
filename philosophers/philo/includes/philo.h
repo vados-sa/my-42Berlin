@@ -58,7 +58,7 @@ t_data		*init_data(int ac, char *av[]);
 
 /*utils.c*/
 void		print_status(t_philo *philo, char *s);
-void		precise_usleep(uint64_t usec);
+//void		precise_usleep(uint64_t usec);
 uint64_t	get_time(void);
 uint64_t	ft_custom_atoi(const char *s);
 
