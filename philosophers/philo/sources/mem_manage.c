@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:06 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/05 15:22:06 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:49:00 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ void	cleanup(t_data *data, char *message, int exit_code)
 	if (exit_code == EXIT_SUCCESS)
 	{
 		join_threads(data);
-		//printf("threads joined.\n");
 		destroy_mutexes(data);
-		//printf("mutexes destroyed.\n");
 	}
 	if (message)
 		printf("%s\n", message);
@@ -37,7 +35,6 @@ void	cleanup(t_data *data, char *message, int exit_code)
 	if (data->forks)
 		free (data->forks);
 	free(data);
-	//printf("program has ended and everything is cleaned.\n");
 	exit(exit_code);
 }
 

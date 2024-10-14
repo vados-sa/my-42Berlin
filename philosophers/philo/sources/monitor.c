@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/12 17:15:32 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:54:37 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static void	announce_death(t_data *data)
 
 	i = 0;
 	pthread_mutex_lock(&data->state_mutex);
-	//data->life_status = DEAD;
 	while (i < (int)data->nbr_of_philo)
 		data->philo[i++].life_status = DEAD;
 	pthread_mutex_unlock(&data->state_mutex);

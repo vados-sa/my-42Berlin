@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 15:45:12 by vados-sa          #+#    #+#             */
+/*   Updated: 2024/10/14 15:45:14 by vados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
@@ -18,7 +29,7 @@
 # define FULL 1
 # define HUNGRY 0
 
-typedef struct s_philo t_philo;
+typedef struct s_philo	t_philo;
 
 typedef struct s_data
 {
@@ -28,11 +39,10 @@ typedef struct s_data
 	uint64_t		time_to_sleep;
 	uint64_t		nbr_of_meals;
 	uint64_t		start_time;
-	//int				life_status;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex; 
 	pthread_mutex_t	state_mutex;
-	pthread_mutex_t	meal_mutex; // check if it is a relevant mutex
+	pthread_mutex_t	meal_mutex;
 	t_philo			*philo;
 }	t_data;
 

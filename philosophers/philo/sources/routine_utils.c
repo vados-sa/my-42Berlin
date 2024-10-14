@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/12 17:09:54 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:55:48 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	line_to_eat(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 	{
-		//precise_usleep(100);
 		pthread_mutex_lock(philo->left_fork);
 		print_status(philo, "has taken a fork");
 		pthread_mutex_lock(philo->right_fork);
@@ -50,7 +49,6 @@ int	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->data->meal_mutex);
 	philo->last_meal_t = get_time();
 	pthread_mutex_unlock(&philo->data->meal_mutex);
-	//precise_usleep(philo->time_to_eat * 1000);
 	usleep(philo->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
@@ -72,7 +70,6 @@ int	nap(t_philo *philo)
 		return (1);
 	print_status(philo, "is sleeping");
 	usleep(philo->time_to_sleep * 1000);
-	//precise_usleep(philo->time_to_sleep * 1000);
 	return (0);
 }
 
@@ -83,7 +80,5 @@ int	think(t_philo *philo)
 	print_status(philo, "is thinking");
 	usleep((philo->time_to_die - philo->time_to_eat - \
 		philo->time_to_sleep) / 2 * 1000);
-	/* precise_usleep((philo->time_to_die - philo->time_to_eat - \
-		philo->time_to_sleep) / 2 * 1000); */
 	return (0);
 }

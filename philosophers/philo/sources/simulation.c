@@ -6,7 +6,7 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:14 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/12 17:07:54 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:54:44 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	simulation(t_data *data)
 		pthread_mutex_lock(&data->meal_mutex);
 		data->philo[i].last_meal_t = get_time();
 		pthread_mutex_unlock(&data->meal_mutex);
-		if (i % 2 == 0)
-			usleep(100);
 		if ((pthread_create(&data->philo[i].thread, NULL, \
 			&routine, &data->philo[i])))
 		{

@@ -6,14 +6,14 @@
 #    By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 15:22:44 by vados-sa          #+#    #+#              #
-#    Updated: 2024/10/11 12:08:16 by vados-sa         ###   ########.fr        #
+#    Updated: 2024/10/14 15:46:08 by vados-sa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread -fsanitize=thread -g
+CFLAGS		= -Wall -Wextra -Werror -pthread
 RM			= rm -rf
 
 # Paths
