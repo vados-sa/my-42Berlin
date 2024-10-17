@@ -6,43 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/14 13:54:37 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:21:25 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-static int	check_starvation(t_philo *philo);
-static void	announce_death(t_data *data);
-static int	check_meals(t_philo *philo);
-static int	track_meals(t_data *data, uint64_t total_meals);
-
-void	*monitor(t_data *data)
-{
-	int	i;
-	int	starved;
-	int	total_meals;
-
-	total_meals = 0;
-	while (1)
-	{
-		i = 0;
-		while (i < (int)data->nbr_of_philo)
-		{
-			starved = check_starvation(&data->philo[i]);
-			if (starved)
-			{
-				announce_death(data);
-				return (NULL);
-			}
-			total_meals += check_meals(&data->philo[i]);
-			i++;
-			if (track_meals(data, total_meals))
-				return (NULL);
-		}
-	}
-	return (NULL);
-}
 
 static int	check_starvation(t_philo *philo)
 {
@@ -90,4 +58,31 @@ static int	track_meals(t_data *data, uint64_t total_meals)
 	if (total_meals == data->nbr_of_philo * data->nbr_of_meals)
 		return (1);
 	return (0);
+}
+
+void	*monitor(t_data *data)
+{
+	int	i;
+	int	starved;
+	int	total_meals;
+
+	while (1)
+	{
+		i = 0;
+		total_meals = 0;
+		while (i < (int)data->nbr_of_philo)
+		{
+			starved = check_starvation(&data->philo[i]);
+			if (starved)
+			{
+				announce_death(data);
+				return (NULL);
+			}
+			total_meals += check_meals(&data->philo[i]);
+			i++;
+			if (track_meals(data, total_meals))
+				return (NULL);
+		}
+	}
+	return (NULL);
 }

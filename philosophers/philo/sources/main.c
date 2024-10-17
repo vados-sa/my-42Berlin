@@ -6,13 +6,11 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:20:57 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/11 14:17:50 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:21:10 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-//setarch `uname -m` -R $SHELL
 
 static void	parse_args(int ac, char *av[]);
 
