@@ -6,12 +6,16 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:02 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/17 17:29:24 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:44:28 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+/**
+ * Initializes the mutexes for the forks.
+ * @data: Pointer to the shared data structure.
+ */
 static void	*init_forks(t_data *data)
 {
 	int	i;
@@ -35,6 +39,14 @@ static void	*init_forks(t_data *data)
 	return (NULL);
 }
 
+/**
+ * Initializes the necessary mutexes for the simulation.
+ * @data: Pointer to the shared data structure.
+ * 
+ * Initializes the print, state, and meal mutexes used to synchronize
+ * access to shared resources. If any mutex initialization fails, it destroys
+ * previously initialized mutexes and exits the program with an error message.
+ */
 static void	mutex_init(t_data *data)
 {
 	if (pthread_mutex_init(&data->print_mutex, NULL))
@@ -52,6 +64,15 @@ static void	mutex_init(t_data *data)
 	}
 }
 
+/**
+ * Initializes individual philosopher data.
+ * @data: Pointer to the shared data structure.
+ * @i: Index of the philosopher.
+ * 
+ * This function sets up the initial values for each philosopher, including
+ * their ID, meal counts, life status, and fork pointers. It also assigns the
+ * respective left and right forks for each philosopher.
+ */
 static void	philo_info_init(t_data *data, int i)
 {
 	data->philo[i].id = i + 1;
@@ -72,6 +93,13 @@ static void	philo_info_init(t_data *data, int i)
 	data->philo[i].data = data;
 }
 
+/**
+ * Initializes all philosopher data.
+ * @data: Pointer to the shared data structure.
+ * 
+ * Allocates memory for all philosophers and initializes their individual
+ * attributes by calling philo_info_init for each philosopher.
+ */
 static void	philo_init(t_data *data)
 {
 	int	i;
@@ -87,6 +115,16 @@ static void	philo_init(t_data *data)
 	}
 }
 
+/**
+ * Initializes the main simulation data.
+ * 
+ * Allocates memory for the main data structure and initializes it with the
+ * arguments provided by the user. It sets up the number of philosophers,
+ * their respective times (to die, eat, and sleep), and the optional meal limit.
+ * It also calls functions to initialize the forks, mutexes, and philosophers.
+ * 
+ * Return: Pointer to the initialized data structure.
+ */
 t_data	*init_data(int ac, char *av[])
 {
 	t_data	*data;

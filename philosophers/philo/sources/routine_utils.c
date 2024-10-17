@@ -6,12 +6,21 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:11 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/14 13:55:48 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:52:57 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+/**
+ * Checks the philosopher's life status.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function checks whether the philosopher is still alive by locking the
+ * state mutex, retrieving the philosopher's life status, and unlocking the mutex.
+ * 
+ * Return: The philosopher's life status (either ALIVE or DEAD).
+ */
 static int	check_state(t_philo *philo)
 {
 	int	live;
@@ -22,6 +31,15 @@ static int	check_state(t_philo *philo)
 	return (live);
 }
 
+/**
+ * Philosopher takes forks and starts eating.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function controls how a philosopher picks up the forks. Philosophers
+ * with even IDs pick up the left fork first, then the right fork, while odd
+ * IDs pick up the right fork first, then the left, to avoid deadlocks. After 
+ * taking both forks, the philosopher begins eating.
+ */
 static void	line_to_eat(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
@@ -41,6 +59,18 @@ static void	line_to_eat(t_philo *philo)
 	print_status(philo, "is eating");
 }
 
+/**
+ * Philosopher performs the eating action.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function makes the philosopher eat by taking the necessary forks using
+ * `line_to_eat`. It updates the last meal time, increments the meal count, and
+ * checks if the philosopher has eaten the required number of meals. After eating,
+ * the philosopher releases both forks.
+ * 
+ * Return: 1 if the philosopher dies while eating, 0 if the philosopher is still alive,
+ * or FULL if the philosopher has eaten the required number of meals.
+ */
 int	eat(t_philo *philo)
 {
 	if (check_state(philo) == DEAD)
@@ -64,6 +94,15 @@ int	eat(t_philo *philo)
 	return (0);
 }
 
+/**
+ * Philosopher performs the sleeping action.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function makes the philosopher sleep for a specified amount of time
+ * (`time_to_sleep`). The philosopher sleeps only if they are still alive.
+ * 
+ * Return: 1 if the philosopher dies while sleeping, 0 if the philosopher is still alive.
+ */
 int	nap(t_philo *philo)
 {
 	if (check_state(philo) == DEAD)
@@ -73,6 +112,16 @@ int	nap(t_philo *philo)
 	return (0);
 }
 
+/**
+ * Philosopher performs the thinking action.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function makes the philosopher think for a time derived from the difference
+ * between `time_to_die`, `time_to_eat`, and `time_to_sleep`. The philosopher thinks
+ * only if they are still alive.
+ * 
+ * Return: 1 if the philosopher dies while thinking, 0 if the philosopher is still alive.
+ */
 int	think(t_philo *philo)
 {
 	if (check_state(philo) == DEAD)

@@ -6,12 +6,25 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:14 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/16 12:34:38 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:46:42 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+/**
+ * The main routine for each philosopher thread.
+ * @arg: Pointer to the philosopher data (casted as void* for pthread compatibility).
+ * 
+ * This function represents the actions of each philosopher. It starts by
+ * updating the philosopher's last meal time, and then enters a loop where the
+ * philosopher alternates between eating, sleeping (nap), and thinking.
+ * The loop runs indefinitely until the philosopher either finishes all their meals
+ * or dies. If the philosopher is the only one, it exits immediately as they cannot
+ * proceed without another philosopher.
+ * 
+ * Return: Always returns NULL, indicating the thread has finished execution.
+ */
 static void	*routine(void *arg)
 {
 	t_philo	*philo;
@@ -35,6 +48,16 @@ static void	*routine(void *arg)
 	return (NULL);
 }
 
+/**
+ * Initializes the philosopher threads and starts the simulation.
+ * @data: Pointer to the shared data structure.
+ * 
+ * This function creates and starts a thread for each philosopher. Before creating
+ * the thread, it updates each philosopher's last meal time. If thread creation fails
+ * for any philosopher, it joins and cleans up the already created threads and
+ * exits the program with an error. Once all threads are successfully created,
+ * the simulation proceeds with 'routine'.
+ */
 void	simulation(t_data *data)
 {
 	int	i;

@@ -6,12 +6,23 @@
 /*   By: vados-sa <vados-sa@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 15:21:09 by vados-sa          #+#    #+#             */
-/*   Updated: 2024/10/17 17:21:25 by vados-sa         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:49:12 by vados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+/**
+ * Checks if a philosopher has starved to death.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function calculates the elapsed time since the philosopher's last meal.
+ * If the elapsed time exceeds the time the philosopher can survive without eating
+ * (`time_to_die`), and the philosopher is still hungry, it marks the philosopher
+ * as dead and prints the "died" status.
+ * 
+ * Return: 1 if the philosopher has died from starvation, 0 otherwise.
+ */
 static int	check_starvation(t_philo *philo)
 {
 	uint64_t		current_time_ms;
@@ -30,6 +41,13 @@ static int	check_starvation(t_philo *philo)
 	return (0);
 }
 
+/**
+ * Marks all philosophers as dead.
+ * @data: Pointer to the shared data structure.
+ * 
+ * This function updates the life status of all philosophers to `DEAD`
+ * when a philosopher dies, effectively stopping the simulation.
+ */
 static void	announce_death(t_data *data)
 {
 	int	i;
@@ -41,6 +59,15 @@ static void	announce_death(t_data *data)
 	pthread_mutex_unlock(&data->state_mutex);
 }
 
+/**
+ * Retrieves the number of meals a philosopher has eaten.
+ * @philo: Pointer to the philosopher data.
+ * 
+ * This function locks the meal mutex and checks how many meals the philosopher
+ * has consumed so far. It returns the count of meals eaten.
+ * 
+ * Return: The number of meals eaten by the philosopher.
+ */
 static int	check_meals(t_philo *philo)
 {
 	int	meals_done;
@@ -51,6 +78,17 @@ static int	check_meals(t_philo *philo)
 	return (meals_done);
 }
 
+/**
+ * Tracks the total number of meals eaten by all philosophers.
+ * @data: Pointer to the shared data structure.
+ * @total_meals: The current total number of meals consumed by all philosophers.
+ * 
+ * This function checks if all philosophers have eaten the required number of meals.
+ * If every philosopher has eaten the specified number of meals (`nbr_of_meals`), 
+ * it returns 1 to stop the simulation.
+ * 
+ * Return: 1 if all philosophers have eaten the required meals, 0 otherwise.
+ */
 static int	track_meals(t_data *data, uint64_t total_meals)
 {
 	if (data->nbr_of_philo == 1 || !data->nbr_of_meals)
@@ -60,6 +98,20 @@ static int	track_meals(t_data *data, uint64_t total_meals)
 	return (0);
 }
 
+/**
+ * Monitors the philosophers for starvation or completion.
+ * @data: Pointer to the shared data structure.
+ * 
+ * This function continuously monitors all philosophers for two conditions:
+ * 1. If any philosopher has starved to death.
+ * 2. If all philosophers have eaten the required number of meals.
+ * 
+ * If a philosopher dies, the simulation stops and their death is announced.
+ * If all philosophers have finished their meals, the simulation ends gracefully.
+ * 
+ * Return: NULL when the monitoring stops, either due to a philosopher's death 
+ * or all philosophers finishing their meals.
+ */
 void	*monitor(t_data *data)
 {
 	int	i;
